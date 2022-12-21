@@ -186,6 +186,7 @@ GameObject:
   - component: {fileID: 1113260556}
   - component: {fileID: 1113260557}
   - component: {fileID: 1113260558}
+  - component: {fileID: 1113260559}
   m_Layer: 0
   m_Name: Level Tilemap
   m_TagString: Untagged
@@ -590,6 +591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc073bdeda98f044b22ca34db51e0fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destroyAnimationPrefab: {fileID: 520998210940772457, guid: 32940ac4ffeb42942a61b7cfeae56c59, type: 3}
 --- !u!114 &1113260558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -608,6 +610,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf7e046571f9c7048aba39bf13e385fe, type: 2}
   - {fileID: 11400000, guid: 83ea1241b9b9a864a937c4eae691b3bf, type: 2}
   - {fileID: 11400000, guid: 34b51e4b2fbc31a4f94016972cae44e9, type: 2}
+--- !u!114 &1113260559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113260549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52d62fe286ffe334a9948e61b85a71a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1779154094
 GameObject:
   m_ObjectHideFlags: 0

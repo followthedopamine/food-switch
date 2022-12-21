@@ -15,12 +15,13 @@ public class CheckMatches : MonoBehaviour {
   private Tilemap levelTilemap;
   private DestroyMatches destroyMatches;
   private SpawnTiles spawnTiles;
-
+  private FallingTiles fallingTiles;
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
     spawnTiles = gameObject.GetComponent<SpawnTiles>();
+    fallingTiles = gameObject.GetComponent<FallingTiles>();
   }
 
   public void OnSwitch() {
@@ -41,6 +42,7 @@ public class CheckMatches : MonoBehaviour {
       destroyMatches.DestroyTiles(matches);
       // Wait for animation to finish
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
+      fallingTiles.CheckTiles();
       spawnTiles.SpawnRandomTilesToFill();
       matches = GetAllMatches();
     }
