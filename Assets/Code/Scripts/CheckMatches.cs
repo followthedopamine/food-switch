@@ -105,23 +105,4 @@ public class CheckMatches : MonoBehaviour {
     }
     return matches;
   }
-
-  void OnMouseUp() {
-    // foreach (Match match in matches) {
-    //   PrintMatch(match);
-    // }
-
-  }
-
-  void OnMouseDown() {
-    List<Vector3Int> list = new List<Vector3Int>();
-    list.Add(new Vector3Int(0, 0, 0));
-    list.Add(new Vector3Int(1, 1, 0));
-    list.Add(new Vector3Int(4, 1, 0));
-    if (list.Contains(new Vector3Int(4, 1, 0))) {
-      Debug.Log("Trues");
-    } else {
-      Debug.Log("Falses");
-    }
-  }
 }
