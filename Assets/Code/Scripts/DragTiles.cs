@@ -13,11 +13,13 @@ public class DragTiles : MonoBehaviour {
   private Tile draggedTile;
   private Tile targetTile;
   private LevelController levelController;
+  private CheckMatches checkMatches;
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
     cam = Camera.main;
     levelController = gameObject.GetComponent<LevelController>();
+    checkMatches = gameObject.GetComponent<CheckMatches>();
   }
 
   private void OnMouseDown() {
@@ -30,6 +32,7 @@ public class DragTiles : MonoBehaviour {
   }
 
   private void SelectTileForSwitch() {
+    // TODO: Select tile based on direction dragged not on final mouse position
     Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     draggingFrom = levelTilemap.WorldToCell(mousePos);
     draggedTile = levelTilemap.GetTile<GameTile>(draggingFrom);
@@ -43,6 +46,7 @@ public class DragTiles : MonoBehaviour {
       levelTilemap.SetTile(draggingTo, draggedTile);
       levelTilemap.SetTile(draggingFrom, targetTile);
     }
+    checkMatches.OnSwitch();
   }
 
   // This might need to be in a different class

@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+public struct Match {
+  public int tileId;
+  public int size;
+  public Vector3Int location;
+  public List<Vector3Int> tiles;
+}
+
 public class CheckMatches : MonoBehaviour {
 
   private Tilemap levelTilemap;
+  private DestroyMatches destroyMatches;
+  private SpawnTiles spawnTiles;
 
-  private struct Match {
-    public int tileId;
-    public int size;
-    public Vector3Int location;
-    public List<Vector3Int> tiles;
-  }
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
+    destroyMatches = gameObject.GetComponent<DestroyMatches>();
+    spawnTiles = gameObject.GetComponent<SpawnTiles>();
   }
 
-  void OnSwitch() {
-    // Considered just flood filling from switched tiles but it's probably better to just
-    // always check all tiles, that way behaviour is the same for falling tiles
-    // could also just flood fill from falling tiles but that seems like overscoping
-
+  public void OnSwitch() {
+    List<Match> matches = GetAllMatches();
+    destroyMatches.DestroyTiles(matches);
+    spawnTiles.SpawnRandomTilesToFill();
   }
 
   // For debugging
@@ -84,17 +88,11 @@ public class CheckMatches : MonoBehaviour {
     return matches;
   }
 
-  // void Update() {
-  //   // Put this in update for now for testing
-  //   OnSwitch();
-  // }
-
-
   void OnMouseUp() {
-    List<Match> matches = GetAllMatches();
-    foreach (Match match in matches) {
-      PrintMatch(match);
-    }
+    // foreach (Match match in matches) {
+    //   PrintMatch(match);
+    // }
+
   }
 
   void OnMouseDown() {

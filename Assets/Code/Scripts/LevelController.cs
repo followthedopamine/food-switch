@@ -15,7 +15,7 @@ public class LevelController : MonoBehaviour {
   public struct Level {
     public int width;
     public int height;
-    public GameTile[,] grid;
+    public Vector3Int[,] grid;
   }
 
   void Start() {
@@ -47,15 +47,14 @@ public class LevelController : MonoBehaviour {
     return tile;
   }
 
-  private GameTile[,] BuildLevelGrid() {
-    GameTile[,] grid = new GameTile[level.height, level.width];
+  private Vector3Int[,] BuildLevelGrid() {
+    Vector3Int[,] grid = new Vector3Int[level.height, level.width];
     for (int r = 0; r < level.height; r++) {
       for (int c = 0; c < level.width; c++) {
         // Apply tilemap offset when getting tile
         // TODO: Check if tile exists
-
-        GameTile tile = GetGameTile(new Vector3Int(c, r, 0));
-        grid[r, c] = tile;
+        Vector3Int position = new Vector3Int(c + tilemapOffset.x, r + tilemapOffset.y, 0);
+        grid[r, c] = position;
       }
     }
     return grid;
