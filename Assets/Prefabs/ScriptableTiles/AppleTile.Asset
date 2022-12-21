@@ -33,6 +33,6 @@ MonoBehaviour:
     e33: 1
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
-  m_ColliderType: 1
-  tileId: 0
-  tileType: 0
+  m_ColliderType: 2
+  id: 1
+  type: 0
