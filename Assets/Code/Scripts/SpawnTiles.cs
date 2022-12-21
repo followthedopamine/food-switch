@@ -22,7 +22,8 @@ public class SpawnTiles : MonoBehaviour {
     Vector3Int[,] grid = levelController.level.grid;
     for (int r = 0; r < grid.GetLength(0); r++) {
       for (int c = 0; c < grid.GetLength(1); c++) {
-        levelTilemap.SetTile(grid[r, c], GetRandomTile());
+        if (levelTilemap.GetTile(grid[r, c]) == null)
+          levelTilemap.SetTile(grid[r, c], GetRandomTile());
       }
     }
   }

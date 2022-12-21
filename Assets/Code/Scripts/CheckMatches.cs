@@ -24,9 +24,26 @@ public class CheckMatches : MonoBehaviour {
   }
 
   public void OnSwitch() {
+    // TODO: While matches loop
+    // Disable input
+    // Check matches
+    // Destroy matches (play animation)
+    // Spawn matches (play animation)
+    // Repeat
+    StartCoroutine(DestroyTilesLoop());
+
+  }
+
+  private IEnumerator DestroyTilesLoop() {
+
     List<Match> matches = GetAllMatches();
-    destroyMatches.DestroyTiles(matches);
-    spawnTiles.SpawnRandomTilesToFill();
+    while (matches.Count > 0) {
+      destroyMatches.DestroyTiles(matches);
+      // Wait for animation to finish
+      yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
+      spawnTiles.SpawnRandomTilesToFill();
+      matches = GetAllMatches();
+    }
   }
 
   // For debugging
@@ -41,6 +58,7 @@ public class CheckMatches : MonoBehaviour {
   // This bad boy got hands
   // Flood fills all tiles in level tilemap and returns a list of matches
   // Keeps track of visited tiles so should be unique matches
+  // TODO: Some problems detecting matches still :'(
   List<Match> GetAllMatches() {
     Stack<Vector3Int> tiles = new Stack<Vector3Int>();
     List<Vector3Int> visited = new List<Vector3Int>();
