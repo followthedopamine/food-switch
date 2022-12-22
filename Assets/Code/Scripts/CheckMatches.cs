@@ -43,6 +43,7 @@ public class CheckMatches : MonoBehaviour {
       // Wait for animation to finish
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       fallingTiles.CheckTiles();
+      yield return new WaitForSeconds(0.3f);
       spawnTiles.SpawnRandomTilesToFill();
       matches = GetAllMatches();
     }
