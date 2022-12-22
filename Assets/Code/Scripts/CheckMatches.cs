@@ -76,7 +76,6 @@ public class CheckMatches : MonoBehaviour {
           match.tiles = new List<Vector3Int>();
           while (tiles.Count > 0) {
             Vector3Int tilePos = tiles.Pop();
-            visited.Add(tilePos);
             if (levelTilemap.HasTile(tilePos) && !tiles.Contains(tilePos)) {
               GameTile tile = levelTilemap.GetTile<GameTile>(tilePos);
               if (match.tileId == 0) {
@@ -85,6 +84,7 @@ public class CheckMatches : MonoBehaviour {
               if (tile.id == match.tileId) {
                 match.size++;
                 match.tiles.Add(tilePos);
+                visited.Add(tilePos);
 
                 Vector3Int east = new Vector3Int(tilePos.x - 1, tilePos.y, tilePos.z);
                 Vector3Int west = new Vector3Int(tilePos.x + 1, tilePos.y, tilePos.z);
