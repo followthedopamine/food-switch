@@ -25,20 +25,14 @@ public class CheckMatches : MonoBehaviour {
   }
 
   public void OnSwitch() {
-    // TODO: While matches loop
-    // Disable input
-    // Check matches
-    // Destroy matches (play animation)
-    // Spawn matches (play animation)
-    // Repeat
     StartCoroutine(DestroyTilesLoop());
-
   }
 
   private IEnumerator DestroyTilesLoop() {
-
     List<Match> matches = GetAllMatches();
+
     while (matches.Count > 0) {
+      matches = CheckMatchShapes(matches);
       destroyMatches.DestroyTiles(matches);
       // Wait for animation to finish
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
@@ -61,7 +55,6 @@ public class CheckMatches : MonoBehaviour {
   // This bad boy got hands
   // Flood fills all tiles in level tilemap and returns a list of matches
   // Keeps track of visited tiles so should be unique matches
-  // TODO: Some problems detecting matches still :'(
   List<Match> GetAllMatches() {
     Stack<Vector3Int> tiles = new Stack<Vector3Int>();
     List<Vector3Int> visited = new List<Vector3Int>();
@@ -107,5 +100,95 @@ public class CheckMatches : MonoBehaviour {
       }
     }
     return matches;
+  }
+
+  List<Vector3Int> GetMatchShape(Match match) {
+    Vector3Int offset = match.tiles[0];
+    List<Vector3Int> shape = new List<Vector3Int>();
+    foreach (Vector3Int tile in match.tiles) {
+      shape.Add(tile - offset);
+    }
+    return shape;
+  }
+
+  bool ShapesAreEqual(List<Vector3Int> shape1, List<Vector3Int> shape2) {
+    if (shape1.Count != shape2.Count) return false;
+    for (int i = 0; i < shape1.Count; i++) {
+      if (shape1[i] != shape2[i]) return false;
+    }
+    return true;
+  }
+
+  List<Match> CheckMatchShapes(List<Match> matches) {
+
+    // List<List<Vector3Int>> validShapes = new List<List<Vector3Int>>() {
+
+    //   // 3 tiles in a row [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(1, 0, 0),
+    //     new Vector3Int(2, 0, 0)
+    //   },
+
+    //   // 3 tiles in a col [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(0, 1, 0),
+    //     new Vector3Int(0, 2, 0)
+    //   },
+
+    //   // 4 tiles in a row [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(1, 0, 0),
+    //     new Vector3Int(2, 0, 0),
+    //     new Vector3Int(3, 0, 0),
+    //   },
+
+    //   // 4 tiles in a col [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(0, 1, 0),
+    //     new Vector3Int(0, 2, 0),
+    //     new Vector3Int(0, 3, 0),
+    //   },
+
+    //   // 5 tiles in a row [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(1, 0, 0),
+    //     new Vector3Int(2, 0, 0),
+    //     new Vector3Int(3, 0, 0),
+    //     new Vector3Int(4, 0, 0),
+    //   },
+
+    //   // 5 tiles in a col [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(0, 1, 0),
+    //     new Vector3Int(0, 2, 0),
+    //     new Vector3Int(0, 3, 0),
+    //     new Vector3Int(0, 4, 0),
+    //   },
+
+
+    // };
+
+    List<Match> validMatches = new List<Match>();
+
+    foreach (Match match in matches) {
+      if (match.size > 3) {
+        validMatches.Add(match);
+        continue;
+      }
+
+      List<Vector3Int> shape = GetMatchShape(match);
+      // foreach (List<Vector3Int> validShape in validShapes) {
+      //   if (ShapesAreEqual(shape, validShape)) {
+      //     validMatches.Add(match);
+      //   }
+      // }
+    }
+    return validMatches;
   }
 }
