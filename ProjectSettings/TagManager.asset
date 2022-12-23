@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Background
+  - TurnCounter
+  - LevelController
+  - Goal
   layers:
   - Default
   - TransparentFX

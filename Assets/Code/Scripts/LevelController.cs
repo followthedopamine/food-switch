@@ -11,6 +11,11 @@ public class LevelController : MonoBehaviour {
   private Tilemap levelTilemap;
   private Tilemap backgroundTilemap;
   private Vector3Int tilemapOffset;
+  [SerializeField] public int turnsRemaining;
+  private TurnCounter turnCounter;
+  public int goalId;
+  public int goalTarget;
+
 
   public struct Level {
     public int width;
@@ -27,6 +32,26 @@ public class LevelController : MonoBehaviour {
     level.width = gameDimensions.x;
     level.height = gameDimensions.y;
     level.grid = BuildLevelGrid();
+    turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
+    Tilemap goalTilemap = GameObject.FindGameObjectWithTag("Goal").GetComponent<Tilemap>();
+    GameTile goalTile = GetFirstTile(goalTilemap);
+    goalId = goalTile.id;
+  }
+
+  private GameTile GetFirstTile(Tilemap tilemap) {
+    foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin) {
+      if (tilemap.HasTile(position)) {
+        Debug.Log(tilemap.GetTile(position));
+        GameTile tile = tilemap.GetTile<GameTile>(position);
+        return tile;
+      }
+    }
+    return new GameTile();
+  }
+
+  public void takeTurn() {
+    turnsRemaining--;
+    turnCounter.updateText(turnsRemaining);
   }
 
   private Vector2Int GetGameDimensions() {

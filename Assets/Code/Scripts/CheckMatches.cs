@@ -16,15 +16,21 @@ public class CheckMatches : MonoBehaviour {
   private DestroyMatches destroyMatches;
   private SpawnTiles spawnTiles;
   private FallingTiles fallingTiles;
+  private TurnCounter turnCounter;
+  private LevelController levelController;
+  private int goalCompletion;
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
     spawnTiles = gameObject.GetComponent<SpawnTiles>();
     fallingTiles = gameObject.GetComponent<FallingTiles>();
+    turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
+    levelController = gameObject.GetComponent<LevelController>();
   }
 
   public void OnSwitch() {
+    levelController.takeTurn();
     StartCoroutine(DestroyTilesLoop());
   }
 
@@ -33,6 +39,8 @@ public class CheckMatches : MonoBehaviour {
 
     while (matches.Count > 0) {
       matches = CheckMatchShapes(matches);
+      goalCompletion += GetGoalCompletion(matches);
+      // TODO: Scoring here
       destroyMatches.DestroyTiles(matches);
       // Wait for animation to finish
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
@@ -41,6 +49,18 @@ public class CheckMatches : MonoBehaviour {
       spawnTiles.SpawnRandomTilesToFill();
       matches = GetAllMatches();
     }
+  }
+
+  int GetGoalCompletion(List<Match> matches) {
+    int goalCompletion = 0;
+    foreach (Match match in matches) {
+      Debug.Log(match.tileId);
+      if (match.tileId == levelController.goalId) {
+        Debug.Log("Test");
+        goalCompletion += match.size;
+      }
+    }
+    return goalCompletion;
   }
 
   // For debugging
