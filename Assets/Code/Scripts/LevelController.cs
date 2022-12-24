@@ -85,7 +85,7 @@ public class LevelController : MonoBehaviour {
       // Wait for animation to finish
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       fallingTiles.CheckTiles();
-      yield return new WaitForSeconds(0.3f);
+      yield return new WaitForSeconds(1.3f);
       spawnTiles.SpawnRandomTilesToFill();
       matches = checkMatches.GetAllMatches();
     }
@@ -132,3 +132,4 @@ public class LevelController : MonoBehaviour {
     return grid;
   }
 }
+

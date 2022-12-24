@@ -42,17 +42,46 @@ public class FallingTiles : MonoBehaviour {
     // yield return new WaitForSeconds(0.3f); // TODO: Change to tile falling time
   }
 
+  bool CheckForNullTiles() {
+    Vector3Int[,] grid = levelController.level.grid;
+
+    for (int r = 0; r < grid.GetLength(0); r++) {
+      for (int c = 0; c < grid.GetLength(1); c++) {
+        if (levelTilemap.GetTile(grid[r, c]) == null) return true;
+      }
+    }
+
+    return false;
+  }
+
   public void CheckTiles() {
     Vector3Int[,] grid = levelController.level.grid;
-    for (int r = 1; r < grid.GetLength(0); r++) {
-      for (int c = 0; c < grid.GetLength(1); c++) {
-        // if (levelTilemap.GetTile(grid[r, c]) == null)
-        // levelTilemap.SetTile(grid[r, c], null);
-        if (levelTilemap.GetTile(grid[r, c]) == null) continue;
-        if (levelTilemap.GetTile(grid[r - 1, c]) == null) {
-          StartCoroutine(DropTile(grid[r, c], grid[r - 1, c]));
+    int attempts = levelController.level.height;
+
+    List<List<Vector3Int>> tilesToDrop = new List<List<Vector3Int>>();
+    // really dirty way of getting this done
+    for (int i = 0; i < attempts; i++) {
+      for (int r = 1; r < grid.GetLength(0); r++) {
+        for (int c = 0; c < grid.GetLength(1); c++) {
+          // if (levelTilemap.GetTile(grid[r, c]) == null)
+          // levelTilemap.SetTile(grid[r, c], null);
+          if (levelTilemap.GetTile(grid[r, c]) == null) continue;
+          if (levelTilemap.GetTile(grid[r - 1, c]) == null) {
+            StartCoroutine(DropTile(grid[r, c], grid[r - 1, c]));
+          }
         }
       }
     }
   }
 }
+
+
+// Potential function
+
+// for column
+// higestfruit
+// lowestnull
+//  for row
+//    if gettile row column == null else 
+//      if min lowestnull                  // if max highestfruit
+// if lowest null < highest fruit return function not done
