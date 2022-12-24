@@ -1,0 +1,75 @@
+
+
+  public List<Match> CheckMatchShapes(List<Match> matches) {
+
+    // List<List<Vector3Int>> validShapes = new List<List<Vector3Int>>() {
+
+    //   // 3 tiles in a row [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(1, 0, 0),
+    //     new Vector3Int(2, 0, 0)
+    //   },
+
+    //   // 3 tiles in a col [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(0, 1, 0),
+    //     new Vector3Int(0, 2, 0)
+    //   },
+
+    //   // 4 tiles in a row [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(1, 0, 0),
+    //     new Vector3Int(2, 0, 0),
+    //     new Vector3Int(3, 0, 0),
+    //   },
+
+    //   // 4 tiles in a col [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(0, 1, 0),
+    //     new Vector3Int(0, 2, 0),
+    //     new Vector3Int(0, 3, 0),
+    //   },
+
+    //   // 5 tiles in a row [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(1, 0, 0),
+    //     new Vector3Int(2, 0, 0),
+    //     new Vector3Int(3, 0, 0),
+    //     new Vector3Int(4, 0, 0),
+    //   },
+
+    //   // 5 tiles in a col [][][]
+    //   new List<Vector3Int>() {
+    //     new Vector3Int(0, 0, 0),
+    //     new Vector3Int(0, 1, 0),
+    //     new Vector3Int(0, 2, 0),
+    //     new Vector3Int(0, 3, 0),
+    //     new Vector3Int(0, 4, 0),
+    //   },
+
+
+    // };
+
+    List<Match> validMatches = new List<Match>();
+
+    foreach (Match match in matches) {
+      if (match.size > 3) {
+        validMatches.Add(match);
+        continue;
+      }
+
+      List<Vector3Int> shape = GetMatchShape(match);
+      // foreach (List<Vector3Int> validShape in validShapes) {
+      //   if (ShapesAreEqual(shape, validShape)) {
+      //     validMatches.Add(match);
+      //   }
+      // }
+    }
+    return validMatches;
+  }
+}

@@ -13,57 +13,15 @@ public struct Match {
 public class CheckMatches : MonoBehaviour {
 
   private Tilemap levelTilemap;
-  private DestroyMatches destroyMatches;
-  private SpawnTiles spawnTiles;
-  private FallingTiles fallingTiles;
   private TurnCounter turnCounter;
   private LevelController levelController;
   private GoalText goalText;
-  private int goalCompletion;
-  private int goalTarget = 40;
+
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
-    destroyMatches = gameObject.GetComponent<DestroyMatches>();
-    spawnTiles = gameObject.GetComponent<SpawnTiles>();
-    fallingTiles = gameObject.GetComponent<FallingTiles>();
     turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
     levelController = gameObject.GetComponent<LevelController>();
-    goalText = GameObject.FindGameObjectWithTag("GoalText").GetComponent<GoalText>();
-    goalText.UpdateText(goalCompletion, goalTarget);
-  }
-
-  public void OnSwitch() {
-    levelController.takeTurn();
-    StartCoroutine(DestroyTilesLoop());
-  }
-
-  private IEnumerator DestroyTilesLoop() {
-    List<Match> matches = GetAllMatches();
-
-    while (matches.Count > 0) {
-      matches = CheckMatchShapes(matches);
-      goalCompletion += GetGoalCompletion(matches);
-      goalText.UpdateText(goalCompletion, goalTarget);
-      // TODO: Scoring here
-      destroyMatches.DestroyTiles(matches);
-      // Wait for animation to finish
-      yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
-      fallingTiles.CheckTiles();
-      yield return new WaitForSeconds(0.3f);
-      spawnTiles.SpawnRandomTilesToFill();
-      matches = GetAllMatches();
-    }
-  }
-
-  int GetGoalCompletion(List<Match> matches) {
-    int goalCompletion = 0;
-    foreach (Match match in matches) {
-      if (match.tileId == levelController.goalId) {
-        goalCompletion += match.size;
-      }
-    }
-    return goalCompletion;
   }
 
   // For debugging
@@ -78,7 +36,7 @@ public class CheckMatches : MonoBehaviour {
   // This bad boy got hands
   // Flood fills all tiles in level tilemap and returns a list of matches
   // Keeps track of visited tiles so should be unique matches
-  List<Match> GetAllMatches() {
+  public List<Match> GetAllMatches() {
     Stack<Vector3Int> tiles = new Stack<Vector3Int>();
     List<Vector3Int> visited = new List<Vector3Int>();
     List<Match> matches = new List<Match>();
@@ -142,61 +100,7 @@ public class CheckMatches : MonoBehaviour {
     return true;
   }
 
-  List<Match> CheckMatchShapes(List<Match> matches) {
-
-    // List<List<Vector3Int>> validShapes = new List<List<Vector3Int>>() {
-
-    //   // 3 tiles in a row [][][]
-    //   new List<Vector3Int>() {
-    //     new Vector3Int(0, 0, 0),
-    //     new Vector3Int(1, 0, 0),
-    //     new Vector3Int(2, 0, 0)
-    //   },
-
-    //   // 3 tiles in a col [][][]
-    //   new List<Vector3Int>() {
-    //     new Vector3Int(0, 0, 0),
-    //     new Vector3Int(0, 1, 0),
-    //     new Vector3Int(0, 2, 0)
-    //   },
-
-    //   // 4 tiles in a row [][][]
-    //   new List<Vector3Int>() {
-    //     new Vector3Int(0, 0, 0),
-    //     new Vector3Int(1, 0, 0),
-    //     new Vector3Int(2, 0, 0),
-    //     new Vector3Int(3, 0, 0),
-    //   },
-
-    //   // 4 tiles in a col [][][]
-    //   new List<Vector3Int>() {
-    //     new Vector3Int(0, 0, 0),
-    //     new Vector3Int(0, 1, 0),
-    //     new Vector3Int(0, 2, 0),
-    //     new Vector3Int(0, 3, 0),
-    //   },
-
-    //   // 5 tiles in a row [][][]
-    //   new List<Vector3Int>() {
-    //     new Vector3Int(0, 0, 0),
-    //     new Vector3Int(1, 0, 0),
-    //     new Vector3Int(2, 0, 0),
-    //     new Vector3Int(3, 0, 0),
-    //     new Vector3Int(4, 0, 0),
-    //   },
-
-    //   // 5 tiles in a col [][][]
-    //   new List<Vector3Int>() {
-    //     new Vector3Int(0, 0, 0),
-    //     new Vector3Int(0, 1, 0),
-    //     new Vector3Int(0, 2, 0),
-    //     new Vector3Int(0, 3, 0),
-    //     new Vector3Int(0, 4, 0),
-    //   },
-
-
-    // };
-
+  public List<Match> CheckMatchShapes(List<Match> matches) {
     List<Match> validMatches = new List<Match>();
 
     foreach (Match match in matches) {
@@ -206,11 +110,6 @@ public class CheckMatches : MonoBehaviour {
       }
 
       List<Vector3Int> shape = GetMatchShape(match);
-      // foreach (List<Vector3Int> validShape in validShapes) {
-      //   if (ShapesAreEqual(shape, validShape)) {
-      //     validMatches.Add(match);
-      //   }
-      // }
     }
     return validMatches;
   }
