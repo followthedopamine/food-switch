@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class LevelController : MonoBehaviour {
 
@@ -13,10 +14,14 @@ public class LevelController : MonoBehaviour {
   private Vector3Int tilemapOffset;
   [SerializeField] public int turnsRemaining;
   private TurnCounter turnCounter;
-  public int goalId;
-  public int goalTarget;
-
-
+  private int goalId;
+  [SerializeField] private int goalTarget;
+  private CheckMatches checkMatches;
+  private int goalCompletion;
+  private GoalText goalText;
+  private DestroyMatches destroyMatches;
+  private FallingTiles fallingTiles;
+  private SpawnTiles spawnTiles;
   public struct Level {
     public int width;
     public int height;
@@ -36,6 +41,13 @@ public class LevelController : MonoBehaviour {
     Tilemap goalTilemap = GameObject.FindGameObjectWithTag("Goal").GetComponent<Tilemap>();
     GameTile goalTile = GetFirstTile(goalTilemap);
     goalId = goalTile.id;
+    checkMatches = gameObject.GetComponent<CheckMatches>();
+    goalText = GameObject.FindGameObjectWithTag("GoalText").GetComponent<GoalText>();
+    goalText.UpdateText(goalCompletion, goalTarget);
+    destroyMatches = gameObject.GetComponent<DestroyMatches>();
+    fallingTiles = gameObject.GetComponent<FallingTiles>();
+    spawnTiles = gameObject.GetComponent<SpawnTiles>();
+
   }
 
   private GameTile GetFirstTile(Tilemap tilemap) {
@@ -49,9 +61,44 @@ public class LevelController : MonoBehaviour {
     return new GameTile();
   }
 
-  public void takeTurn() {
+  private void takeTurn() {
     turnsRemaining--;
     turnCounter.updateText(turnsRemaining);
+  }
+
+  public void OnSwitch() {
+    takeTurn();
+    StartCoroutine(DestroyTilesLoop());
+    if (turnsRemaining == 0) {
+      // End game
+    }
+  }
+
+  private IEnumerator DestroyTilesLoop() {
+    List<Match> matches = checkMatches.GetAllMatches();
+    while (matches.Count > 0) {
+      matches = checkMatches.CheckMatchShapes(matches);
+      goalCompletion += GetGoalCompletion(matches);
+      goalText.UpdateText(goalCompletion, goalTarget);
+      // TODO: Scoring here
+      destroyMatches.DestroyTiles(matches);
+      // Wait for animation to finish
+      yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
+      fallingTiles.CheckTiles();
+      yield return new WaitForSeconds(0.3f);
+      spawnTiles.SpawnRandomTilesToFill();
+      matches = checkMatches.GetAllMatches();
+    }
+  }
+
+  public int GetGoalCompletion(List<Match> matches) {
+    int goalCompletion = 0;
+    foreach (Match match in matches) {
+      if (match.tileId == goalId) {
+        goalCompletion += match.size;
+      }
+    }
+    return goalCompletion;
   }
 
   private Vector2Int GetGameDimensions() {
@@ -63,14 +110,14 @@ public class LevelController : MonoBehaviour {
     return new Vector2Int(width, height);
   }
 
-  private GameTile GetGameTile(Vector3Int tilePos, bool useOffset = false) {
-    List<Vector3Int> tilePositions = TileUtil.GetTilePositions(levelTilemap);
-    if (useOffset) {
-      tilePos = new Vector3Int(tilePos.x + tilemapOffset.x, tilePos.y + tilemapOffset.y, tilePos.z);
-    }
-    GameTile tile = levelTilemap.GetTile<GameTile>(tilePos);
-    return tile;
-  }
+  // private GameTile GetGameTile(Vector3Int tilePos, bool useOffset = false) {
+  //   List<Vector3Int> tilePositions = TileUtil.GetTilePositions(levelTilemap);
+  //   if (useOffset) {
+  //     tilePos = new Vector3Int(tilePos.x + tilemapOffset.x, tilePos.y + tilemapOffset.y, tilePos.z);
+  //   }
+  //   GameTile tile = levelTilemap.GetTile<GameTile>(tilePos);
+  //   return tile;
+  // }
 
   private Vector3Int[,] BuildLevelGrid() {
     Vector3Int[,] grid = new Vector3Int[level.height, level.width];
@@ -84,14 +131,4 @@ public class LevelController : MonoBehaviour {
     }
     return grid;
   }
-
-
-
-  // void Update() {
-  //   if (Input.GetMouseButtonDown(0)) {
-  //     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-  //     Vector3Int location = levelTilemap.WorldToCell(mousePos);
-  //     GameTile tile = levelTilemap.GetTile<GameTile>(location);
-  //   }
-  // }
 }
