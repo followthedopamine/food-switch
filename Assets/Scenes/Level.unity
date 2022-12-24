@@ -2401,8 +2401,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validTiles: []
   turnsRemaining: 10
-  goalId: 0
-  goalTarget: 0
+  goalTarget: 30
 --- !u!114 &1113260554
 MonoBehaviour:
   m_ObjectHideFlags: 0
