@@ -8,6 +8,7 @@ TagManager:
   - TurnCounter
   - LevelController
   - Goal
+  - GoalText
   layers:
   - Default
   - TransparentFX

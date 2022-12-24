@@ -18,7 +18,9 @@ public class CheckMatches : MonoBehaviour {
   private FallingTiles fallingTiles;
   private TurnCounter turnCounter;
   private LevelController levelController;
+  private GoalText goalText;
   private int goalCompletion;
+  private int goalTarget = 40;
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
@@ -27,6 +29,8 @@ public class CheckMatches : MonoBehaviour {
     fallingTiles = gameObject.GetComponent<FallingTiles>();
     turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
     levelController = gameObject.GetComponent<LevelController>();
+    goalText = GameObject.FindGameObjectWithTag("GoalText").GetComponent<GoalText>();
+    goalText.UpdateText(goalCompletion, goalTarget);
   }
 
   public void OnSwitch() {
@@ -40,6 +44,7 @@ public class CheckMatches : MonoBehaviour {
     while (matches.Count > 0) {
       matches = CheckMatchShapes(matches);
       goalCompletion += GetGoalCompletion(matches);
+      goalText.UpdateText(goalCompletion, goalTarget);
       // TODO: Scoring here
       destroyMatches.DestroyTiles(matches);
       // Wait for animation to finish
@@ -54,9 +59,7 @@ public class CheckMatches : MonoBehaviour {
   int GetGoalCompletion(List<Match> matches) {
     int goalCompletion = 0;
     foreach (Match match in matches) {
-      Debug.Log(match.tileId);
       if (match.tileId == levelController.goalId) {
-        Debug.Log("Test");
         goalCompletion += match.size;
       }
     }
