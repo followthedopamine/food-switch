@@ -6,7 +6,7 @@ using TMPro;
 public class GoalText : MonoBehaviour {
   private TMP_Text goalText;
 
-  void Start() {
+  void Awake() {
     goalText = gameObject.GetComponent<TMP_Text>();
   }
 

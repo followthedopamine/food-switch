@@ -20,8 +20,8 @@ public class LevelController : MonoBehaviour {
   private DestroyMatches destroyMatches;
   private FallingTiles fallingTiles;
   private SpawnTiles spawnTiles;
-  private BlackHole blackHole;
   private Goal goal;
+  private PowerUps powerUps;
   public struct Level {
     public int width;
     public int height;
@@ -33,6 +33,7 @@ public class LevelController : MonoBehaviour {
     backgroundTilemap = background.GetComponent<Tilemap>();
     Vector2Int gameDimensions = GetGameDimensions();
     levelTilemap = gameObject.GetComponent<Tilemap>();
+    tilemapOffset = TileUtil.GetTilemapOffset(backgroundTilemap);
     level.width = gameDimensions.x;
     level.height = gameDimensions.y;
     level.grid = BuildLevelGrid();
@@ -43,10 +44,11 @@ public class LevelController : MonoBehaviour {
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
     fallingTiles = gameObject.GetComponent<FallingTiles>();
     spawnTiles = gameObject.GetComponent<SpawnTiles>();
-    blackHole = gameObject.GetComponent<BlackHole>();
 
     goal = gameObject.GetComponent<Goal>();
     goalId = goal.goalId;
+
+    powerUps = gameObject.GetComponent<PowerUps>();
   }
 
   private void takeTurn() {
@@ -56,36 +58,24 @@ public class LevelController : MonoBehaviour {
 
   public void OnSwitch(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
     takeTurn();
-
-
     StartCoroutine(DestroyTilesLoop(draggedTilePosition, targetTilePosition));
     if (turnsRemaining == 0) {
-      // End game
-    }
-  }
-
-  private IEnumerator HandlePowerup(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
-    GameTile draggedTile = levelTilemap.GetTile<GameTile>(draggedTilePosition);
-    GameTile targetTile = levelTilemap.GetTile<GameTile>(targetTilePosition);
-
-    if (draggedTile.type == GameTile.Type.Power || targetTile.type == GameTile.Type.Power) {
-      GameTile powerUp = draggedTile.type == GameTile.Type.Power ? draggedTile : targetTile;
-      GameTile switchedTile = draggedTile.type != GameTile.Type.Power ? draggedTile : targetTile;
-      Vector3Int position = draggedTile.type == GameTile.Type.Power ? draggedTilePosition : targetTilePosition;
-      yield return StartCoroutine(blackHole.SpawnBlackHole(position, switchedTile));
+      // Game over
     }
   }
 
   private IEnumerator DestroyTilesLoop(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
     List<Match> matches = checkMatches.GetAllMatches();
     matches = checkMatches.CheckMatchShapes(matches);
-    yield return HandlePowerup(draggedTilePosition, targetTilePosition);
+    yield return powerUps.HandlePowerup(draggedTilePosition, targetTilePosition);
     do {
       goal.goalCompletion += goal.GetGoalCompletion(matches);
       goal.goalText.UpdateText(goal.goalCompletion, goal.goalTarget);
+      if (goal.goalCompletion == goal.goalTarget) {
+        // Game won
+      }
       // TODO: Scoring here
       destroyMatches.DestroyTiles(matches);
-      // Wait for animation to finish
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       yield return StartCoroutine(fallingTiles.CheckTiles());
       spawnTiles.SpawnRandomTilesToFill();
