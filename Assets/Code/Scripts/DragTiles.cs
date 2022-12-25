@@ -36,9 +36,31 @@ public class DragTiles : MonoBehaviour {
     draggedTile = levelTilemap.GetTile<GameTile>(draggingFrom);
   }
 
+  private Vector3Int GetTileInDraggedDirection(Vector3 mousePos) {
+    Vector3Int draggingTo = levelTilemap.WorldToCell(mousePos);
+    if (draggingTo == draggingFrom) return draggingTo;
+    Vector3Int draggingDirection = draggingTo - draggingFrom;
+    Vector3Int absDraggingDirection = new Vector3Int(Math.Abs(draggingDirection.x), Math.Abs(draggingDirection.y), 0);
+    if (absDraggingDirection.x > absDraggingDirection.y) {
+      if (draggingFrom.x > draggingTo.x) {
+        return new Vector3Int(draggingFrom.x - 1, draggingFrom.y, 0);
+      } else {
+        return new Vector3Int(draggingFrom.x + 1, draggingFrom.y, 0);
+      }
+    } else {
+      if (draggingFrom.y > draggingTo.y) {
+        return new Vector3Int(draggingFrom.x, draggingFrom.y - 1, 0);
+      } else {
+        return new Vector3Int(draggingFrom.x, draggingFrom.y + 1, 0);
+      }
+    }
+  }
+
   private void SwitchWithSelectedTile() {
     Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-    Vector3Int draggingTo = levelTilemap.WorldToCell(mousePos);
+    // Vector3Int draggingTo = levelTilemap.WorldToCell(mousePos);
+    Vector3Int draggingTo = GetTileInDraggedDirection(mousePos);
+    if (draggingTo == draggingFrom) return;
     targetTile = levelTilemap.GetTile<GameTile>(draggingTo);
     if (ValidateSwitch(draggingTo, draggingFrom) && targetTile != null) {
       levelTilemap.SetTile(draggingTo, draggedTile);

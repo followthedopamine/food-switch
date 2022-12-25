@@ -7,7 +7,7 @@ public class SpawnTiles : MonoBehaviour {
   [SerializeField] private GameTile[] spawnableTiles;
   private LevelController levelController;
   private Tilemap levelTilemap;
-  private float spawnSpeed = 3f;
+  private float spawnSpeed = 6f;
 
   void Start() {
     levelController = gameObject.GetComponent<LevelController>();
@@ -40,7 +40,6 @@ public class SpawnTiles : MonoBehaviour {
   }
 
   public void SpawnRandomTilesToFill() {
-    Debug.Log("Test");
     Vector3Int[,] grid = levelController.level.grid;
     for (int r = 0; r < grid.GetLength(0); r++) {
       for (int c = 0; c < grid.GetLength(1); c++) {

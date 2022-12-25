@@ -1,3 +1,4 @@
+High prio
 Main menu
 Level select
 Powerups
@@ -6,9 +7,10 @@ Game won
 Trophy score
 Trophy level up animation
 Tile swap indicator
-Change tile swap to work if you drag an extra tile across
-Fix taking a turn if you don't make a switch
 Add tutorial
+Sounds
+Music
 
-Fix falling time animation duration - Done I think
+Low prio
 Spawning tiles animation - add rotation
+Add tile switching animation

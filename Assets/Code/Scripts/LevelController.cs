@@ -90,7 +90,6 @@ public class LevelController : MonoBehaviour {
       yield return new WaitForSeconds(0.3f);
       matches = checkMatches.GetAllMatches();
       matches = checkMatches.CheckMatchShapes(matches);
-      Debug.Log(matches.Count);
     }
   }
 

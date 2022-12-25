@@ -14,7 +14,7 @@ public class FallingTiles : MonoBehaviour {
 
   private LevelController levelController;
   private Tilemap levelTilemap;
-  private float fallSpeed = 4f;
+  private float fallSpeed = 5.5f;
   private int falling = 0;
 
 
