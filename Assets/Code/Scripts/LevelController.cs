@@ -15,14 +15,13 @@ public class LevelController : MonoBehaviour {
   [SerializeField] public int turnsRemaining;
   private TurnCounter turnCounter;
   private int goalId;
-  [SerializeField] private int goalTarget;
   private CheckMatches checkMatches;
-  private int goalCompletion;
   private GoalText goalText;
   private DestroyMatches destroyMatches;
   private FallingTiles fallingTiles;
   private SpawnTiles spawnTiles;
-  private BlackHole blackHole;
+  private Goal goal;
+  private PowerUps powerUps;
   public struct Level {
     public int width;
     public int height;
@@ -39,27 +38,17 @@ public class LevelController : MonoBehaviour {
     level.height = gameDimensions.y;
     level.grid = BuildLevelGrid();
     turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
-    Tilemap goalTilemap = GameObject.FindGameObjectWithTag("Goal").GetComponent<Tilemap>();
-    GameTile goalTile = GetFirstTile(goalTilemap);
-    goalId = goalTile.id;
+
     checkMatches = gameObject.GetComponent<CheckMatches>();
-    goalText = GameObject.FindGameObjectWithTag("GoalText").GetComponent<GoalText>();
-    goalText.UpdateText(goalCompletion, goalTarget);
+
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
     fallingTiles = gameObject.GetComponent<FallingTiles>();
     spawnTiles = gameObject.GetComponent<SpawnTiles>();
-    blackHole = gameObject.GetComponent<BlackHole>();
-  }
 
-  private GameTile GetFirstTile(Tilemap tilemap) {
-    foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin) {
-      if (tilemap.HasTile(position)) {
-        Debug.Log(tilemap.GetTile(position));
-        GameTile tile = tilemap.GetTile<GameTile>(position);
-        return tile;
-      }
-    }
-    return new GameTile();
+    goal = gameObject.GetComponent<Goal>();
+    goalId = goal.goalId;
+
+    powerUps = gameObject.GetComponent<PowerUps>();
   }
 
   private void takeTurn() {
@@ -69,36 +58,24 @@ public class LevelController : MonoBehaviour {
 
   public void OnSwitch(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
     takeTurn();
-
-
     StartCoroutine(DestroyTilesLoop(draggedTilePosition, targetTilePosition));
     if (turnsRemaining == 0) {
-      // End game
-    }
-  }
-
-  private IEnumerator HandlePowerup(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
-    GameTile draggedTile = levelTilemap.GetTile<GameTile>(draggedTilePosition);
-    GameTile targetTile = levelTilemap.GetTile<GameTile>(targetTilePosition);
-
-    if (draggedTile.type == GameTile.Type.Power || targetTile.type == GameTile.Type.Power) {
-      GameTile powerUp = draggedTile.type == GameTile.Type.Power ? draggedTile : targetTile;
-      GameTile switchedTile = draggedTile.type != GameTile.Type.Power ? draggedTile : targetTile;
-      Vector3Int position = draggedTile.type == GameTile.Type.Power ? draggedTilePosition : targetTilePosition;
-      yield return StartCoroutine(blackHole.SpawnBlackHole(position, switchedTile));
+      // Game over
     }
   }
 
   private IEnumerator DestroyTilesLoop(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
     List<Match> matches = checkMatches.GetAllMatches();
     matches = checkMatches.CheckMatchShapes(matches);
-    yield return HandlePowerup(draggedTilePosition, targetTilePosition);
+    yield return powerUps.HandlePowerup(draggedTilePosition, targetTilePosition);
     do {
-      goalCompletion += GetGoalCompletion(matches);
-      goalText.UpdateText(goalCompletion, goalTarget);
+      goal.goalCompletion += goal.GetGoalCompletion(matches);
+      goal.goalText.UpdateText(goal.goalCompletion, goal.goalTarget);
+      if (goal.goalCompletion == goal.goalTarget) {
+        // Game won
+      }
       // TODO: Scoring here
       destroyMatches.DestroyTiles(matches);
-      // Wait for animation to finish
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       yield return StartCoroutine(fallingTiles.CheckTiles());
       spawnTiles.SpawnRandomTilesToFill();
@@ -106,16 +83,6 @@ public class LevelController : MonoBehaviour {
       matches = checkMatches.GetAllMatches();
       matches = checkMatches.CheckMatchShapes(matches);
     } while (matches.Count > 0);
-  }
-
-  public int GetGoalCompletion(List<Match> matches) {
-    int goalCompletion = 0;
-    foreach (Match match in matches) {
-      if (match.tileId == goalId) {
-        goalCompletion += match.size;
-      }
-    }
-    return goalCompletion;
   }
 
   private Vector2Int GetGameDimensions() {
@@ -126,15 +93,6 @@ public class LevelController : MonoBehaviour {
     int height = Math.Abs(tilePositions[0].y - tilePositions[tilePositions.Count - 1].y) + 1;
     return new Vector2Int(width, height);
   }
-
-  // private GameTile GetGameTile(Vector3Int tilePos, bool useOffset = false) {
-  //   List<Vector3Int> tilePositions = TileUtil.GetTilePositions(levelTilemap);
-  //   if (useOffset) {
-  //     tilePos = new Vector3Int(tilePos.x + tilemapOffset.x, tilePos.y + tilemapOffset.y, tilePos.z);
-  //   }
-  //   GameTile tile = levelTilemap.GetTile<GameTile>(tilePos);
-  //   return tile;
-  // }
 
   private Vector3Int[,] BuildLevelGrid() {
     Vector3Int[,] grid = new Vector3Int[level.height, level.width];
