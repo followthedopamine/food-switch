@@ -76,8 +76,9 @@ public class LevelController : MonoBehaviour {
 
   private IEnumerator DestroyTilesLoop() {
     List<Match> matches = checkMatches.GetAllMatches();
+    matches = checkMatches.CheckMatchShapes(matches);
+
     while (matches.Count > 0) {
-      matches = checkMatches.CheckMatchShapes(matches);
       goalCompletion += GetGoalCompletion(matches);
       goalText.UpdateText(goalCompletion, goalTarget);
       // TODO: Scoring here
@@ -86,7 +87,10 @@ public class LevelController : MonoBehaviour {
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       yield return StartCoroutine(fallingTiles.CheckTiles());
       spawnTiles.SpawnRandomTilesToFill();
+      yield return new WaitForSeconds(0.3f);
       matches = checkMatches.GetAllMatches();
+      matches = checkMatches.CheckMatchShapes(matches);
+      Debug.Log(matches.Count);
     }
   }
 
