@@ -15,14 +15,13 @@ public class LevelController : MonoBehaviour {
   [SerializeField] public int turnsRemaining;
   private TurnCounter turnCounter;
   private int goalId;
-  [SerializeField] private int goalTarget;
   private CheckMatches checkMatches;
-  private int goalCompletion;
   private GoalText goalText;
   private DestroyMatches destroyMatches;
   private FallingTiles fallingTiles;
   private SpawnTiles spawnTiles;
   private BlackHole blackHole;
+  private Goal goal;
   public struct Level {
     public int width;
     public int height;
@@ -41,15 +40,14 @@ public class LevelController : MonoBehaviour {
     turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
 
     checkMatches = gameObject.GetComponent<CheckMatches>();
-    goalText = GameObject.FindGameObjectWithTag("GoalText").GetComponent<GoalText>();
-    goalText.UpdateText(goalCompletion, goalTarget);
+
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
     fallingTiles = gameObject.GetComponent<FallingTiles>();
     spawnTiles = gameObject.GetComponent<SpawnTiles>();
     blackHole = gameObject.GetComponent<BlackHole>();
 
-
-    goalId = gameObject.GetComponent<Goal>().goalId;
+    goal = gameObject.GetComponent<Goal>();
+    goalId = goal.goalId;
   }
 
   private void takeTurn() {
@@ -84,8 +82,8 @@ public class LevelController : MonoBehaviour {
     matches = checkMatches.CheckMatchShapes(matches);
     yield return HandlePowerup(draggedTilePosition, targetTilePosition);
     do {
-      goalCompletion += GetGoalCompletion(matches);
-      goalText.UpdateText(goalCompletion, goalTarget);
+      goal.goalCompletion += goal.GetGoalCompletion(matches);
+      goal.goalText.UpdateText(goal.goalCompletion, goal.goalTarget);
       // TODO: Scoring here
       destroyMatches.DestroyTiles(matches);
       // Wait for animation to finish
@@ -98,15 +96,7 @@ public class LevelController : MonoBehaviour {
     } while (matches.Count > 0);
   }
 
-  public int GetGoalCompletion(List<Match> matches) {
-    int goalCompletion = 0;
-    foreach (Match match in matches) {
-      if (match.tileId == goalId) {
-        goalCompletion += match.size;
-      }
-    }
-    return goalCompletion;
-  }
+
 
   private Vector2Int GetGameDimensions() {
     List<Vector3Int> tilePositions = TileUtil.GetTilePositions(backgroundTilemap);

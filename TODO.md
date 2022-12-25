@@ -10,6 +10,7 @@ Tile swap indicator
 Add tutorial
 Sounds
 Music
+Fix goal text size and make it look better
 
 Low prio
 Spawning tiles animation - add rotation
