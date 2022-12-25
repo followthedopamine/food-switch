@@ -33,7 +33,6 @@ public class LevelController : MonoBehaviour {
     backgroundTilemap = background.GetComponent<Tilemap>();
     Vector2Int gameDimensions = GetGameDimensions();
     levelTilemap = gameObject.GetComponent<Tilemap>();
-    tilemapOffset = TileUtil.GetTilemapOffset(backgroundTilemap);
     level.width = gameDimensions.x;
     level.height = gameDimensions.y;
     level.grid = BuildLevelGrid();
@@ -96,8 +95,6 @@ public class LevelController : MonoBehaviour {
     } while (matches.Count > 0);
   }
 
-
-
   private Vector2Int GetGameDimensions() {
     List<Vector3Int> tilePositions = TileUtil.GetTilePositions(backgroundTilemap);
     // Calculate dimensions
@@ -106,15 +103,6 @@ public class LevelController : MonoBehaviour {
     int height = Math.Abs(tilePositions[0].y - tilePositions[tilePositions.Count - 1].y) + 1;
     return new Vector2Int(width, height);
   }
-
-  // private GameTile GetGameTile(Vector3Int tilePos, bool useOffset = false) {
-  //   List<Vector3Int> tilePositions = TileUtil.GetTilePositions(levelTilemap);
-  //   if (useOffset) {
-  //     tilePos = new Vector3Int(tilePos.x + tilemapOffset.x, tilePos.y + tilemapOffset.y, tilePos.z);
-  //   }
-  //   GameTile tile = levelTilemap.GetTile<GameTile>(tilePos);
-  //   return tile;
-  // }
 
   private Vector3Int[,] BuildLevelGrid() {
     Vector3Int[,] grid = new Vector3Int[level.height, level.width];
