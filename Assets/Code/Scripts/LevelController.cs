@@ -22,6 +22,7 @@ public class LevelController : MonoBehaviour {
   private DestroyMatches destroyMatches;
   private FallingTiles fallingTiles;
   private SpawnTiles spawnTiles;
+  private BlackHole blackHole;
   public struct Level {
     public int width;
     public int height;
@@ -47,7 +48,7 @@ public class LevelController : MonoBehaviour {
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
     fallingTiles = gameObject.GetComponent<FallingTiles>();
     spawnTiles = gameObject.GetComponent<SpawnTiles>();
-
+    blackHole = gameObject.GetComponent<BlackHole>();
   }
 
   private GameTile GetFirstTile(Tilemap tilemap) {
@@ -66,19 +67,33 @@ public class LevelController : MonoBehaviour {
     turnCounter.updateText(turnsRemaining);
   }
 
-  public void OnSwitch() {
+  public void OnSwitch(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
     takeTurn();
-    StartCoroutine(DestroyTilesLoop());
+
+
+    StartCoroutine(DestroyTilesLoop(draggedTilePosition, targetTilePosition));
     if (turnsRemaining == 0) {
       // End game
     }
   }
 
-  private IEnumerator DestroyTilesLoop() {
+  private IEnumerator HandlePowerup(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
+    GameTile draggedTile = levelTilemap.GetTile<GameTile>(draggedTilePosition);
+    GameTile targetTile = levelTilemap.GetTile<GameTile>(targetTilePosition);
+
+    if (draggedTile.type == GameTile.Type.Power || targetTile.type == GameTile.Type.Power) {
+      GameTile powerUp = draggedTile.type == GameTile.Type.Power ? draggedTile : targetTile;
+      GameTile switchedTile = draggedTile.type != GameTile.Type.Power ? draggedTile : targetTile;
+      Vector3Int position = draggedTile.type == GameTile.Type.Power ? draggedTilePosition : targetTilePosition;
+      yield return StartCoroutine(blackHole.SpawnBlackHole(position, switchedTile));
+    }
+  }
+
+  private IEnumerator DestroyTilesLoop(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
     List<Match> matches = checkMatches.GetAllMatches();
     matches = checkMatches.CheckMatchShapes(matches);
-
-    while (matches.Count > 0) {
+    yield return HandlePowerup(draggedTilePosition, targetTilePosition);
+    do {
       goalCompletion += GetGoalCompletion(matches);
       goalText.UpdateText(goalCompletion, goalTarget);
       // TODO: Scoring here
@@ -90,7 +105,7 @@ public class LevelController : MonoBehaviour {
       yield return new WaitForSeconds(0.3f);
       matches = checkMatches.GetAllMatches();
       matches = checkMatches.CheckMatchShapes(matches);
-    }
+    } while (matches.Count > 0);
   }
 
   public int GetGoalCompletion(List<Match> matches) {

@@ -66,7 +66,7 @@ public class DragTiles : MonoBehaviour {
       levelTilemap.SetTile(draggingTo, draggedTile);
       levelTilemap.SetTile(draggingFrom, targetTile);
     }
-    levelController.OnSwitch();
+    levelController.OnSwitch(draggingFrom, draggingTo);
   }
 
   // This might need to be in a different class

@@ -2014,6 +2014,7 @@ GameObject:
   - component: {fileID: 1113260557}
   - component: {fileID: 1113260558}
   - component: {fileID: 1113260559}
+  - component: {fileID: 1113260560}
   m_Layer: 0
   m_Name: Level Tilemap
   m_TagString: LevelController
@@ -2174,6 +2175,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
+  - first: {x: -1, y: -1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 6
+      m_TileSpriteIndex: 6
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
   - first: {x: 0, y: -1, z: 0}
     second:
       serializedVersion: 2
@@ -2328,6 +2339,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 83ea1241b9b9a864a937c4eae691b3bf, type: 2}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: b5bf96c2facac3c469d35b1d1a299ab8, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 06d3b1d571ee1ef469fd07155298c351, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: dfd48ca86c0710d45ac96a8fb08b8ce3, type: 3}
@@ -2341,8 +2354,10 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: b4c9f99162deca84ebc6c689c9df3de9, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 21300000, guid: a7020a0b6294ee4478888b4a1eddff84, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: 242838c8153bf3945a8c9e9e79225228, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 22
+  - m_RefCount: 23
     m_Data:
       e00: 1
       e01: 0
@@ -2361,7 +2376,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 22
+  - m_RefCount: 23
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -2484,6 +2499,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d62fe286ffe334a9948e61b85a71a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1113260560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113260549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff51c85da7ac984488d5c3ff57da4f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackHolePrefab: {fileID: 2112545131804625246, guid: 183191066fba1b84188a8ed84d1c9940, type: 3}
 --- !u!1 &1168846412
 GameObject:
   m_ObjectHideFlags: 0

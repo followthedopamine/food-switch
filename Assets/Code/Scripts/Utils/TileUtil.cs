@@ -44,4 +44,15 @@ public static class TileUtil {
     }
     return tiles;
   }
+
+  public static List<Vector3Int> FindAllTilesOfType(Tilemap tilemap, GameTile tileType) {
+    List<Vector3Int> tiles = new List<Vector3Int>();
+    foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin) {
+      if (tilemap.HasTile(position)) {
+        if (tilemap.GetTile<GameTile>(position).id == tileType.id)
+          tiles.Add(position);
+      }
+    }
+    return tiles;
+  }
 }
