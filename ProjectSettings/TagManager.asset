@@ -9,6 +9,7 @@ TagManager:
   - LevelController
   - Goal
   - GoalText
+  - Score
   layers:
   - Default
   - TransparentFX

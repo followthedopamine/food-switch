@@ -65,4 +65,13 @@ public static class TileUtil {
     }
     return new GameTile();
   }
+
+  public static Vector3Int GetFirstTilePosition(Tilemap tilemap) {
+    foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin) {
+      if (tilemap.HasTile(position)) {
+        return position;
+      }
+    }
+    return new Vector3Int();
+  }
 }

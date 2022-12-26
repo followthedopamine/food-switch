@@ -19,8 +19,6 @@ public class Goal : MonoBehaviour {
     goalText.UpdateText(goalCompletion, goalTarget);
   }
 
-
-
   public int GetGoalCompletion(List<Match> matches) {
     int goalCompletion = 0;
     foreach (Match match in matches) {
