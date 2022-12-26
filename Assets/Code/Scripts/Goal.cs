@@ -13,22 +13,13 @@ public class Goal : MonoBehaviour {
 
   private void Start() {
     Tilemap goalTilemap = GameObject.FindGameObjectWithTag("Goal").GetComponent<Tilemap>();
-    GameTile goalTile = GetFirstTile(goalTilemap);
+    GameTile goalTile = TileUtil.GetFirstTile(goalTilemap);
     goalId = goalTile.id;
     goalText = GameObject.FindGameObjectWithTag("GoalText").GetComponent<GoalText>();
     goalText.UpdateText(goalCompletion, goalTarget);
   }
 
-  private GameTile GetFirstTile(Tilemap tilemap) {
-    foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin) {
-      if (tilemap.HasTile(position)) {
-        Debug.Log(tilemap.GetTile(position));
-        GameTile tile = tilemap.GetTile<GameTile>(position);
-        return tile;
-      }
-    }
-    return new GameTile();
-  }
+
 
   public int GetGoalCompletion(List<Match> matches) {
     int goalCompletion = 0;
