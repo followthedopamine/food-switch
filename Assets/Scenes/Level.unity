@@ -2554,6 +2554,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9a07bf539eedc144aca5d2ebe04130e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trophyImages:
+  - {fileID: 21300000, guid: f3536af83861b3d418b7cb9810de07a4, type: 3}
+  - {fileID: 21300000, guid: bb84d161cef1d284dab25b9297ab0a12, type: 3}
+  - {fileID: 21300000, guid: ed656cd8b6d49b04a9065b4fc6507430, type: 3}
+  - {fileID: 21300000, guid: 1f0148e1b76dab242b92ffb1603bbea9, type: 3}
+  trophyScores: 64000000c8000000f4010000
+  spriteMask: {fileID: 4230971150879682120, guid: ebe87f5683e137b4fb7166753c7cc9b1, type: 3}
 --- !u!1 &1168846412
 GameObject:
   m_ObjectHideFlags: 0
@@ -4341,7 +4348,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 258ade92c78bba1478f2b77a7d673b10, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -43,15 +43,7 @@ public class BlackHole : MonoBehaviour {
     List<Vector3Int> tiles = TileUtil.FindAllTilesOfType(levelTilemap, tile);
     Vector3 targetPosition = levelTilemap.GetCellCenterWorld(position);
     foreach (Vector3Int tilePosition in tiles) {
-      Vector3 worldPosition = levelTilemap.GetCellCenterWorld(tilePosition);
-      GameObject newTile = new GameObject();
-      // Match game grid scale
-      Transform gameGrid = gameObject.transform.parent;
-      newTile.transform.localScale = gameGrid.localScale;//gameGrid.localScale;
-      SpriteRenderer spriteRenderer = newTile.AddComponent<SpriteRenderer>();
-      spriteRenderer.sprite = tile.sprite;
-      levelTilemap.SetTile(tilePosition, null);
-      newTile.transform.position = worldPosition;
+      GameObject newTile = TileUtil.ReplaceTileWithGameObject(levelTilemap, tilePosition);
       while (newTile.transform.position != targetPosition) {
         newTile.transform.position = Vector3.MoveTowards(newTile.transform.position, targetPosition, suckSpeed * Time.deltaTime);
         //newTile.transform.rotation.x + Time.deltaTime * rotationSpeed

@@ -74,4 +74,18 @@ public static class TileUtil {
     }
     return new Vector3Int();
   }
+
+  public static GameObject ReplaceTileWithGameObject(Tilemap tilemap, Vector3Int tilePosition) {
+    Vector3 worldPosition = tilemap.GetCellCenterWorld(tilePosition);
+    Tile tile = tilemap.GetTile<Tile>(tilePosition);
+    GameObject newTile = new GameObject();
+    // Match game grid scale
+    Transform grid = tilemap.transform.parent;
+    newTile.transform.localScale = grid.localScale;
+    SpriteRenderer spriteRenderer = newTile.AddComponent<SpriteRenderer>();
+    spriteRenderer.sprite = tile.sprite;
+    tilemap.SetTile(tilePosition, null);
+    newTile.transform.position = worldPosition;
+    return newTile;
+  }
 }
