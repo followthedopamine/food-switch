@@ -12,7 +12,7 @@ public class Score : MonoBehaviour {
     None,
   }
 
-  public int currentScore { get; private set; } = 0;
+  public int currentScore { get; private set; } = 150;
   private Tilemap scoreTilemap;
   private Vector3Int scoreTilePosition;
   [SerializeField] private Sprite[] trophyImages;
@@ -22,6 +22,11 @@ public class Score : MonoBehaviour {
   private SpriteRenderer bottomTrophySprite;
   private SpriteRenderer topTrophySprite;
   [SerializeField] private GameObject spriteMask;
+  private Trophy currentTrophy;
+  private float trophySpriteHeight;
+  private float trophySpriteWidth;
+  private float maskX;
+  private float maskY;
 
   void Start() {
     if (trophyScores.Length != 3) {
@@ -35,6 +40,17 @@ public class Score : MonoBehaviour {
     scoreTilemap.SetTile(scoreTilePosition, trophyTile);
     topTrophy = TileUtil.ReplaceTileWithGameObject(scoreTilemap, scoreTilePosition);
     topTrophySprite = topTrophy.GetComponent<SpriteRenderer>();
+    topTrophySprite.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+    topTrophySprite.sortingOrder = 10;
+    spriteMask = Instantiate(spriteMask);
+    spriteMask.transform.position = topTrophy.transform.position;
+    spriteMask.transform.localScale = topTrophy.transform.localScale;
+    currentTrophy = Trophy.None;
+    trophySpriteWidth = topTrophySprite.bounds.size.x;
+    trophySpriteHeight = topTrophySprite.bounds.size.y;
+    maskX = spriteMask.transform.position.x;
+    maskY = spriteMask.transform.position.y;
+    Debug.Log(maskY);
     UpdateTrophyImage();
   }
 
@@ -45,7 +61,7 @@ public class Score : MonoBehaviour {
         return (Trophy)i;
       }
     }
-    return Trophy.None;
+    return Trophy.Gold;
   }
 
   Trophy GetCurrentTrophy() {
@@ -55,11 +71,11 @@ public class Score : MonoBehaviour {
         if (i != 0) {
           return (Trophy)i - 1;
         } else {
-          break;
+          return Trophy.None;
         }
       }
     }
-    return Trophy.None;
+    return Trophy.Gold;
   }
 
   Sprite GetTrophyImage(Trophy trophy) {
@@ -67,28 +83,37 @@ public class Score : MonoBehaviour {
   }
 
   int GetTrophyScore(Trophy trophy) {
+    if (trophy == Trophy.None) return 0;
     return trophyScores[(int)trophy];
   }
 
   float GetCurrentTrophyProgress() {
-    int nextTrophy = GetTrophyScore(GetNextTrophy());
-    int currentTrophy = GetTrophyScore(GetCurrentTrophy());
-    int pointsRequired = nextTrophy - currentTrophy;
-    int pointsSoFar = currentScore - currentTrophy;
-    return pointsSoFar / pointsRequired * 100;
+    float nextTrophy = GetTrophyScore(GetNextTrophy());
+    float currentTrophy = GetTrophyScore(GetCurrentTrophy());
+    float pointsRequired = nextTrophy - currentTrophy;
+    float pointsSoFar = currentScore - currentTrophy;
+    return pointsSoFar / pointsRequired;
   }
 
   void UpdateTrophyImage() {
-    Trophy bottomTrophy = GetNextTrophy();
-    Trophy topTrophy = GetCurrentTrophy();
-    // tile.sprite = GetTrophyImage(trophy);
-    // Bottom tile = next trophy
+    Trophy bottomTrophy = GetCurrentTrophy();
+    Trophy topTrophy = GetNextTrophy();
     bottomTrophySprite.sprite = GetTrophyImage(bottomTrophy);
     topTrophySprite.sprite = GetTrophyImage(topTrophy);
+    if (bottomTrophy != currentTrophy) {
+      currentTrophy = bottomTrophy;
+      // TODO: Play animation for changing trophy here
+    }
+    if (bottomTrophy != Trophy.Gold) {
+      spriteMask.transform.position = new Vector3(
+        spriteMask.transform.position.x,
+        maskY + GetCurrentTrophyProgress() * trophySpriteHeight
+      );
+    }
   }
 
-  void AddScore(int scoreToAdd) {
+  public void AddScore(int scoreToAdd) {
     currentScore += scoreToAdd;
-    // UpdateTrophyImage();
+    UpdateTrophyImage();
   }
 }

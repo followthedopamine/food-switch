@@ -22,6 +22,7 @@ public class LevelController : MonoBehaviour {
   private SpawnTiles spawnTiles;
   private Goal goal;
   private PowerUps powerUps;
+  private Score score;
   public struct Level {
     public int width;
     public int height;
@@ -49,6 +50,8 @@ public class LevelController : MonoBehaviour {
     goalId = goal.goalId;
 
     powerUps = gameObject.GetComponent<PowerUps>();
+
+    score = gameObject.GetComponent<Score>();
   }
 
   private void takeTurn() {
@@ -74,7 +77,7 @@ public class LevelController : MonoBehaviour {
       if (goal.goalCompletion == goal.goalTarget) {
         // Game won
       }
-      // TODO: Scoring here
+      score.AddScore(checkMatches.GetTotalMatchedTiles(matches) * 10);
       destroyMatches.DestroyTiles(matches);
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       yield return StartCoroutine(fallingTiles.CheckTiles());

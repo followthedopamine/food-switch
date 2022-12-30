@@ -113,4 +113,12 @@ public class CheckMatches : MonoBehaviour {
     }
     return validMatches;
   }
+
+  public int GetTotalMatchedTiles(List<Match> matches) {
+    int matchedTiles = 0;
+    foreach (Match match in matches) {
+      matchedTiles += match.size;
+    }
+    return matchedTiles;
+  }
 }
