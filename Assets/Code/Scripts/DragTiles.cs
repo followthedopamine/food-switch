@@ -108,7 +108,6 @@ public class DragTiles : MonoBehaviour {
   }
 
   private void SelectTileForSwitch() {
-    // TODO: Select tile based on direction dragged not on final mouse position
     Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     draggingFrom = levelTilemap.WorldToCell(mousePos);
     draggedTile = levelTilemap.GetTile<GameTile>(draggingFrom);
@@ -143,8 +142,8 @@ public class DragTiles : MonoBehaviour {
     if (ValidateSwitch(draggingTo, draggingFrom) && targetTile != null) {
       levelTilemap.SetTile(draggingTo, draggedTile);
       levelTilemap.SetTile(draggingFrom, targetTile);
+      levelController.OnSwitch(draggingFrom, draggingTo);
     }
-    levelController.OnSwitch(draggingFrom, draggingTo);
   }
 
   // This might need to be in a different class
