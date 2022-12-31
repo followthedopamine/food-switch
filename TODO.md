@@ -5,11 +5,12 @@ Powerups
 Black hole should complete goal
 Game over
 Game won
-Tile swap indicator
 Add tutorial
 Sounds
 Music
 Fix goal text size and make it look better
+Handle powerup is triggering on switching with no tile for some reason
+Display cancel indicator if player is dragging off the map
 
 Low prio
 Spawning tiles animation - add rotation

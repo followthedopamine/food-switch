@@ -2431,6 +2431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c623ac1ce4d20c446bb3ef881afe6a36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSwitchIndicatorPrefab: {fileID: 3966972533789429101, guid: 9c52c2c31949bc04d85403e765ca20d6, type: 3}
+  cancelSprite: {fileID: 21300000, guid: bad89d46e5ebe6245b43c378bd496053, type: 3}
 --- !u!19719996 &1113260555
 TilemapCollider2D:
   m_ObjectHideFlags: 0

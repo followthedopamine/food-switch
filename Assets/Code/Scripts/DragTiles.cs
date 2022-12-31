@@ -13,20 +13,98 @@ public class DragTiles : MonoBehaviour {
   private Tile draggedTile;
   private Tile targetTile;
   private LevelController levelController;
+  [SerializeField] private GameObject tileSwitchIndicatorPrefab;
+  [SerializeField] private Sprite cancelSprite;
+  private Sprite switchSprite;
+  private GameObject tileSwitchIndicator;
+  private bool shouldDisplayTileSwitchIndicator = false;
+  private SpriteRenderer tileSwitchIndicatorSprite;
+  private float tileSwitchHeight;
+  private float tileSwitchWidth;
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
     cam = Camera.main;
     levelController = gameObject.GetComponent<LevelController>();
+    tileSwitchIndicator = Instantiate(tileSwitchIndicatorPrefab);
+    tileSwitchIndicator.SetActive(false);
+    tileSwitchIndicatorSprite = tileSwitchIndicator.GetComponent<SpriteRenderer>();
+    switchSprite = tileSwitchIndicatorSprite.sprite;
+    tileSwitchWidth = tileSwitchIndicatorSprite.bounds.size.x;
+    tileSwitchHeight = tileSwitchIndicatorSprite.bounds.size.y;
+  }
+
+  private void Update() {
+    if (shouldDisplayTileSwitchIndicator)
+      DisplayTileSwitchIndicator();
   }
 
   private void OnMouseDown() {
     // Should help with touch input later
     SelectTileForSwitch();
+    shouldDisplayTileSwitchIndicator = true;
   }
 
   private void OnMouseUp() {
     SwitchWithSelectedTile();
+    HideTileSwitchIndicator();
+  }
+
+  void HideTileSwitchIndicator() {
+    tileSwitchIndicator.SetActive(false);
+    shouldDisplayTileSwitchIndicator = false;
+  }
+  // TODO: Display cancel indicator if player is dragging off the map
+  void DisplayTileSwitchIndicator() {
+    tileSwitchIndicatorSprite.sprite = switchSprite;
+    Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+    Vector3Int draggingTo = GetTileInDraggedDirection(mousePos);
+
+    Vector3Int direction = new Vector3Int(draggingTo.x - draggingFrom.x, draggingTo.y - draggingFrom.y, draggingFrom.z);
+    // This part is baaaaaaaad
+    if (direction.x == 1) {
+      tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 0);
+      tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
+        draggingFrom.x,
+        draggingFrom.y + 1,
+        draggingFrom.z)
+      );
+    }
+    if (direction.x == -1) {
+      tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 180);
+      tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
+        draggingFrom.x + 1,
+        draggingFrom.y,
+        draggingFrom.z)
+      );
+    }
+    if (direction.y == -1) {
+      tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 270);
+      tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
+        draggingFrom.x + 1,
+        draggingFrom.y + 1,
+        draggingFrom.z)
+      );
+    }
+    if (direction.y == 1) {
+      tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 90);
+      tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
+        draggingFrom.x,
+        draggingFrom.y,
+        draggingFrom.z)
+      );
+    }
+
+    if (direction.x == 0 && direction.y == 0) {
+      tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 0);
+      tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
+        draggingFrom.x,
+        draggingFrom.y + 1,
+        draggingFrom.z)
+      );
+      tileSwitchIndicatorSprite.sprite = cancelSprite;
+    }
+    tileSwitchIndicator.SetActive(true);
   }
 
   private void SelectTileForSwitch() {
