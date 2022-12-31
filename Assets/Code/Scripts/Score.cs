@@ -22,6 +22,7 @@ public class Score : MonoBehaviour {
   private SpriteRenderer bottomTrophySprite;
   private SpriteRenderer topTrophySprite;
   [SerializeField] private GameObject spriteMask;
+  [SerializeField] private GameObject levelUpParticlesPrefab;
   private Trophy currentTrophy;
   private float trophySpriteHeight;
   private float trophySpriteWidth;
@@ -95,6 +96,12 @@ public class Score : MonoBehaviour {
     return pointsSoFar / pointsRequired;
   }
 
+  void SpawnTrophyLevelUpParticles() {
+    Vector3 positionToSpawn = topTrophy.transform.position;
+    GameObject particles = Instantiate(levelUpParticlesPrefab);
+    particles.transform.position = positionToSpawn;
+  }
+
   void UpdateTrophyImage() {
     Trophy bottomTrophy = GetCurrentTrophy();
     Trophy topTrophy = GetNextTrophy();
@@ -102,7 +109,7 @@ public class Score : MonoBehaviour {
     topTrophySprite.sprite = GetTrophyImage(topTrophy);
     if (bottomTrophy != currentTrophy) {
       currentTrophy = bottomTrophy;
-      // TODO: Play animation for changing trophy here
+      SpawnTrophyLevelUpParticles();
     }
     if (bottomTrophy != Trophy.Gold) {
       spriteMask.transform.position = new Vector3(

@@ -2561,6 +2561,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1f0148e1b76dab242b92ffb1603bbea9, type: 3}
   trophyScores: f4010000d007000088130000
   spriteMask: {fileID: 4230971150879682120, guid: ebe87f5683e137b4fb7166753c7cc9b1, type: 3}
+  levelUpParticlesPrefab: {fileID: 7496990186539958092, guid: 8754796a4e1b02d4ba3843aa69b8b5b7, type: 3}
 --- !u!1 &1168846412
 GameObject:
   m_ObjectHideFlags: 0
