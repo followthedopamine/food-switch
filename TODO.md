@@ -5,8 +5,6 @@ Powerups
 Black hole should complete goal
 Game over
 Game won
-Trophy score
-Trophy level up animation
 Tile swap indicator
 Add tutorial
 Sounds
