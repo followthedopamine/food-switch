@@ -7,7 +7,6 @@ Game won
 Add tutorial
 Sounds
 Music
-Fix goal text size and make it look better
 Display cancel indicator if player is dragging off the map
 
 Low prio
