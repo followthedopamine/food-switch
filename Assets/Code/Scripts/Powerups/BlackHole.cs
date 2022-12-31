@@ -10,9 +10,13 @@ public class BlackHole : MonoBehaviour {
   private float scaleSpeed = 2f;
   private float suckSpeed = 6f;
   private float rotationSpeed = 2f;
+  private Score score;
+  private Goal goal;
 
   private void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
+    score = gameObject.GetComponent<Score>();
+    goal = gameObject.GetComponent<Goal>();
   }
 
   public IEnumerator SpawnBlackHole(Vector3Int position, GameTile tile) {
@@ -35,6 +39,7 @@ public class BlackHole : MonoBehaviour {
       yield return new WaitForEndOfFrame();
     }
     Destroy(blackHole);
+
   }
 
 
@@ -52,6 +57,8 @@ public class BlackHole : MonoBehaviour {
         yield return new WaitForEndOfFrame();
       }
       Destroy(newTile);
+      score.AddScore(10);
+      if (goal.goalId == tile.id) goal.goalCompletion++;
     }
   }
 

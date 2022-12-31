@@ -2,7 +2,6 @@ High prio
 Main menu
 Level select
 Powerups
-Black hole should complete goal
 Game over
 Game won
 Add tutorial
