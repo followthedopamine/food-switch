@@ -21,6 +21,8 @@ public class DragTiles : MonoBehaviour {
   private SpriteRenderer tileSwitchIndicatorSprite;
   private float tileSwitchHeight;
   private float tileSwitchWidth;
+  private Vector3Int topRight;
+  private Vector3Int bottomLeft;
 
   void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
@@ -32,6 +34,10 @@ public class DragTiles : MonoBehaviour {
     switchSprite = tileSwitchIndicatorSprite.sprite;
     tileSwitchWidth = tileSwitchIndicatorSprite.bounds.size.x;
     tileSwitchHeight = tileSwitchIndicatorSprite.bounds.size.y;
+    topRight = levelController.level.grid[levelController.level.height - 1, levelController.level.width - 1];
+    bottomLeft = levelController.level.grid[0, 0];
+    Debug.Log(bottomLeft);
+    Debug.Log(topRight);
   }
 
   private void Update() {
@@ -43,6 +49,8 @@ public class DragTiles : MonoBehaviour {
     // Should help with touch input later
     SelectTileForSwitch();
     shouldDisplayTileSwitchIndicator = true;
+    // Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+    // Debug.Log(levelTilemap.WorldToCell(mousePos));
   }
 
   private void OnMouseUp() {
@@ -54,15 +62,22 @@ public class DragTiles : MonoBehaviour {
     tileSwitchIndicator.SetActive(false);
     shouldDisplayTileSwitchIndicator = false;
   }
-  // TODO: Display cancel indicator if player is dragging off the map
   void DisplayTileSwitchIndicator() {
     tileSwitchIndicatorSprite.sprite = switchSprite;
     Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     Vector3Int draggingTo = GetTileInDraggedDirection(mousePos);
 
     Vector3Int direction = new Vector3Int(draggingTo.x - draggingFrom.x, draggingTo.y - draggingFrom.y, draggingFrom.z);
+
+
+
     // This part is baaaaaaaad
     if (direction.x == 1) {
+      if (draggingFrom.x == topRight.x) {
+        tileSwitchIndicatorSprite.sprite = cancelSprite;
+        tileSwitchIndicator.SetActive(true);
+        return;
+      }
       tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 0);
       tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
         draggingFrom.x,
@@ -71,6 +86,11 @@ public class DragTiles : MonoBehaviour {
       );
     }
     if (direction.x == -1) {
+      if (draggingFrom.x == bottomLeft.x) {
+        tileSwitchIndicatorSprite.sprite = cancelSprite;
+        tileSwitchIndicator.SetActive(true);
+        return;
+      }
       tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 180);
       tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
         draggingFrom.x + 1,
@@ -79,6 +99,11 @@ public class DragTiles : MonoBehaviour {
       );
     }
     if (direction.y == -1) {
+      if (draggingFrom.y == bottomLeft.y) {
+        tileSwitchIndicatorSprite.sprite = cancelSprite;
+        tileSwitchIndicator.SetActive(true);
+        return;
+      }
       tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 270);
       tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
         draggingFrom.x + 1,
@@ -87,6 +112,11 @@ public class DragTiles : MonoBehaviour {
       );
     }
     if (direction.y == 1) {
+      if (draggingFrom.y == topRight.y) {
+        tileSwitchIndicatorSprite.sprite = cancelSprite;
+        tileSwitchIndicator.SetActive(true);
+        return;
+      }
       tileSwitchIndicator.transform.localRotation = Quaternion.Euler(0, 0, 90);
       tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
         draggingFrom.x,
