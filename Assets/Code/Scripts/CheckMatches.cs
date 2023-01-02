@@ -16,6 +16,7 @@ public class CheckMatches : MonoBehaviour {
   private TurnCounter turnCounter;
   private LevelController levelController;
   private GoalText goalText;
+  private int jellyTileOffset = 2000;
 
 
   void Start() {
@@ -56,7 +57,7 @@ public class CheckMatches : MonoBehaviour {
               if (match.tileId == 0) {
                 match.tileId = tile.id;
               }
-              if (tile.id == match.tileId) {
+              if (tile.id == match.tileId || tile.id == match.tileId + jellyTileOffset || tile.id == match.tileId - jellyTileOffset) {
                 match.size++;
                 match.tiles.Add(tilePos);
                 visited.Add(tilePos);
