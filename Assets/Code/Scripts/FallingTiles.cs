@@ -82,9 +82,12 @@ public class FallingTiles : MonoBehaviour {
       for (int c = 0; c < grid.GetLength(1); c++) {
         if (levelTilemap.GetTile(grid[r, c]) == null) continue;
         if (levelTilemap.GetTile(grid[r - 1, c]) == null) {
-          StartCoroutine(DropTile(grid[r, c], grid[r - 1, c]));
-          falling++;
-          needToCheckTilesAgain = true;
+          GameTile t = levelTilemap.GetTile<GameTile>(grid[r, c]);
+          if (ShouldTileFall(t)) {
+            StartCoroutine(DropTile(grid[r, c], grid[r - 1, c]));
+            falling++;
+            needToCheckTilesAgain = true;
+          }
         }
       }
     }
@@ -94,6 +97,13 @@ public class FallingTiles : MonoBehaviour {
     if (needToCheckTilesAgain) {
       yield return StartCoroutine(CheckTiles());
     }
+  }
+
+  private bool ShouldTileFall(GameTile tile) {
+    if (tile.type == GameTile.Type.Breakable) {
+      return false;
+    }
+    return true;
   }
 }
 
