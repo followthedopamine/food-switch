@@ -7,6 +7,7 @@ Powerups
 - Full clear
 - Free switch
 - Random switches
+- Something bouncy
 
 Obstacles
 
@@ -17,6 +18,17 @@ Game over
 Game won
 Add tutorial
 Sounds - Make a list of all the things that should have sound effects.
+
+- Switch
+- Match
+- Powerups
+- Trophy level up
+- Game start
+- Game won
+- Game over
+- Level select
+- Level select move
+
 Music
 
 Low prio
