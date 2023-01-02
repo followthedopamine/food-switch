@@ -66,10 +66,19 @@ public class DragTiles : MonoBehaviour {
     tileSwitchIndicatorSprite.sprite = switchSprite;
     Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
     Vector3Int draggingTo = GetTileInDraggedDirection(mousePos);
-
+    GameTile draggingToTile = levelTilemap.GetTile<GameTile>(draggingTo);
     Vector3Int direction = new Vector3Int(draggingTo.x - draggingFrom.x, draggingTo.y - draggingFrom.y, draggingFrom.z);
 
-
+    if (!CanBeDragged(draggedTile) || !CanBeDragged(draggingToTile)) {
+      tileSwitchIndicatorSprite.sprite = cancelSprite;
+      tileSwitchIndicator.SetActive(true);
+      tileSwitchIndicator.transform.position = levelTilemap.CellToWorld(new Vector3Int(
+        draggingFrom.x,
+        draggingFrom.y + 1,
+        draggingFrom.z)
+      );
+      return;
+    }
 
     // This part is baaaaaaaad
     if (direction.x == 1) {
@@ -143,6 +152,13 @@ public class DragTiles : MonoBehaviour {
     draggedTile = levelTilemap.GetTile<GameTile>(draggingFrom);
   }
 
+  private bool CanBeDragged(GameTile tile) {
+    if (tile.type == GameTile.Type.Breakable) {
+      return false;
+    }
+    return true;
+  }
+
   private Vector3Int GetTileInDraggedDirection(Vector3 mousePos) {
     Vector3Int draggingTo = levelTilemap.WorldToCell(mousePos);
     if (draggingTo == draggingFrom) return draggingTo;
@@ -179,7 +195,9 @@ public class DragTiles : MonoBehaviour {
   // This might need to be in a different class
   private bool ValidateSwitch(Vector3Int current, Vector3Int target) {
     if (Math.Abs(target.x - current.x) == 1 ^ Math.Abs(target.y - current.y) == 1) {
-      return true;
+      GameTile currentTile = levelTilemap.GetTile<GameTile>(current);
+      GameTile targetTile = levelTilemap.GetTile<GameTile>(target);
+      if (CanBeDragged(currentTile) && CanBeDragged(targetTile)) return true;
     }
     return false;
   }
