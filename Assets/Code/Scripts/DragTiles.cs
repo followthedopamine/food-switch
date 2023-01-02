@@ -10,7 +10,7 @@ public class DragTiles : MonoBehaviour {
   private Tilemap levelTilemap;
   private Camera cam;
   private Vector3Int draggingFrom;
-  private Tile draggedTile;
+  private GameTile draggedTile;
   private Tile targetTile;
   private LevelController levelController;
   [SerializeField] private GameObject tileSwitchIndicatorPrefab;
@@ -185,3 +185,4 @@ public class DragTiles : MonoBehaviour {
   }
   // TODO: Animation for dragging tiles (gold glow)?
 }
+
