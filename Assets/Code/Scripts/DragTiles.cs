@@ -201,6 +201,5 @@ public class DragTiles : MonoBehaviour {
     }
     return false;
   }
-  // TODO: Animation for dragging tiles (gold glow)?
 }
 
