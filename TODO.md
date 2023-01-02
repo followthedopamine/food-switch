@@ -1,4 +1,5 @@
 High prio
+Level design
 Main menu
 Level select
 Powerups
@@ -11,7 +12,7 @@ Powerups
 
 Obstacles
 
-- Jelly
+- Jelly might need a better goal as I can only do one jelly tile currently
 - Boulder
 
 Game over
