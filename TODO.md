@@ -34,3 +34,4 @@ Music
 Low prio
 Spawning tiles animation - add rotation
 Add tile switching animation
+Fix bug where you get an error trying to switch with no tile
