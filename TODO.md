@@ -32,7 +32,7 @@ Sounds - Make a list of all the things that should have sound effects.
 
 Music
 
-Low prio
+### Low prio
 Spawning tiles animation - add rotation
 Add tile switching animation
 Fix bug where you get an error trying to switch with no tile
