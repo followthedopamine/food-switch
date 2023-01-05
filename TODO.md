@@ -1,7 +1,10 @@
-High prio
+## High prio
 Level design
+
 Main menu
+
 Level select
+
 Powerups
 
 - Line clear powerup
@@ -17,8 +20,11 @@ Obstacles
 - Cracked boulder
 
 Game over
+
 Game won
+
 Add tutorial
+
 Sounds - Make a list of all the things that should have sound effects.
 
 - Switch
@@ -33,7 +39,10 @@ Sounds - Make a list of all the things that should have sound effects.
 
 Music
 
-Low prio
+### Low prio
+
 Spawning tiles animation - add rotation
+
 Add tile switching animation
+
 Fix bug where you get an error trying to switch with no tile
