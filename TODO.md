@@ -14,6 +14,7 @@ Obstacles
 
 - Jelly might need a better goal as I can only do one jelly tile currently
 - Boulder
+- Cracked boulder
 
 Game over
 Game won
