@@ -2018,6 +2018,7 @@ GameObject:
   - component: {fileID: 1113260561}
   - component: {fileID: 1113260562}
   - component: {fileID: 1113260563}
+  - component: {fileID: 1113260564}
   m_Layer: 0
   m_Name: Level Tilemap
   m_TagString: LevelController
@@ -2098,6 +2099,16 @@ Tilemap:
   m_GameObject: {fileID: 1113260549}
   m_Enabled: 1
   m_Tiles:
+  - first: {x: -2, y: -5, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
   - first: {x: 1, y: -5, z: 0}
     second:
       serializedVersion: 2
@@ -2248,6 +2259,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
+  - first: {x: 1, y: 0, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
   - first: {x: -3, y: 1, z: 0}
     second:
       serializedVersion: 2
@@ -2283,6 +2304,16 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 1
       m_TileSpriteIndex: 1
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 2147483649
+  - first: {x: -3, y: 2, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 8
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2356,6 +2387,8 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 06d3b1d571ee1ef469fd07155298c351, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 6183970d15131d34f9dee7be32d416d7, type: 2}
+  - m_RefCount: 3
+    m_Data: {fileID: 11400000, guid: 0fb007d193b2c674f9f0f36c8831f96e, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 4
     m_Data: {fileID: 21300000, guid: dfd48ca86c0710d45ac96a8fb08b8ce3, type: 3}
@@ -2373,8 +2406,10 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: e25e8857c1fc48640b29c59897c6d4a3, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 242838c8153bf3945a8c9e9e79225228, type: 3}
+  - m_RefCount: 3
+    m_Data: {fileID: 21300000, guid: 1f4f0061d1bee8c4d8bc8e312b564fe6, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 24
+  - m_RefCount: 27
     m_Data:
       e00: 1
       e01: 0
@@ -2393,7 +2428,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 24
+  - m_RefCount: 27
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -2578,6 +2613,18 @@ MonoBehaviour:
   trophyScores: f4010000d007000088130000
   spriteMask: {fileID: 4230971150879682120, guid: ebe87f5683e137b4fb7166753c7cc9b1, type: 3}
   levelUpParticlesPrefab: {fileID: 7496990186539958092, guid: 8754796a4e1b02d4ba3843aa69b8b5b7, type: 3}
+--- !u!114 &1113260564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113260549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 943bc530c01e03143a937b8625df7ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1168846412
 GameObject:
   m_ObjectHideFlags: 0

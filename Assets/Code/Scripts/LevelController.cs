@@ -23,6 +23,7 @@ public class LevelController : MonoBehaviour {
   private Goal goal;
   private PowerUps powerUps;
   private Score score;
+  private CrackedBoulder crackedBoulder;
   public struct Level {
     public int width;
     public int height;
@@ -52,6 +53,7 @@ public class LevelController : MonoBehaviour {
     powerUps = gameObject.GetComponent<PowerUps>();
 
     score = gameObject.GetComponent<Score>();
+    crackedBoulder = gameObject.GetComponent<CrackedBoulder>();
   }
 
   private void takeTurn() {
@@ -72,13 +74,16 @@ public class LevelController : MonoBehaviour {
     matches = checkMatches.CheckMatchShapes(matches);
     yield return powerUps.HandlePowerup(draggedTilePosition, targetTilePosition);
     do {
+      List<Match> boulders = crackedBoulder.CheckAllMatchesForSurroundingBoulders(matches);
       goal.goalCompletion += goal.GetGoalCompletion(matches);
+      goal.goalCompletion += goal.GetGoalCompletion(boulders);
       goal.goalText.UpdateText(goal.goalCompletion, goal.goalTarget);
       if (goal.goalCompletion == goal.goalTarget) {
         // Game won
       }
       score.AddScore(checkMatches.GetTotalMatchedTiles(matches) * 10);
       destroyMatches.DestroyTiles(matches);
+      destroyMatches.DestroyTiles(boulders);
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       yield return StartCoroutine(fallingTiles.CheckTiles());
       spawnTiles.SpawnRandomTilesToFill();
