@@ -1,7 +1,27 @@
 ## High prio
 
-Level design
-Main menu
+### Level design
+
+- Plain level (switching tutorial) (powerups tutorial?)
+- Plain level
+- Plain level
+- Jelly level (jelly tutorial)
+- Jelly level
+- Jelly level
+- Boulder level (boulder tutorial)
+- Boulder level
+- Boulder level
+- Jelly and boulder level
+- Jelly and boulder level
+- Jelly and boulder level
+
+### Main menu
+
+- Play
+- Level select
+- Credits
+- Options
+
 Level select
 Game over
 Game won
@@ -10,12 +30,12 @@ Lives
 Watch ads for lives
 Spawn powerups from suitably sized matches
 
-Powerups
+### Powerups
 
 - Line clear powerup (animation)
 - Free switch
 
-Sounds - Make a list of all the things that should have sound effects.
+### Sounds
 
 - Switch
 - Match
