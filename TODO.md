@@ -6,6 +6,9 @@ Level select
 Game over
 Game won
 Tutorial
+Lives
+Watch ads for lives
+Spawn powerups from suitably sized matches
 
 Powerups
 
