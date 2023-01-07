@@ -1,24 +1,16 @@
 ## High prio
 
 Level design
-
 Main menu
-
 Level select
+Game over
+Game won
+Tutorial
 
 Powerups
 
 - Line clear powerup
-- Full clear
 - Free switch
-- Random switches
-- Something bouncy
-
-Game over
-
-Game won
-
-Add tutorial
 
 Sounds - Make a list of all the things that should have sound effects.
 
@@ -37,7 +29,15 @@ Music
 ### Low prio
 
 Spawning tiles animation - add rotation
-
 Add tile switching animation
-
 Fix bug where you get an error trying to switch with no tile
+
+Obstacles
+
+- Key door
+
+Powerups
+
+- Full clear
+- Random switches
+- Something bouncy
