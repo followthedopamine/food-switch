@@ -6,10 +6,14 @@ using UnityEngine.Tilemaps;
 public class PowerUps : MonoBehaviour {
   private Tilemap levelTilemap;
   private BlackHole blackHole;
+  private LineClear lineClear;
+  private int blackHoleId = 999;
+  private int lightningId = 998;
 
   private void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
     blackHole = gameObject.GetComponent<BlackHole>();
+    lineClear = gameObject.GetComponent<LineClear>();
   }
 
   public IEnumerator HandlePowerup(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
@@ -20,7 +24,13 @@ public class PowerUps : MonoBehaviour {
       GameTile powerUp = draggedTile.type == GameTile.Type.Power ? draggedTile : targetTile;
       GameTile switchedTile = draggedTile.type != GameTile.Type.Power ? draggedTile : targetTile;
       Vector3Int position = draggedTile.type == GameTile.Type.Power ? draggedTilePosition : targetTilePosition;
-      yield return StartCoroutine(blackHole.SpawnBlackHole(position, switchedTile));
+      Vector3Int oldPosition = draggedTile.type == GameTile.Type.Power ? targetTilePosition : draggedTilePosition;
+      if (powerUp.id == lightningId) {
+        yield return StartCoroutine(lineClear.ClearLine(position, oldPosition));
+      }
+      if (powerUp.id == blackHoleId) {
+        yield return StartCoroutine(blackHole.SpawnBlackHole(position, switchedTile));
+      }
     }
   }
 }
