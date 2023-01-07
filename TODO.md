@@ -1,4 +1,5 @@
 ## High prio
+
 Level design
 
 Main menu
@@ -12,12 +13,6 @@ Powerups
 - Free switch
 - Random switches
 - Something bouncy
-
-Obstacles
-
-- Jelly might need a better goal as I can only do one jelly tile currently
-- Boulder
-- Cracked boulder
 
 Game over
 
