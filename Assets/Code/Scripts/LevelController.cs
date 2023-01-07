@@ -11,7 +11,7 @@ public class LevelController : MonoBehaviour {
   [SerializeField] private GameTile[] validTiles;
   private Tilemap levelTilemap;
   private Tilemap backgroundTilemap;
-  private Vector3Int tilemapOffset;
+  public Vector3Int tilemapOffset;
   [SerializeField] public int turnsRemaining;
   private TurnCounter turnCounter;
   private int goalId;

@@ -12,7 +12,7 @@ Spawn powerups from suitably sized matches
 
 Powerups
 
-- Line clear powerup
+- Line clear powerup (animation)
 - Free switch
 
 Sounds - Make a list of all the things that should have sound effects.
