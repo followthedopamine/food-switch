@@ -6,6 +6,8 @@ using UnityEngine.Tilemaps;
 public class CrackedBoulder : MonoBehaviour {
   private Tilemap levelTilemap;
   private int crackedBoulderId = 1000;
+  private int boulderId = 1001;
+  [SerializeField] private GameTile crackedBoulderTile;
 
   private void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
@@ -30,10 +32,10 @@ public class CrackedBoulder : MonoBehaviour {
           boulders.size++;
           boulders.tiles.Add(direction);
         }
+        if (tile.id == boulderId) {
+          levelTilemap.SetTile(direction, crackedBoulderTile);
+        }
       }
-    }
-    foreach (Vector3Int tile in boulders.tiles) {
-      Debug.Log(tile);
     }
     return boulders;
   }
