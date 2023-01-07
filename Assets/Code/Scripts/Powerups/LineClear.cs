@@ -26,6 +26,8 @@ public class LineClear : MonoBehaviour {
   // Display some kind of animation
 
   private bool WasTileSwitchedVertically(Vector3Int position, Vector3Int oldPosition) {
+    Debug.Log(position);
+    Debug.Log(oldPosition);
     if (position.y == oldPosition.y) return false;
     return true;
   }
@@ -37,13 +39,20 @@ public class LineClear : MonoBehaviour {
     line.location = position;
     if (vertical) {
       for (int i = 0; i < levelController.level.height - 1; i++) {
-        Debug.Log(i);
-        Debug.Log(position.x - levelController.tilemapOffset.x);
         GameTile tile = levelTilemap.GetTile<GameTile>(levelController.level.grid[i, position.x - levelController.tilemapOffset.x]);
         if (tile == null) continue;
         if (tile.id < powerupOffset) {
           line.size++;
           line.tiles.Add(levelController.level.grid[i, position.x - levelController.tilemapOffset.x]);
+        }
+      }
+    } else {
+      for (int i = 0; i < levelController.level.width; i++) {
+        GameTile tile = levelTilemap.GetTile<GameTile>(levelController.level.grid[position.y - levelController.tilemapOffset.y, i]);
+        if (tile == null) continue;
+        if (tile.id < powerupOffset) {
+          line.size++;
+          line.tiles.Add(levelController.level.grid[position.y - levelController.tilemapOffset.y, i]);
         }
       }
     }
@@ -52,10 +61,8 @@ public class LineClear : MonoBehaviour {
 
   public IEnumerator ClearLine(Vector3Int position, Vector3Int oldPosition) {
     List<Match> lineMatchList = new List<Match>();
-    if (WasTileSwitchedVertically(position, oldPosition)) {
-      Match line = CreateLineMatch(position, true);
-      lineMatchList.Add(line);
-    }
+    Match line = CreateLineMatch(position, WasTileSwitchedVertically(position, oldPosition));
+    lineMatchList.Add(line);
     destroyMatches.DestroyTiles(lineMatchList);
     levelTilemap.SetTile(position, null);
     yield return new WaitForSeconds(0.3f);
