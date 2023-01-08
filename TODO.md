@@ -4,7 +4,7 @@
 
 - Plain level (switching tutorial) (powerups tutorial?)
 - Plain level
-- Plain level
+- Plain level (none of the initial tiles match the goal)
 - Jelly level (jelly tutorial)
 - Jelly level
 - Jelly level
