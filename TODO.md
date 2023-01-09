@@ -55,11 +55,11 @@ Spawning tiles animation - add rotation
 Add tile switching animation
 Fix bug where you get an error trying to switch with no tile
 
-Obstacles
+#### Obstacles
 
 - Key door
 
-Powerups
+#### Powerups
 
 - Full clear
 - Random switches
