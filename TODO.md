@@ -8,7 +8,11 @@
 - Jelly level (jelly tutorial)
 - Jelly level
 - Jelly level
+- Jelly level
+- Jelly level
 - Boulder level (boulder tutorial)
+- Boulder level
+- Boulder level
 - Boulder level
 - Boulder level
 - Jelly and boulder level
