@@ -9,7 +9,7 @@
 - Jelly level
 - Jelly level
 - Jelly level
-- Jelly level
+- Jelly level (none of the initial tiles match the jelly goal)
 - Boulder level (boulder tutorial)
 - Boulder level
 - Boulder level
