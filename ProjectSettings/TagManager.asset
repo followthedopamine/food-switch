@@ -10,6 +10,7 @@ TagManager:
   - Goal
   - GoalText
   - Score
+  - UI
   layers:
   - Default
   - TransparentFX
