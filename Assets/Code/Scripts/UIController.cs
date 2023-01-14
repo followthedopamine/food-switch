@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowEndScreen() {
+    // TODO: Need to disable switching while this is up probably
     endScreen.SetActive(true);
   }
 

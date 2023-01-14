@@ -64,9 +64,6 @@ public class LevelController : MonoBehaviour {
   public void OnSwitch(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
     takeTurn();
     StartCoroutine(DestroyTilesLoop(draggedTilePosition, targetTilePosition));
-    if (turnsRemaining == 0) {
-      // Game over
-    }
   }
 
   private IEnumerator DestroyTilesLoop(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
@@ -91,6 +88,16 @@ public class LevelController : MonoBehaviour {
       matches = checkMatches.GetAllMatches();
       matches = checkMatches.CheckMatchShapes(matches);
     } while (matches.Count > 0);
+
+    if (goal.goalCompletion > goal.goalTarget) {
+      // Spawn powerups and loop again
+      // Then display game won screen
+    }
+
+    if (turnsRemaining == 0 && goal.goalCompletion < goal.goalTarget) {
+      // Game over
+      UIController.Instance.ShowEndScreen();
+    }
   }
 
   private Vector2Int GetGameDimensions() {
