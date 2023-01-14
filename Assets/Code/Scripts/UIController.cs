@@ -66,6 +66,7 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowCreditsScreen() {
+    DisableAllScreens();
     creditsScreen.SetActive(true);
   }
 

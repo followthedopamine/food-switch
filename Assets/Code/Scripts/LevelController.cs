@@ -96,7 +96,7 @@ public class LevelController : MonoBehaviour {
 
     if (turnsRemaining == 0 && goal.goalCompletion < goal.goalTarget) {
       // Game over
-      UIController.Instance.ShowEndScreen();
+      UIController.Instance.ShowGameOverScreen();
     }
   }
 
