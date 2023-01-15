@@ -11,7 +11,8 @@ public class SceneController : MonoBehaviour {
 
   public List<string> levelList { get; private set; } = new List<string>();
 
-  private string defaultLevel = "0000_Test";
+  private string firstLevel = "0000_Test";
+  private string defaultLevel = "";
 
   void Awake() {
     if (Instance != null) {
@@ -95,12 +96,13 @@ public class SceneController : MonoBehaviour {
   void UnloadCurrentLevel() {
     // This won't work if there's no level loaded (which is probably fine)
     string currentLevel = GetCurrentLevel();
+    if (currentLevel == defaultLevel) return;
     SceneManager.UnloadSceneAsync(currentLevel);
   }
 
   public void LoadFirstLevel() {
     // TODO
-    SceneManager.LoadScene(defaultLevel, LoadSceneMode.Additive);
+    SceneManager.LoadScene(firstLevel, LoadSceneMode.Additive);
   }
 
   public void LoadNextLevel() {

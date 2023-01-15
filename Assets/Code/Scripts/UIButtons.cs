@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIButtons : MonoBehaviour {
   public void PlayButton() {
-    Debug.Log("Play button pressed");
     UIController.Instance.HideMainMenuScreen();
     // Load level scene
     SceneController.Instance.LoadFirstLevel();
@@ -20,4 +19,10 @@ public class UIButtons : MonoBehaviour {
     SceneController.Instance.LoadMainMenu();
     UIController.Instance.ShowMainMenuScreen();
   }
+
+  public void CreditsButton() {
+    UIController.Instance.HideMainMenuScreen();
+    UIController.Instance.ShowCreditsScreen();
+  }
+
 }
