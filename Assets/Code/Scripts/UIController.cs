@@ -30,7 +30,7 @@ public class UIController : MonoBehaviour {
 
   public void ShowGameOverScreen() {
     // TODO: Need to disable switching while this is up probably
-    DisableAllScreens();
+    HideAllScreens();
     gameOverScreen.SetActive(true);
   }
 
@@ -39,7 +39,7 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowGameWonScreen() {
-    DisableAllScreens();
+    HideAllScreens();
     gameWonScreen.SetActive(true);
   }
 
@@ -48,7 +48,7 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowMainMenuScreen() {
-    DisableAllScreens();
+    HideAllScreens();
     mainMenuScreen.SetActive(true);
   }
 
@@ -57,7 +57,7 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowLevelSelectScreen() {
-    DisableAllScreens();
+    HideAllScreens();
     levelSelectScreen.SetActive(true);
   }
 
@@ -66,7 +66,7 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowCreditsScreen() {
-    DisableAllScreens();
+    HideAllScreens();
     creditsScreen.SetActive(true);
   }
 
@@ -74,7 +74,7 @@ public class UIController : MonoBehaviour {
     creditsScreen.SetActive(false);
   }
 
-  private void DisableAllScreens() {
+  public void HideAllScreens() {
     HideGameOverScreen();
     HideGameWonScreen();
     HideLevelSelectScreen();

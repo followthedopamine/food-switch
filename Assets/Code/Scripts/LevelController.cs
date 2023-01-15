@@ -90,8 +90,9 @@ public class LevelController : MonoBehaviour {
     } while (matches.Count > 0);
 
     if (goal.goalCompletion > goal.goalTarget) {
-      // Spawn powerups and loop again
+      // TODO: Spawn powerups and loop again
       // Then display game won screen
+      UIController.Instance.ShowGameWonScreen();
     }
 
     if (turnsRemaining == 0 && goal.goalCompletion < goal.goalTarget) {

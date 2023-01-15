@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Core.unity
+    guid: 8b4f61b3a5f005842bbeb777dcc7a179
+  - enabled: 1
+    path: Assets/Scenes/Audio Core.unity
+    guid: c3f39f4d24092694bb5d9e2ef493a379
+  - enabled: 1
+    path: Assets/Scenes/UI.unity
+    guid: 0bf2f422f8f1ff846929e7effc0c1590
+  - enabled: 1
+    path: Assets/Scenes/Game.unity
+    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Scenes/Levels/0000_Test.unity
+    guid: fa6e7ab1bc5242340a8584f8808657dc
   m_configObjects: {}
