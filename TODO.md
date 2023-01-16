@@ -21,16 +21,8 @@
 - Jelly and boulder level
 - Jelly and boulder level
 
-### Main menu
-
-- Play
-- Level select
-- Credits
-- Options
-
-Level select
-Game over
-Game won
+Level select icons
+Game won powerups
 Tutorial
 Lives
 Watch ads for lives
