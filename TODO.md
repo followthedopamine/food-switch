@@ -24,8 +24,6 @@
 Level select icons
 Game won powerups
 Tutorial
-Lives
-Watch ads for lives
 Spawn powerups from suitably sized matches
 
 ### Powerups
@@ -49,6 +47,8 @@ Music
 
 ### Low prio
 
+Lives
+Watch ads for lives
 Spawning tiles animation - add rotation
 Add tile switching animation
 Fix bug where you get an error trying to switch with no tile
