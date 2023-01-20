@@ -7,13 +7,17 @@ public class PowerUps : MonoBehaviour {
   private Tilemap levelTilemap;
   private BlackHole blackHole;
   private LineClear lineClear;
+  private FreeSwitch freeSwitch;
   private int blackHoleId = 999;
   private int lightningId = 998;
+  private int freeSwitchId = 997;
+
 
   private void Start() {
     levelTilemap = gameObject.GetComponent<Tilemap>();
     blackHole = gameObject.GetComponent<BlackHole>();
     lineClear = gameObject.GetComponent<LineClear>();
+    freeSwitch = gameObject.GetComponent<FreeSwitch>();
   }
 
   public IEnumerator HandlePowerup(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
@@ -31,6 +35,10 @@ public class PowerUps : MonoBehaviour {
       if (powerUp.id == blackHoleId) {
         yield return StartCoroutine(blackHole.SpawnBlackHole(position, switchedTile));
       }
+      if (powerUp.id == freeSwitchId) {
+        freeSwitch.HandleFreeSwitch(draggedTilePosition, targetTilePosition);
+      }
+
     }
   }
 }

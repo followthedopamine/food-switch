@@ -24,6 +24,7 @@ public class LevelController : MonoBehaviour {
   private PowerUps powerUps;
   private Score score;
   private CrackedBoulder crackedBoulder;
+
   public struct Level {
     public int width;
     public int height;
@@ -58,6 +59,11 @@ public class LevelController : MonoBehaviour {
 
   private void takeTurn() {
     turnsRemaining--;
+    turnCounter.updateText(turnsRemaining);
+  }
+
+  public void restoreTurn() {
+    turnsRemaining++;
     turnCounter.updateText(turnsRemaining);
   }
 
