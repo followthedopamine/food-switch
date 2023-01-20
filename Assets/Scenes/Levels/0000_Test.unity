@@ -2710,6 +2710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerUpTiles:
   - {fileID: 11400000, guid: 2522b9e6eb207c64a8ca68a38e48e836, type: 2}
+  - {fileID: 11400000, guid: 1c770eb5dc81cbb43a4b7f928f962f11, type: 2}
+  - {fileID: 11400000, guid: 06d3b1d571ee1ef469fd07155298c351, type: 2}
 --- !u!1 &1415744318
 GameObject:
   m_ObjectHideFlags: 0
