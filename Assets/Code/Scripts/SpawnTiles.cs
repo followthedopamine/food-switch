@@ -20,10 +20,16 @@ public class SpawnTiles : MonoBehaviour {
   }
 
   private IEnumerator SpawnRandomTile(Vector3Int position) {
+    GameTile tile = GetRandomTile();
+
+    yield return StartCoroutine(SpawnTile(position, tile));
+
+  }
+
+  public IEnumerator SpawnTile(Vector3Int position, GameTile tile) {
     Vector3 worldPosition = levelTilemap.GetCellCenterWorld(position);
     Vector3Int[,] grid = levelController.level.grid;
     GameObject newTile = new GameObject();
-    GameTile tile = GetRandomTile();
     // Match game grid scale
     Transform gameGrid = gameObject.transform.parent;
     newTile.transform.localScale = new Vector3(0.1f, 0.1f, 0);//gameGrid.localScale;
@@ -36,7 +42,6 @@ public class SpawnTiles : MonoBehaviour {
     }
     levelTilemap.SetTile(position, tile);
     Destroy(newTile);
-
   }
 
   public void SpawnRandomTilesToFill() {

@@ -24,6 +24,8 @@ public class LevelController : MonoBehaviour {
   private PowerUps powerUps;
   private Score score;
   private CrackedBoulder crackedBoulder;
+  private SpawnPowerups spawnPowerups;
+
 
   public struct Level {
     public int width;
@@ -55,6 +57,9 @@ public class LevelController : MonoBehaviour {
 
     score = gameObject.GetComponent<Score>();
     crackedBoulder = gameObject.GetComponent<CrackedBoulder>();
+
+    spawnPowerups = gameObject.GetComponent<SpawnPowerups>();
+
   }
 
   private void takeTurn() {
@@ -87,6 +92,7 @@ public class LevelController : MonoBehaviour {
       score.AddScore(checkMatches.GetTotalMatchedTiles(matches) * 10);
       destroyMatches.DestroyTiles(matches);
       destroyMatches.DestroyTiles(boulders);
+      yield return StartCoroutine(spawnPowerups.SpawnPowerupsFromMatches(matches));
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       yield return StartCoroutine(fallingTiles.CheckTiles());
       spawnTiles.SpawnRandomTilesToFill();

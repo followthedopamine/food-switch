@@ -22,9 +22,9 @@
 - Jelly and boulder level
 
 Level select icons
-Game won powerups
+Game won powerups - I might not do this
 Tutorial
-Spawn powerups from suitably sized matches
+Move code into game scene and keep level scene as just a tilemap with no code
 
 ### Powerups
 
@@ -51,6 +51,7 @@ Watch ads for lives
 Spawning tiles animation - add rotation
 Add tile switching animation
 Fix bug where you get an error trying to switch with no tile
+Fix bug where powerups can match
 
 #### Obstacles
 

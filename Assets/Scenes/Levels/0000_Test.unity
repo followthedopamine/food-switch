@@ -2021,6 +2021,7 @@ GameObject:
   - component: {fileID: 1113260564}
   - component: {fileID: 1113260565}
   - component: {fileID: 1113260566}
+  - component: {fileID: 1113260567}
   m_Layer: 0
   m_Name: Level Tilemap
   m_TagString: LevelController
@@ -2695,6 +2696,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9df1b58c91f0e3438243912644f0f76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1113260567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113260549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b99ca75feb4135c47927ddc35c4af2bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpTiles:
+  - {fileID: 11400000, guid: 2522b9e6eb207c64a8ca68a38e48e836, type: 2}
 --- !u!1 &1415744318
 GameObject:
   m_ObjectHideFlags: 0
