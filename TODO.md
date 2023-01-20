@@ -24,7 +24,6 @@
 Level select icons
 Game won powerups - I might not do this
 Tutorial
-Move code into game scene and keep level scene as just a tilemap with no code
 
 ### Powerups
 
@@ -52,6 +51,7 @@ Spawning tiles animation - add rotation
 Add tile switching animation
 Fix bug where you get an error trying to switch with no tile
 Fix bug where powerups can match
+Fix bug where you can show indicator off screen (If I can fix this I think I can move level background back to game scene if I want)
 
 #### Obstacles
 
