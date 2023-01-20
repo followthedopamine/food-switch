@@ -10,7 +10,8 @@ public class CrackedBoulder : MonoBehaviour {
   [SerializeField] private GameTile crackedBoulderTile;
 
   private void Start() {
-    levelTilemap = gameObject.GetComponent<Tilemap>();
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelTilemap = levelObject.GetComponent<Tilemap>();
   }
 
   private Match CheckMatchForSurroundingBoulders(Match match) {

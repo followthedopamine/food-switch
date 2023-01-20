@@ -20,9 +20,10 @@ public class CheckMatches : MonoBehaviour {
 
 
   void Start() {
-    levelTilemap = gameObject.GetComponent<Tilemap>();
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelTilemap = levelObject.GetComponent<Tilemap>();
     turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
-    levelController = gameObject.GetComponent<LevelController>();
+    levelController = levelObject.GetComponent<LevelController>();
   }
 
   // For debugging

@@ -14,7 +14,8 @@ public class PowerUps : MonoBehaviour {
 
 
   private void Start() {
-    levelTilemap = gameObject.GetComponent<Tilemap>();
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelTilemap = levelObject.GetComponent<Tilemap>();
     blackHole = gameObject.GetComponent<BlackHole>();
     lineClear = gameObject.GetComponent<LineClear>();
     freeSwitch = gameObject.GetComponent<FreeSwitch>();

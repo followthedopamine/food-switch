@@ -12,9 +12,11 @@ public class BlackHole : MonoBehaviour {
   private float rotationSpeed = 2f;
   private Score score;
   private Goal goal;
+  private GameObject levelObject;
 
   private void Start() {
-    levelTilemap = gameObject.GetComponent<Tilemap>();
+    levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelTilemap = levelObject.GetComponent<Tilemap>();
     score = gameObject.GetComponent<Score>();
     goal = gameObject.GetComponent<Goal>();
   }
@@ -24,7 +26,7 @@ public class BlackHole : MonoBehaviour {
     blackHole = Instantiate(blackHolePrefab);
     blackHole.transform.position = worldPosition;
     blackHole.transform.localScale = new Vector3(0.1f, 0.1f, 0);
-    Transform gameGrid = gameObject.transform.parent;
+    Transform gameGrid = levelObject.transform.parent;
     float numberOfTiles = 2.5f;
     levelTilemap.SetTile(position, null);
 
