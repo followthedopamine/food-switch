@@ -9,7 +9,8 @@ public class DestroyMatches : MonoBehaviour {
   [SerializeField] private GameObject destroyAnimationPrefab;
 
   void Start() {
-    levelTilemap = gameObject.GetComponent<Tilemap>();
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelTilemap = levelObject.GetComponent<Tilemap>();
   }
 
   private void PlayDestroyAnimation(Vector3Int tilePos) {

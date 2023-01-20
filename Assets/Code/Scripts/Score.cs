@@ -51,7 +51,6 @@ public class Score : MonoBehaviour {
     trophySpriteHeight = topTrophySprite.bounds.size.y;
     maskX = spriteMask.transform.position.x;
     maskY = spriteMask.transform.position.y;
-    Debug.Log(maskY);
     UpdateTrophyImage();
   }
 

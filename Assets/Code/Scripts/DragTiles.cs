@@ -25,6 +25,7 @@ public class DragTiles : MonoBehaviour {
   private Vector3Int bottomLeft;
 
   void Start() {
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
     levelTilemap = gameObject.GetComponent<Tilemap>();
     cam = Camera.main;
     levelController = gameObject.GetComponent<LevelController>();
@@ -36,8 +37,6 @@ public class DragTiles : MonoBehaviour {
     tileSwitchHeight = tileSwitchIndicatorSprite.bounds.size.y;
     topRight = levelController.level.grid[levelController.level.height - 1, levelController.level.width - 1];
     bottomLeft = levelController.level.grid[0, 0];
-    Debug.Log(bottomLeft);
-    Debug.Log(topRight);
   }
 
   private void Update() {

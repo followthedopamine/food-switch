@@ -8,10 +8,12 @@ public class SpawnTiles : MonoBehaviour {
   private LevelController levelController;
   private Tilemap levelTilemap;
   private float spawnSpeed = 6f;
+  GameObject levelObject;
 
   void Start() {
-    levelController = gameObject.GetComponent<LevelController>();
-    levelTilemap = gameObject.GetComponent<Tilemap>();
+    levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelController = levelObject.GetComponent<LevelController>();
+    levelTilemap = levelObject.GetComponent<Tilemap>();
   }
 
   private GameTile GetRandomTile() {
@@ -31,7 +33,7 @@ public class SpawnTiles : MonoBehaviour {
     Vector3Int[,] grid = levelController.level.grid;
     GameObject newTile = new GameObject();
     // Match game grid scale
-    Transform gameGrid = gameObject.transform.parent;
+    Transform gameGrid = levelObject.transform.parent;
     newTile.transform.localScale = new Vector3(0.1f, 0.1f, 0);//gameGrid.localScale;
     SpriteRenderer spriteRenderer = newTile.AddComponent<SpriteRenderer>();
     spriteRenderer.sprite = tile.sprite;

@@ -9,7 +9,7 @@ public class LevelController : MonoBehaviour {
 
   public Level level;
   [SerializeField] private GameTile[] validTiles;
-  private Tilemap levelTilemap;
+  public Tilemap levelTilemap;
   private Tilemap backgroundTilemap;
   public Vector3Int tilemapOffset;
   [SerializeField] public int turnsRemaining;
@@ -35,6 +35,7 @@ public class LevelController : MonoBehaviour {
 
   void Start() {
     GameObject background = GameObject.FindGameObjectWithTag("Background");
+    GameObject gameScripts = GameObject.FindGameObjectWithTag("GameController");
     backgroundTilemap = background.GetComponent<Tilemap>();
     Vector2Int gameDimensions = GetGameDimensions();
     levelTilemap = gameObject.GetComponent<Tilemap>();
@@ -42,24 +43,18 @@ public class LevelController : MonoBehaviour {
     level.width = gameDimensions.x;
     level.height = gameDimensions.y;
     level.grid = BuildLevelGrid();
+
     turnCounter = GameObject.FindGameObjectWithTag("TurnCounter").GetComponent<TurnCounter>();
-
-    checkMatches = gameObject.GetComponent<CheckMatches>();
-
-    destroyMatches = gameObject.GetComponent<DestroyMatches>();
-    fallingTiles = gameObject.GetComponent<FallingTiles>();
-    spawnTiles = gameObject.GetComponent<SpawnTiles>();
-
-    goal = gameObject.GetComponent<Goal>();
+    checkMatches = gameScripts.GetComponent<CheckMatches>();
+    destroyMatches = gameScripts.GetComponent<DestroyMatches>();
+    fallingTiles = gameScripts.GetComponent<FallingTiles>();
+    spawnTiles = gameScripts.GetComponent<SpawnTiles>();
+    goal = gameScripts.GetComponent<Goal>();
     goalId = goal.goalId;
-
-    powerUps = gameObject.GetComponent<PowerUps>();
-
-    score = gameObject.GetComponent<Score>();
-    crackedBoulder = gameObject.GetComponent<CrackedBoulder>();
-
-    spawnPowerups = gameObject.GetComponent<SpawnPowerups>();
-
+    powerUps = gameScripts.GetComponent<PowerUps>();
+    score = gameScripts.GetComponent<Score>();
+    crackedBoulder = gameScripts.GetComponent<CrackedBoulder>();
+    spawnPowerups = gameScripts.GetComponent<SpawnPowerups>();
   }
 
   private void takeTurn() {

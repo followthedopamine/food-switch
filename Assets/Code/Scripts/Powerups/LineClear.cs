@@ -13,8 +13,9 @@ public class LineClear : MonoBehaviour {
 
 
   private void Start() {
-    levelTilemap = gameObject.GetComponent<Tilemap>();
-    levelController = gameObject.GetComponent<LevelController>();
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelTilemap = levelObject.GetComponent<Tilemap>();
+    levelController = levelObject.GetComponent<LevelController>();
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
     // topRight = levelController.level.grid[levelController.level.height - 1, levelController.level.width - 1];
     // bottomLeft = levelController.level.grid[0, 0];
@@ -26,8 +27,6 @@ public class LineClear : MonoBehaviour {
   // Display some kind of animation
 
   private bool WasTileSwitchedVertically(Vector3Int position, Vector3Int oldPosition) {
-    Debug.Log(position);
-    Debug.Log(oldPosition);
     if (position.y == oldPosition.y) return false;
     return true;
   }

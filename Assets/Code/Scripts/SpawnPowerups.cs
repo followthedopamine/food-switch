@@ -14,7 +14,6 @@ public class SpawnPowerups : MonoBehaviour {
 
   public IEnumerator SpawnPowerupsFromMatches(List<Match> matches) {
     foreach (Match match in matches) {
-      Debug.Log(match.size);
 
       if (match.size == 6) {
         int index = Random.Range(0, match.tiles.Count);

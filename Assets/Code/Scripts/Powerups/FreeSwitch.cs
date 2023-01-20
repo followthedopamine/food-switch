@@ -11,8 +11,9 @@ public class FreeSwitch : MonoBehaviour {
   private DestroyMatches destroyMatches;
 
   void Start() {
-    levelTilemap = gameObject.GetComponent<Tilemap>();
-    levelController = gameObject.GetComponent<LevelController>();
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelTilemap = levelObject.GetComponent<Tilemap>();
+    levelController = levelObject.GetComponent<LevelController>();
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
   }
 

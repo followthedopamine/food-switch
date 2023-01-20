@@ -16,11 +16,13 @@ public class FallingTiles : MonoBehaviour {
   private Tilemap levelTilemap;
   private float fallSpeed = 5.5f;
   private int falling = 0;
+  private GameObject levelObject;
 
 
   void Start() {
-    levelController = gameObject.GetComponent<LevelController>();
-    levelTilemap = gameObject.GetComponent<Tilemap>();
+    levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    levelController = levelObject.GetComponent<LevelController>();
+    levelTilemap = levelObject.GetComponent<Tilemap>();
   }
 
   IEnumerator DropTile(Vector3Int current, Vector3Int target) {
@@ -29,7 +31,7 @@ public class FallingTiles : MonoBehaviour {
     GameTile tile = levelTilemap.GetTile<GameTile>(current);
     GameObject newTile = new GameObject();
     // Match game grid scale
-    Transform gameGrid = gameObject.transform.parent;
+    Transform gameGrid = levelObject.transform.parent;
     newTile.transform.localScale = gameGrid.localScale;//gameGrid.localScale;
     SpriteRenderer spriteRenderer = newTile.AddComponent<SpriteRenderer>();
     spriteRenderer.sprite = tile.sprite;

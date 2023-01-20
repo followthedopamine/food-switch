@@ -28,7 +28,6 @@ public class SceneController : MonoBehaviour {
     PopulateLevelList();
     LoadAudioCore();
     LoadUI();
-    LoadGame();
   }
 
   void LoadAudioCore() {
@@ -51,8 +50,17 @@ public class SceneController : MonoBehaviour {
     SceneManager.LoadScene("Game", LoadSceneMode.Additive);
   }
 
-  void LoadLevel(int levelNumber) {
+  void ForceLoadGame() {
+    SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+  }
 
+  void UnloadGame() {
+    if (SceneManager.GetSceneByName("Game").isLoaded) SceneManager.UnloadSceneAsync("Game");
+  }
+
+  void ReloadGame() {
+    UnloadGame();
+    ForceLoadGame();
   }
 
   void PopulateLevelList() {
@@ -60,7 +68,6 @@ public class SceneController : MonoBehaviour {
       if (scene.enabled) {
         if (Directory.GetParent(scene.path).Name == "Levels") {
           levelList.Add(Path.GetFileNameWithoutExtension(scene.path));
-          Debug.Log(Path.GetFileNameWithoutExtension(scene.path));
         }
       }
     }
@@ -103,17 +110,20 @@ public class SceneController : MonoBehaviour {
   public void LoadFirstLevel() {
     // TODO
     SceneManager.LoadScene(firstLevel, LoadSceneMode.Additive);
+    LoadGame();
   }
 
   public void LoadNextLevel() {
     UnloadCurrentLevel();
     string nextLevel = GetNextLevel();
     SceneManager.LoadScene(nextLevel, LoadSceneMode.Additive);
+    ReloadGame();
   }
 
   public void ReloadCurrentLevel() {
     string currentLevel = GetCurrentLevel();
     SceneManager.UnloadSceneAsync(currentLevel);
     SceneManager.LoadScene(currentLevel, LoadSceneMode.Additive);
+    ReloadGame();
   }
 }
