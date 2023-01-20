@@ -29,7 +29,6 @@ Spawn powerups from suitably sized matches
 ### Powerups
 
 - Line clear powerup (animation)
-- Free switch
 
 ### Sounds
 
