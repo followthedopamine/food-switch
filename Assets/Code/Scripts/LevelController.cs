@@ -8,7 +8,7 @@ using TMPro;
 public class LevelController : MonoBehaviour {
 
   public Level level;
-  [SerializeField] private GameTile[] validTiles;
+  [SerializeField] public GameTile[] spawnableTiles;
   public Tilemap levelTilemap;
   private Tilemap backgroundTilemap;
   public Vector3Int tilemapOffset;

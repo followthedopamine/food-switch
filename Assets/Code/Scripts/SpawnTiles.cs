@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class SpawnTiles : MonoBehaviour {
-  [SerializeField] private GameTile[] spawnableTiles;
+  private GameTile[] spawnableTiles;
   private LevelController levelController;
   private Tilemap levelTilemap;
   private float spawnSpeed = 6f;
@@ -14,6 +14,7 @@ public class SpawnTiles : MonoBehaviour {
     levelObject = GameObject.FindGameObjectWithTag("LevelController");
     levelController = levelObject.GetComponent<LevelController>();
     levelTilemap = levelObject.GetComponent<Tilemap>();
+    spawnableTiles = levelController.spawnableTiles;
   }
 
   private GameTile GetRandomTile() {
