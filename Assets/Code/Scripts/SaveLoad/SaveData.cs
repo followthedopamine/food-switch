@@ -19,6 +19,7 @@ public static class SaveData {
 
   public static void LoadPlayerData() {
     if (File.Exists(path)) {
+      Debug.Log("Save file found in " + path);
       BinaryFormatter formatter = new BinaryFormatter();
       FileStream stream = new FileStream(path, FileMode.Open);
 
