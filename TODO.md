@@ -27,7 +27,7 @@ Tutorial
 Make level select work with game state
 Display trophy completed on level select screen
 Move goal code/score threshhold to level
-Line powerup should complete goal
+Line powerup should complete goal and give score
 Scene not unloading properly on returning to main menu
 
 ### Powerups
