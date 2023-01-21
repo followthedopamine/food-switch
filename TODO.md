@@ -25,6 +25,7 @@ Level select icons
 Game won powerups - I might not do this
 Tutorial
 Game state saving
+Move goal code/score threshhold to level
 
 ### Powerups
 
