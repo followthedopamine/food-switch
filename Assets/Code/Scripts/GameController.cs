@@ -7,6 +7,10 @@ using UnityEngine.Tilemaps;
 public class GameController : MonoBehaviour {
   public static GameController Instance;
 
+  public int tutorialProgress = 0;
+  public int[] levelCompletion = new int[20];
+  public int currentLevel;
+
   void Awake() {
     if (Instance != null) {
       if (Instance != this) {
@@ -14,8 +18,12 @@ public class GameController : MonoBehaviour {
       }
     } else {
       Instance = this;
+      SaveData.LoadPlayerData();
     }
   }
 
-
+  public void UpdateCurrentLevelCompletion(int trophyLevel) {
+    levelCompletion[currentLevel] = trophyLevel;
+    SaveData.SavePlayerData();
+  }
 }

@@ -24,7 +24,8 @@
 Level select icons
 Game won powerups - I might not do this
 Tutorial
-Game state saving
+Make level select work with game state
+Make trophy progress actually be saved instead of just 4 every time
 Move goal code/score threshhold to level
 
 ### Powerups

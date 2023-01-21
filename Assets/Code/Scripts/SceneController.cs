@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour {
 
   public List<string> levelList { get; private set; } = new List<string>();
 
-  private string firstLevel = "0000_Test";
+  private string firstLevel = "0001_Small";
   private string defaultLevel = "";
 
   void Awake() {
@@ -92,6 +92,10 @@ public class SceneController : MonoBehaviour {
     return defaultLevel;
   }
 
+  int GetLevelIndex(string levelName) {
+    return levelList.FindIndex(a => a == levelName);
+  }
+
   string GetNextLevel() {
     string currentLevel = GetCurrentLevel();
     int currentLevelIndex = levelList.IndexOf(currentLevel);
@@ -111,6 +115,7 @@ public class SceneController : MonoBehaviour {
     // TODO
     SceneManager.LoadScene(firstLevel, LoadSceneMode.Additive);
     LoadGame();
+    GameController.Instance.currentLevel = 0;
   }
 
   public void LoadNextLevel() {
@@ -118,6 +123,7 @@ public class SceneController : MonoBehaviour {
     string nextLevel = GetNextLevel();
     SceneManager.LoadScene(nextLevel, LoadSceneMode.Additive);
     ReloadGame();
+    GameController.Instance.currentLevel = GetLevelIndex(nextLevel);
   }
 
   public void ReloadCurrentLevel() {
