@@ -25,8 +25,10 @@ Level select icons
 Game won powerups - I might not do this
 Tutorial
 Make level select work with game state
-Make trophy progress actually be saved instead of just 4 every time
+Display trophy completed on level select screen
 Move goal code/score threshhold to level
+Line powerup should complete goal
+Scene not unloading properly on returning to main menu
 
 ### Powerups
 

@@ -26,4 +26,8 @@ public class GameController : MonoBehaviour {
     levelCompletion[currentLevel] = trophyLevel;
     SaveData.SavePlayerData();
   }
+
+  public int GetCurrentLevelCompletion() {
+    return levelCompletion[currentLevel];
+  }
 }

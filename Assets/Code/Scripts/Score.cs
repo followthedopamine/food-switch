@@ -5,7 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Score : MonoBehaviour {
 
-  enum Trophy {
+  public enum Trophy {
     Bronze,
     Silver,
     Gold,
@@ -23,7 +23,7 @@ public class Score : MonoBehaviour {
   private SpriteRenderer topTrophySprite;
   [SerializeField] private GameObject spriteMask;
   [SerializeField] private GameObject levelUpParticlesPrefab;
-  private Trophy currentTrophy;
+  public Trophy currentTrophy;
   private float trophySpriteHeight;
   private float trophySpriteWidth;
   private float maskX;
