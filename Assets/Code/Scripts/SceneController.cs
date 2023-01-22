@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour {
 
   public List<string> levelList { get; private set; } = new List<string>();
 
-  private string firstLevel = "0001_Small";
+  private string firstLevel = "0000_Small";
   private string defaultLevel = "";
 
   void Awake() {
