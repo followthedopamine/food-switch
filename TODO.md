@@ -21,7 +21,6 @@
 - Jelly and boulder level
 - Jelly and boulder level
 
-Tutorial
 Move goal code/score threshhold to level
 Scene not unloading properly on returning to main menu
 
@@ -32,17 +31,18 @@ Scene not unloading properly on returning to main menu
 
 ### Sounds
 
-- Switch
-- Match
-- Powerups
-- Trophy level up
-- Game start
-- Game won
-- Game over
-- Level select
-- Level select move
+- Switch -- bong_001
+- Match -- drop_003
+- Trophy level up -- maximize_005
+- Game start -- switch_002
+- Game won -- question_003
+- Game over -- select_006
 
-Music
+### Music
+
+-- outdoor healing
+-- netherplace looping
+-- our mountain v003 looping
 
 ### Low prio
 
@@ -55,6 +55,7 @@ Fix bug where powerups can match
 Fix bug where you can show indicator off screen (If I can fix this I think I can move level background back to game scene if I want)
 Level select icons
 Game won powerups - I might not do this
+Tutorial
 
 #### Obstacles
 
@@ -65,3 +66,9 @@ Game won powerups - I might not do this
 - Full clear
 - Random switches
 - Something bouncy
+
+#### Sounds
+
+- Line
+- Black hole
+- Free Switch
