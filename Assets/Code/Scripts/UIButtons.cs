@@ -28,6 +28,7 @@ public class UIButtons : MonoBehaviour {
   public void LevelSelectButton() {
     UIController.Instance.HideMainMenuScreen();
     UIController.Instance.ShowLevelSelectScreen();
+
   }
 
   public void LevelButton(int level) {

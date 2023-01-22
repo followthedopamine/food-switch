@@ -21,18 +21,14 @@
 - Jelly and boulder level
 - Jelly and boulder level
 
-Level select icons
-Game won powerups - I might not do this
 Tutorial
-Make level select work with game state
-Display trophy completed on level select screen
 Move goal code/score threshhold to level
-Line powerup should complete goal and give score
 Scene not unloading properly on returning to main menu
 
 ### Powerups
 
 - Line clear powerup (animation)
+- Line powerup should complete goal and give score
 
 ### Sounds
 
@@ -57,6 +53,8 @@ Add tile switching animation
 Fix bug where you get an error trying to switch with no tile
 Fix bug where powerups can match
 Fix bug where you can show indicator off screen (If I can fix this I think I can move level background back to game scene if I want)
+Level select icons
+Game won powerups - I might not do this
 
 #### Obstacles
 
