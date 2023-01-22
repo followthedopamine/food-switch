@@ -71,6 +71,7 @@ public class SceneController : MonoBehaviour {
         }
       }
     }
+    levelList.Sort();
   }
 
   Scene[] GetLoadedScenes() {
