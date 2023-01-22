@@ -770,9 +770,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bb84d161cef1d284dab25b9297ab0a12, type: 3}
   - {fileID: 21300000, guid: ed656cd8b6d49b04a9065b4fc6507430, type: 3}
   - {fileID: 21300000, guid: 1f0148e1b76dab242b92ffb1603bbea9, type: 3}
-  trophyScores: f4010000d007000088130000
   spriteMask: {fileID: 4230971150879682120, guid: ebe87f5683e137b4fb7166753c7cc9b1, type: 3}
   levelUpParticlesPrefab: {fileID: 7496990186539958092, guid: 8754796a4e1b02d4ba3843aa69b8b5b7, type: 3}
+  currentTrophy: 0
 --- !u!114 &940618812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -838,11 +838,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a56fdd529dfcf43808fba549fae397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnableTiles:
-  - {fileID: 11400000, guid: 01c4495fa2936844fbd75c1d4e7b022a, type: 2}
-  - {fileID: 11400000, guid: 6d09631d45951034bad8fa905826829e, type: 2}
-  - {fileID: 11400000, guid: cf7e046571f9c7048aba39bf13e385fe, type: 2}
-  - {fileID: 11400000, guid: 83ea1241b9b9a864a937c4eae691b3bf, type: 2}
 --- !u!114 &940618817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,7 +875,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b06e4b504b29294083cc4376f987ec9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  validTiles: []
+  spawnableTiles: []
+  trophyScores: 
+  goalTarget: 0
   levelTilemap: {fileID: 0}
   tilemapOffset: {x: 0, y: 0, z: 0}
   turnsRemaining: 10
@@ -966,7 +963,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 1
+  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1029821856
 Transform:
@@ -1000,7 +997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1394165408
 Transform:
   m_ObjectHideFlags: 0
