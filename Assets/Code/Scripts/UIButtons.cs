@@ -25,4 +25,13 @@ public class UIButtons : MonoBehaviour {
     UIController.Instance.ShowCreditsScreen();
   }
 
+  public void LevelSelectButton() {
+    UIController.Instance.HideMainMenuScreen();
+    UIController.Instance.ShowLevelSelectScreen();
+  }
+
+  public void LevelButton(int level) {
+    SceneController.Instance.LoadLevelByIndex(level);
+    UIController.Instance.HideLevelSelectScreen();
+  }
 }

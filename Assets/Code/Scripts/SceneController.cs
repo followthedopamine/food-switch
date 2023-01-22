@@ -126,6 +126,13 @@ public class SceneController : MonoBehaviour {
     GameController.Instance.currentLevel = GetLevelIndex(nextLevel);
   }
 
+  public void LoadLevelByIndex(int index) {
+    UnloadCurrentLevel();
+    SceneManager.LoadScene(levelList[index], LoadSceneMode.Additive);
+    ReloadGame();
+    GameController.Instance.currentLevel = index;
+  }
+
   public void ReloadCurrentLevel() {
     string currentLevel = GetCurrentLevel();
     SceneManager.UnloadSceneAsync(currentLevel);
