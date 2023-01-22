@@ -21,9 +21,7 @@
 - Jelly and boulder level
 - Jelly and boulder level
 
-Move goal code/score threshhold to level
 Scene not unloading properly on returning to main menu
-Bug: For some reason you instantly get a bunch of points on level start
 
 ### Powerups
 
@@ -57,6 +55,7 @@ Fix bug where you can show indicator off screen (If I can fix this I think I can
 Level select icons
 Game won powerups - I might not do this
 Tutorial
+Bug: For some reason you instantly get a bunch of points on level start
 
 #### Obstacles
 
