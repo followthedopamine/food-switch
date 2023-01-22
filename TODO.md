@@ -23,6 +23,8 @@
 
 Move goal code/score threshhold to level
 Scene not unloading properly on returning to main menu
+Bug: For some reason you instantly get a bunch of points on level start
+Bug: I don't think the sprite mask on the trophy is working
 
 ### Powerups
 
