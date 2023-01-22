@@ -7,11 +7,13 @@ using TMPro;
 
 public class LevelController : MonoBehaviour {
 
-  public Level level;
+  [HideInInspector] public Level level;
   [SerializeField] public GameTile[] spawnableTiles;
-  public Tilemap levelTilemap;
+  [SerializeField][Tooltip("In order bronze, silver, gold")] public int[] trophyScores;
+  [SerializeField] public int goalTarget;
+  [HideInInspector] public Tilemap levelTilemap;
   private Tilemap backgroundTilemap;
-  public Vector3Int tilemapOffset;
+  [HideInInspector] public Vector3Int tilemapOffset;
   [SerializeField] public int turnsRemaining;
   private TurnCounter turnCounter;
   private int goalId;

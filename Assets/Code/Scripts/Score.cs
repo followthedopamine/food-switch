@@ -16,7 +16,7 @@ public class Score : MonoBehaviour {
   private Tilemap scoreTilemap;
   private Vector3Int scoreTilePosition;
   [SerializeField] private Sprite[] trophyImages;
-  [SerializeField][Tooltip("In order bronze, silver, gold")] private int[] trophyScores;
+  private int[] trophyScores;
   private GameObject bottomTrophy;
   private GameObject topTrophy;
   private SpriteRenderer bottomTrophySprite;
@@ -30,6 +30,8 @@ public class Score : MonoBehaviour {
   private float maskY;
 
   void Start() {
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    trophyScores = levelObject.GetComponent<LevelController>().trophyScores;
     if (trophyScores.Length != 3) {
       Debug.LogError("Trophy score length should be 3");
     }

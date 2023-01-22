@@ -14,6 +14,8 @@ public class Goal : MonoBehaviour {
   private void Start() {
     Tilemap goalTilemap = GameObject.FindGameObjectWithTag("Goal").GetComponent<Tilemap>();
     GameTile goalTile = TileUtil.GetFirstTile(goalTilemap);
+    GameObject levelObject = GameObject.FindGameObjectWithTag("LevelController");
+    goalTarget = levelObject.GetComponent<LevelController>().goalTarget;
     goalId = goalTile.id;
     goalText = GameObject.FindGameObjectWithTag("GoalText").GetComponent<GoalText>();
     goalText.UpdateText(goalCompletion, goalTarget);
