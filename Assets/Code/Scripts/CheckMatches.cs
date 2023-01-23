@@ -17,6 +17,8 @@ public class CheckMatches : MonoBehaviour {
   private LevelController levelController;
   private GoalText goalText;
   private int jellyTileOffset = 2000;
+  private int boulderId = 1000;
+  private int crackedBoulderId = 1001;
 
 
   void Start() {
@@ -78,7 +80,8 @@ public class CheckMatches : MonoBehaviour {
               }
             }
           }
-          matches.Add(match);
+          if (match.tileId != boulderId && match.tileId != crackedBoulderId)
+            matches.Add(match);
         }
       }
     }
