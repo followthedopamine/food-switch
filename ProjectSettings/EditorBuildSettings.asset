@@ -26,4 +26,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/0000_Small.unity
     guid: a8c2b7368f6e0bd40aa8478204370cb3
+  - enabled: 1
+    path: Assets/Scenes/Levels/0007_Boulder Medium.unity
+    guid: 30cf1ab28a22cb64d8d75bfffdd5c636
+  - enabled: 1
+    path: Assets/Scenes/Levels/0002_Large.unity
+    guid: 783fff8573f3add479de031a70f058ca
+  - enabled: 1
+    path: Assets/Scenes/Levels/0003_JellyMedium.unity
+    guid: 0a8bac913b4291640860412e4c4968b6
+  - enabled: 1
+    path: Assets/Scenes/Levels/0004_JellyMedium 2.unity
+    guid: 8bbd33380d2f3f74d90d88715f36088f
+  - enabled: 1
+    path: Assets/Scenes/Levels/0005_JellySmall.unity
+    guid: 4f08623e5dcbd124aa7bab0976227de0
+  - enabled: 1
+    path: Assets/Scenes/Levels/0006_Boulder Small.unity
+    guid: 9f3beb8ec08a709499cc362501e98603
   m_configObjects: {}
