@@ -16,7 +16,6 @@
 
 - Score doesn't reset on reloading level ( I think this is fixed )
 - Bug with line clear powerup and jelly tiles that soft locks game
-- Line clear doesn't clear all the way to the top
 - Next level button doesn't work
 - Shouldn't restart song if song is already playing
 - Game can keep playing after game won screen if you make 2 moves
@@ -36,7 +35,6 @@ Fix bug where you can show indicator off screen (If I can fix this I think I can
 Level select icons
 Game won powerups - I might not do this
 Tutorial
-Bug: For some reason you instantly get a bunch of points on level start
 
 - Options menu should play sound effect on adjusting sfx slider
 
