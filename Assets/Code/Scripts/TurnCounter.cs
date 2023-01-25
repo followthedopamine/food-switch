@@ -10,6 +10,7 @@ public class TurnCounter : MonoBehaviour {
   void Start() {
     turnsText = gameObject.GetComponent<TMP_Text>();
     levelController = GameObject.FindGameObjectWithTag("LevelController").GetComponent<LevelController>();
+    updateText(levelController.turnsRemaining);
   }
 
   public void updateText(int turnsRemaining) {
