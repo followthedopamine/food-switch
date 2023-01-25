@@ -33,8 +33,11 @@ public class SoundController : MonoBehaviour {
   }
 
   public void PlayRandomMusicTrack() {
-    musicSource.clip = musicTracks[Random.Range(0, musicTracks.Length)];
-    musicSource.Play();
+    AudioClip trackToPlay = musicTracks[Random.Range(0, musicTracks.Length)];
+    if (trackToPlay != musicSource.clip) {
+      musicSource.clip = trackToPlay;
+      musicSource.Play();
+    }
   }
 
   private void PlayClipAtPointWithVolume(AudioClip sound, float volume) {

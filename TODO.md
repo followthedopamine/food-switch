@@ -1,29 +1,7 @@
 ## High prio
 
-### Level design
-
-- Plain level (switching tutorial) (powerups tutorial?)
-- Plain level
-- Plain level (none of the initial tiles match the goal)
-- Jelly level (jelly tutorial)
-- Jelly level
-- Jelly level
-- Jelly level
-- Jelly level (none of the initial tiles match the jelly goal)
-- Boulder level (boulder tutorial)
-- Boulder level
-- Boulder level
-- Boulder level
-- Boulder level
-- Jelly and boulder level
-- Jelly and boulder level
-- Jelly and boulder level
-- Jelly and boulder level
-- Jelly and boulder level
-
-Scene not unloading properly on returning to main menu
-PlayerPrefs for audio volumes
-Options menu
+- PlayerPrefs for audio volumes
+- Options menu
 
 ### Powerups
 
@@ -32,18 +10,7 @@ Options menu
 
 ### Sounds
 
-- Switch -- bong_001
-- Match -- drop_003
 - Trophy level up -- maximize_005 (This one kinda sucks)
-- Game start -- switch_002
-- Game won -- question_003
-- Game over -- select_006
-
-### Music
-
--- outdoor healing
--- netherplace looping
--- our mountain v003 looping
 
 ### Fixes
 
@@ -52,6 +19,10 @@ Options menu
 - Bug with line clear powerup and jelly tiles that soft locks game
 - Line clear doesn't clear all the way to the top
 - Next level button doesn't work
+- Shouldn't restart song if song is already playing
+- Game can keep playing after game won screen if you make 2 moves
+- Maybe you shouldn't be able to make moves while loop is running
+- Scene not unloading properly on returning to main menu
 
 ### Low prio
 

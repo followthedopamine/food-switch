@@ -8,6 +8,7 @@ public class UIButtons : MonoBehaviour {
     // Load level scene
     SceneController.Instance.LoadFirstLevel();
     SoundController.Instance.PlayGameStartSound();
+    SoundController.Instance.PlayRandomMusicTrack();
   }
 
   public void ReloadButton() {
@@ -36,5 +37,6 @@ public class UIButtons : MonoBehaviour {
     SceneController.Instance.LoadLevelByIndex(level);
     UIController.Instance.HideLevelSelectScreen();
     SoundController.Instance.PlayGameStartSound();
+    SoundController.Instance.PlayRandomMusicTrack();
   }
 }
