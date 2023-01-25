@@ -27,6 +27,13 @@ public class UIButtons : MonoBehaviour {
     UIController.Instance.ShowCreditsScreen();
   }
 
+  public void NextLevelButton() {
+    SceneController.Instance.LoadNextLevel();
+    UIController.Instance.HideAllScreens();
+    SoundController.Instance.PlayGameStartSound();
+    SoundController.Instance.PlayRandomMusicTrack();
+  }
+
   public void LevelSelectButton() {
     UIController.Instance.HideMainMenuScreen();
     UIController.Instance.ShowLevelSelectScreen();
