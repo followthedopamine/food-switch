@@ -46,7 +46,7 @@ public class SoundController : MonoBehaviour {
   }
 
   public void PlayGameWonSound() {
-    PlayClipAtPointWithVolume(gameWonSound, sfxVolumePercentage);
+    PlayClipAtPointWithVolume(gameWonSound, sfxVolumePercentage - 0.4f);
   }
 
   public void PlayGameOverSound() {

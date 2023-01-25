@@ -33,7 +33,7 @@ PlayerPrefs for audio volumes
 
 - Switch -- bong_001
 - Match -- drop_003
-- Trophy level up -- maximize_005
+- Trophy level up -- maximize_005 (This one kinda sucks)
 - Game start -- switch_002
 - Game won -- question_003
 - Game over -- select_006

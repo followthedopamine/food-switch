@@ -102,6 +102,7 @@ public class LevelController : MonoBehaviour {
       // TODO: Spawn powerups and loop again
       // Then display game won screen
       UIController.Instance.ShowGameWonScreen();
+      SoundController.Instance.PlayGameWonSound();
       if ((int)score.currentTrophy + 1 > GameController.Instance.GetCurrentLevelCompletion()) {
         GameController.Instance.UpdateCurrentLevelCompletion((int)score.currentTrophy + 1);
       }
@@ -110,6 +111,7 @@ public class LevelController : MonoBehaviour {
     if (turnsRemaining == 0 && goal.goalCompletion < goal.goalTarget) {
       // Game over
       UIController.Instance.ShowGameOverScreen();
+      SoundController.Instance.PlayGameOverSound();
     }
   }
 
