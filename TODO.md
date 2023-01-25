@@ -14,7 +14,6 @@
 
 ### Fixes
 
-- Level 2 has too many turns
 - Score doesn't reset on reloading level ( I think this is fixed )
 - Bug with line clear powerup and jelly tiles that soft locks game
 - Line clear doesn't clear all the way to the top
