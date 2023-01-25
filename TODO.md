@@ -6,7 +6,6 @@
 ### Powerups
 
 - Line clear powerup (animation)
-- Line powerup should complete goal and give score
 
 ### Sounds
 
@@ -16,7 +15,6 @@
 
 - Score doesn't reset on reloading level ( I think this is fixed )
 - Bug with line clear powerup and jelly tiles that soft locks game
-- Next level button doesn't work
 - Game can keep playing after game won screen if you make 2 moves
 - Maybe you shouldn't be able to make moves while loop is running
 - Scene not unloading properly on returning to main menu

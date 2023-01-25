@@ -9,6 +9,8 @@ public class LineClear : MonoBehaviour {
   private LevelController levelController;
   private DestroyMatches destroyMatches;
   private Tilemap levelTilemap;
+  private Goal goal;
+  private Score score;
   private int powerupOffset = 900;
 
 
@@ -17,6 +19,8 @@ public class LineClear : MonoBehaviour {
     levelTilemap = levelObject.GetComponent<Tilemap>();
     levelController = levelObject.GetComponent<LevelController>();
     destroyMatches = gameObject.GetComponent<DestroyMatches>();
+    goal = gameObject.GetComponent<Goal>();
+    score = gameObject.GetComponent<Score>();
     // topRight = levelController.level.grid[levelController.level.height - 1, levelController.level.width - 1];
     // bottomLeft = levelController.level.grid[0, 0];
 
@@ -62,9 +66,25 @@ public class LineClear : MonoBehaviour {
     List<Match> lineMatchList = new List<Match>();
     Match line = CreateLineMatch(position, WasTileSwitchedVertically(position, oldPosition));
     lineMatchList.Add(line);
+    DoScoring(line);
     destroyMatches.DestroyTiles(lineMatchList);
     levelTilemap.SetTile(position, null);
     yield return new WaitForSeconds(0.3f);
+  }
+
+  private void DoScoring(Match line) {
+    int goalCount = 0;
+    int scoreCount = 0;
+    foreach (Vector3Int tilePos in line.tiles) {
+      GameTile tile = levelTilemap.GetTile<GameTile>(tilePos);
+      if (tile.id == goal.goalId) {
+        goalCount++;
+      }
+      scoreCount++;
+    }
+    score.AddScore(scoreCount * 10);
+    goal.goalCompletion += goalCount;
+    goal.goalText.UpdateText(goal.goalCompletion, goal.goalTarget);
   }
 }
 
