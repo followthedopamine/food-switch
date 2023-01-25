@@ -46,6 +46,7 @@ public class DragTiles : MonoBehaviour {
 
   private void OnMouseDown() {
     // Should help with touch input later
+    if (levelController.isLoopRunning) return;
     SelectTileForSwitch();
     shouldDisplayTileSwitchIndicator = true;
     // Vector3 mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -53,6 +54,7 @@ public class DragTiles : MonoBehaviour {
   }
 
   private void OnMouseUp() {
+    if (levelController.isLoopRunning) return;
     SwitchWithSelectedTile();
     HideTileSwitchIndicator();
   }

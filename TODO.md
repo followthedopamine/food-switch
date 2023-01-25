@@ -2,6 +2,7 @@
 
 - PlayerPrefs for audio volumes
 - Options menu
+- Touch controls
 
 ### Powerups
 
@@ -15,8 +16,6 @@
 
 - Score doesn't reset on reloading level ( I think this is fixed )
 - Bug with line clear powerup and jelly tiles that soft locks game
-- Game can keep playing after game won screen if you make 2 moves
-- Maybe you shouldn't be able to make moves while loop is running
 - Scene not unloading properly on returning to main menu
 - Next level button might be skipping level 2 for some reason
 
@@ -32,6 +31,7 @@ Fix bug where you can show indicator off screen (If I can fix this I think I can
 Level select icons
 Game won powerups - I might not do this
 Tutorial
+Levels should unlock one at a time instead of all at once
 
 - Options menu should play sound effect on adjusting sfx slider
 

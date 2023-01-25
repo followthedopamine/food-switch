@@ -27,6 +27,7 @@ public class LevelController : MonoBehaviour {
   private Score score;
   private CrackedBoulder crackedBoulder;
   private SpawnPowerups spawnPowerups;
+  public bool isLoopRunning = false;
 
 
   public struct Level {
@@ -75,6 +76,7 @@ public class LevelController : MonoBehaviour {
   }
 
   private IEnumerator DestroyTilesLoop(Vector3Int draggedTilePosition, Vector3Int targetTilePosition) {
+    isLoopRunning = true;
     List<Match> matches = checkMatches.GetAllMatches();
     matches = checkMatches.CheckMatchShapes(matches);
     yield return powerUps.HandlePowerup(draggedTilePosition, targetTilePosition);
@@ -113,6 +115,7 @@ public class LevelController : MonoBehaviour {
       UIController.Instance.ShowGameOverScreen();
       SoundController.Instance.PlayGameOverSound();
     }
+    isLoopRunning = false;
   }
 
   private Vector2Int GetGameDimensions() {
