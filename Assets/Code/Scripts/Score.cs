@@ -12,7 +12,7 @@ public class Score : MonoBehaviour {
     None,
   }
 
-  public int currentScore { get; private set; } = 150;
+  public int currentScore { get; private set; } = 0;
   private Tilemap scoreTilemap;
   private Vector3Int scoreTilePosition;
   [SerializeField] private Sprite[] trophyImages;

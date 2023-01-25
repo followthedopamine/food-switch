@@ -45,7 +45,6 @@ Scene not unloading properly on returning to main menu
 
 ### Fixes
 
-- You start with some score on level 3
 - Goal not big enough on level 6 (The one surrounded by boulders)
 - Score doesn't reset on reloading level
 
