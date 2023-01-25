@@ -1,0 +1,60 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SoundController : MonoBehaviour {
+  public static SoundController Instance;
+  [SerializeField] private AudioClip switchSound;
+  [SerializeField] private AudioClip matchSound;
+  [SerializeField] private AudioClip trophyUpSound;
+  [SerializeField] private AudioClip gameStartSound;
+  [SerializeField] private AudioClip gameWonSound;
+  [SerializeField] private AudioClip gameOverSound;
+  private Vector3 camPos;
+  public float sfxVolumePercentage = 1f;
+
+  void Awake() {
+    if (Instance != null) {
+      if (Instance != this) {
+        Destroy(this);
+      }
+    } else {
+      Instance = this;
+    }
+  }
+
+  void Start() {
+    camPos = Camera.main.transform.position;
+    Debug.Log(camPos.z);
+  }
+
+  private void PlayClipAtPointWithVolume(AudioClip sound, float volume) {
+    float soundLog = 10;
+    Vector3 camPosAdjusted = new Vector3(camPos.x, camPos.y, camPos.z - (1.0f - volume) * soundLog);
+    AudioSource.PlayClipAtPoint(sound, camPosAdjusted);
+  }
+
+  public void PlaySwitchSound() {
+    PlayClipAtPointWithVolume(switchSound, sfxVolumePercentage);
+  }
+
+  public void PlayMatchSound() {
+    PlayClipAtPointWithVolume(matchSound, sfxVolumePercentage - 0.4f);
+  }
+
+  public void PlayTrophyUpSound() {
+    AudioSource.PlayClipAtPoint(trophyUpSound, camPos);
+  }
+
+  public void PlayGameWonSound() {
+    AudioSource.PlayClipAtPoint(gameWonSound, camPos);
+  }
+
+  public void PlayGameOverSound() {
+    AudioSource.PlayClipAtPoint(gameOverSound, camPos);
+  }
+
+  public void PlayGameStartSound() {
+    AudioSource.PlayClipAtPoint(gameStartSound, camPos);
+  }
+}

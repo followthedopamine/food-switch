@@ -768,7 +768,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6d09631d45951034bad8fa905826829e, type: 2}
   - {fileID: 11400000, guid: cf7e046571f9c7048aba39bf13e385fe, type: 2}
   trophyScores: c8000000f4010000e8030000
-  goalTarget: 8
+  goalTarget: 22
   levelTilemap: {fileID: 0}
   tilemapOffset: {x: 0, y: 0, z: 0}
   turnsRemaining: 10

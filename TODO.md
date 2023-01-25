@@ -22,6 +22,7 @@
 - Jelly and boulder level
 
 Scene not unloading properly on returning to main menu
+PlayerPrefs for audio volumes
 
 ### Powerups
 
@@ -46,7 +47,7 @@ Scene not unloading properly on returning to main menu
 ### Fixes
 
 - Goal not big enough on level 6 (The one surrounded by boulders)
-- Score doesn't reset on reloading level
+- Score doesn't reset on reloading level ( I think this is fixed )
 
 ### Low prio
 

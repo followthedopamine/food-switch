@@ -188,6 +188,7 @@ public class DragTiles : MonoBehaviour {
       levelTilemap.SetTile(draggingTo, draggedTile);
       levelTilemap.SetTile(draggingFrom, targetTile);
       levelController.OnSwitch(draggingFrom, draggingTo);
+      SoundController.Instance.PlaySwitchSound();
     }
   }
 

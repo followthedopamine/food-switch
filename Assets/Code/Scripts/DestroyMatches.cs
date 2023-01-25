@@ -22,13 +22,14 @@ public class DestroyMatches : MonoBehaviour {
   }
 
   public void DestroyTiles(List<Match> matches) {
+    bool shouldPlaySound = false;
     foreach (Match match in matches) {
-      // if (match.size >= 3) {
       foreach (Vector3Int tilePos in match.tiles) {
         levelTilemap.SetTile(tilePos, null);
         PlayDestroyAnimation(tilePos);
+        shouldPlaySound = true;
       }
-      // }
     }
+    if (shouldPlaySound) SoundController.Instance.PlayMatchSound();
   }
 }
