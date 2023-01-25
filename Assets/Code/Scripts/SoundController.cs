@@ -28,9 +28,11 @@ public class SoundController : MonoBehaviour {
   }
 
   private void PlayClipAtPointWithVolume(AudioClip sound, float volume) {
-    float soundLog = 10;
-    Vector3 camPosAdjusted = new Vector3(camPos.x, camPos.y, camPos.z - (1.0f - volume) * soundLog);
-    AudioSource.PlayClipAtPoint(sound, camPosAdjusted);
+    if (sfxVolumePercentage > 0) {
+      float soundLog = 10;
+      Vector3 camPosAdjusted = new Vector3(camPos.x, camPos.y, camPos.z - (1.0f - volume) * soundLog);
+      AudioSource.PlayClipAtPoint(sound, camPosAdjusted);
+    }
   }
 
   public void PlaySwitchSound() {
@@ -54,6 +56,6 @@ public class SoundController : MonoBehaviour {
   }
 
   public void PlayGameStartSound() {
-    PlayClipAtPointWithVolume(gameStartSound, sfxVolumePercentage);
+    PlayClipAtPointWithVolume(gameStartSound, sfxVolumePercentage - 0.5f);
   }
 }
