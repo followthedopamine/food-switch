@@ -61,6 +61,11 @@ public class CheckMatches : MonoBehaviour {
                 match.tileId = tile.id;
               }
               if (tile.id == match.tileId || tile.id == match.tileId + jellyTileOffset || tile.id == match.tileId - jellyTileOffset) {
+                if (tile.id >= jellyTileOffset) {
+                  if (match.tileId < jellyTileOffset) {
+                    match.tileId = tile.id;
+                  }
+                }
                 match.size++;
                 match.tiles.Add(tilePos);
                 visited.Add(tilePos);

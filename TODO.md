@@ -46,8 +46,9 @@ Scene not unloading properly on returning to main menu
 ### Fixes
 
 - Too many turns on level 3
-- Somehow got 9 goal completion on a level with only 6 (First jelly level) I think it's because it just takes match size and match is jelly + extra
+- Goal not big enough on level 6 (The one surrounded by boulders)
 - Number of turns doesn't update immediately
+- Score doesn't reset on reloading level
 
 ### Low prio
 
