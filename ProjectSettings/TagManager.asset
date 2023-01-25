@@ -12,6 +12,7 @@ TagManager:
   - Score
   - UI
   - SoundController
+  - Music
   layers:
   - Default
   - TransparentFX

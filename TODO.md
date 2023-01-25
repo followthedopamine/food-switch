@@ -23,6 +23,7 @@
 
 Scene not unloading properly on returning to main menu
 PlayerPrefs for audio volumes
+Options menu
 
 ### Powerups
 

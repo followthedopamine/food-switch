@@ -10,6 +10,9 @@ public class SoundController : MonoBehaviour {
   [SerializeField] private AudioClip gameStartSound;
   [SerializeField] private AudioClip gameWonSound;
   [SerializeField] private AudioClip gameOverSound;
+  [SerializeField] private AudioClip[] musicTracks;
+  [SerializeField] private GameObject musicObject;
+  private AudioSource musicSource;
   private Vector3 camPos;
   public float sfxVolumePercentage = 1f;
 
@@ -25,6 +28,13 @@ public class SoundController : MonoBehaviour {
 
   void Start() {
     camPos = Camera.main.transform.position;
+    musicSource = musicObject.GetComponent<AudioSource>();
+    PlayRandomMusicTrack();
+  }
+
+  public void PlayRandomMusicTrack() {
+    musicSource.clip = musicTracks[Random.Range(0, musicTracks.Length)];
+    musicSource.Play();
   }
 
   private void PlayClipAtPointWithVolume(AudioClip sound, float volume) {
