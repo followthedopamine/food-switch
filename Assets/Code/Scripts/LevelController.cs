@@ -98,7 +98,7 @@ public class LevelController : MonoBehaviour {
       matches = checkMatches.CheckMatchShapes(matches);
     } while (matches.Count > 0);
 
-    if (goal.goalCompletion > goal.goalTarget) {
+    if (goal.goalCompletion >= goal.goalTarget) {
       // TODO: Spawn powerups and loop again
       // Then display game won screen
       UIController.Instance.ShowGameWonScreen();
