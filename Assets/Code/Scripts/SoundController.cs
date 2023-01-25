@@ -15,6 +15,9 @@ public class SoundController : MonoBehaviour {
   private AudioSource musicSource;
   private Vector3 camPos;
   public float sfxVolumePercentage = 1f;
+  public float musicVolumePercentage = 1f;
+  private float initialMusicVolume;
+
 
   void Awake() {
     if (Instance != null) {
@@ -29,7 +32,16 @@ public class SoundController : MonoBehaviour {
   void Start() {
     camPos = Camera.main.transform.position;
     musicSource = musicObject.GetComponent<AudioSource>();
+    initialMusicVolume = musicSource.volume;
     PlayRandomMusicTrack();
+  }
+
+  public void UpdateMusicVolume(float volume) {
+    musicSource.volume = initialMusicVolume * volume;
+  }
+
+  public void UpdateSFXVolume(float volume) {
+    sfxVolumePercentage = volume;
   }
 
   public void PlayRandomMusicTrack() {

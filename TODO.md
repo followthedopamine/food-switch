@@ -22,6 +22,7 @@
 - Game can keep playing after game won screen if you make 2 moves
 - Maybe you shouldn't be able to make moves while loop is running
 - Scene not unloading properly on returning to main menu
+- Next level button might be skipping level 2 for some reason
 
 ### Low prio
 
@@ -36,6 +37,8 @@ Level select icons
 Game won powerups - I might not do this
 Tutorial
 Bug: For some reason you instantly get a bunch of points on level start
+
+- Options menu should play sound effect on adjusting sfx slider
 
 #### Obstacles
 

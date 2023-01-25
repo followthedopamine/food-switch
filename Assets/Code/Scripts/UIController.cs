@@ -9,6 +9,7 @@ public class UIController : MonoBehaviour {
   private GameObject mainMenuScreen;
   private GameObject levelSelectScreen;
   private GameObject creditsScreen;
+  private GameObject optionsScreen;
 
   void Awake() {
     if (Instance != null) {
@@ -26,6 +27,8 @@ public class UIController : MonoBehaviour {
     mainMenuScreen = gameObject.transform.Find("Main Menu").gameObject;
     levelSelectScreen = gameObject.transform.Find("Level Select").gameObject;
     creditsScreen = gameObject.transform.Find("Credits Screen").gameObject;
+    optionsScreen = gameObject.transform.Find("Options Screen").gameObject;
+
   }
 
   public void ShowGameOverScreen() {
@@ -74,11 +77,21 @@ public class UIController : MonoBehaviour {
     creditsScreen.SetActive(false);
   }
 
+  public void ShowOptionsScreen() {
+    HideAllScreens();
+    optionsScreen.SetActive(true);
+  }
+
+  public void HideOptionsScreen() {
+    optionsScreen.SetActive(false);
+  }
+
   public void HideAllScreens() {
     HideGameOverScreen();
     HideGameWonScreen();
     HideLevelSelectScreen();
     HideMainMenuScreen();
     HideCreditsScreen();
+    HideOptionsScreen();
   }
 }

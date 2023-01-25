@@ -1,8 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIButtons : MonoBehaviour {
+
+  [SerializeField] private GameObject musicSlider;
+  [SerializeField] private GameObject sfxSlider;
+
+  void Start() {
+    musicSlider.GetComponent<Slider>().value = SoundController.Instance.musicVolumePercentage;
+    sfxSlider.GetComponent<Slider>().value = SoundController.Instance.sfxVolumePercentage;
+  }
+
   public void PlayButton() {
     UIController.Instance.HideMainMenuScreen();
     // Load level scene
@@ -17,8 +27,8 @@ public class UIButtons : MonoBehaviour {
   }
 
   public void HomeButton() {
-    UIController.Instance.HideAllScreens();
     SceneController.Instance.LoadMainMenu();
+    UIController.Instance.HideAllScreens();
     UIController.Instance.ShowMainMenuScreen();
   }
 
@@ -45,5 +55,17 @@ public class UIButtons : MonoBehaviour {
     UIController.Instance.HideLevelSelectScreen();
     SoundController.Instance.PlayGameStartSound();
     SoundController.Instance.PlayRandomMusicTrack();
+  }
+
+  public void OptionsButton() {
+    UIController.Instance.ShowOptionsScreen();
+  }
+
+  public void UpdateMusicVolume(float volume) {
+    SoundController.Instance.UpdateMusicVolume(volume);
+  }
+
+  public void UpdateSFXVolume(float volume) {
+    SoundController.Instance.UpdateSFXVolume(volume);
   }
 }
