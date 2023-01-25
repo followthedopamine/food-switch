@@ -111,6 +111,7 @@ public class Score : MonoBehaviour {
     if (bottomTrophy != currentTrophy) {
       currentTrophy = bottomTrophy;
       SpawnTrophyLevelUpParticles();
+      SoundController.Instance.PlayTrophyUpSound();
     }
     if (bottomTrophy != Trophy.Gold) {
       spriteMask.transform.position = new Vector3(

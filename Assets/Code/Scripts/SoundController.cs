@@ -25,7 +25,6 @@ public class SoundController : MonoBehaviour {
 
   void Start() {
     camPos = Camera.main.transform.position;
-    Debug.Log(camPos.z);
   }
 
   private void PlayClipAtPointWithVolume(AudioClip sound, float volume) {
@@ -39,22 +38,22 @@ public class SoundController : MonoBehaviour {
   }
 
   public void PlayMatchSound() {
-    PlayClipAtPointWithVolume(matchSound, sfxVolumePercentage - 0.4f);
+    PlayClipAtPointWithVolume(matchSound, sfxVolumePercentage - 0.3f);
   }
 
   public void PlayTrophyUpSound() {
-    AudioSource.PlayClipAtPoint(trophyUpSound, camPos);
+    PlayClipAtPointWithVolume(trophyUpSound, sfxVolumePercentage - 0.4f);
   }
 
   public void PlayGameWonSound() {
-    AudioSource.PlayClipAtPoint(gameWonSound, camPos);
+    PlayClipAtPointWithVolume(gameWonSound, sfxVolumePercentage);
   }
 
   public void PlayGameOverSound() {
-    AudioSource.PlayClipAtPoint(gameOverSound, camPos);
+    PlayClipAtPointWithVolume(gameOverSound, sfxVolumePercentage);
   }
 
   public void PlayGameStartSound() {
-    AudioSource.PlayClipAtPoint(gameStartSound, camPos);
+    PlayClipAtPointWithVolume(gameStartSound, sfxVolumePercentage);
   }
 }
