@@ -37,7 +37,7 @@ public class LineClear : MonoBehaviour {
     line.tiles = new List<Vector3Int>();
     line.location = position;
     if (vertical) {
-      for (int i = 0; i < levelController.level.height - 1; i++) {
+      for (int i = 0; i < levelController.level.height; i++) {
         GameTile tile = levelTilemap.GetTile<GameTile>(levelController.level.grid[i, position.x - levelController.tilemapOffset.x]);
         if (tile == null) continue;
         if (tile.id < powerupOffset) {
