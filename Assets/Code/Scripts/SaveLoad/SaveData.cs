@@ -29,7 +29,7 @@ public static class SaveData {
       UsePlayerData(data);
 
     } else {
-      Debug.LogError("Save file not found in " + path);
+      Debug.Log("Save file not found in " + path);
       SavePlayerData();
       return;
     }

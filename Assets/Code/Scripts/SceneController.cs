@@ -9,7 +9,20 @@ public class SceneController : MonoBehaviour {
 
   public static SceneController Instance;
 
-  public List<string> levelList { get; private set; } = new List<string>();
+  //public List<string> levelList { get; private set; } = new List<string>();
+
+  public List<string> levelList = new List<string>() {
+    "0000_Small",
+    "0001_Medium",
+    "0002_Large",
+    "0003_JellyMedium",
+    "0004_JellyMedium 2",
+    "0005_JellySmall",
+    "0006_Boulder Small",
+    "0007_Boulder Medium",
+    "0008_Boulder Medium 1",
+    "0009_BJ Large",
+  };
 
   private string firstLevel = "0000_Small";
   private string defaultLevel = "";
@@ -64,13 +77,13 @@ public class SceneController : MonoBehaviour {
   }
 
   void PopulateLevelList() {
-    foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes) {
-      if (scene.enabled) {
-        if (Directory.GetParent(scene.path).Name == "Levels") {
-          levelList.Add(Path.GetFileNameWithoutExtension(scene.path));
-        }
-      }
-    }
+    // foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes) {
+    //   if (scene.enabled) {
+    //     if (Directory.GetParent(scene.path).Name == "Levels") {
+    //       levelList.Add(Path.GetFileNameWithoutExtension(scene.path));
+    //     }
+    //   }
+    // }
     levelList.Sort();
   }
 

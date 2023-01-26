@@ -3,6 +3,8 @@
 - PlayerPrefs for audio volumes
 - Options menu
 - Touch controls
+- Change title
+- Add backgrounds to UI
 
 ### Powerups
 
@@ -18,6 +20,8 @@
 - Bug with line clear powerup and jelly tiles that soft locks game
 - Scene not unloading properly on returning to main menu
 - Next level button might be skipping level 2 for some reason
+- If you hit play after playing a level it breaks
+- Move the UI down for the stupid iphone bar thing
 
 ### Low prio
 
@@ -34,6 +38,8 @@ Tutorial
 Levels should unlock one at a time instead of all at once
 
 - Options menu should play sound effect on adjusting sfx slider
+
+"I completed all the lvls 1, 3 to 8.😎💖 Lvls 2, 9 and 10 don't work for me. Also lvl 6 I completed it but its showing as uncomplicated.👀"
 
 #### Obstacles
 
