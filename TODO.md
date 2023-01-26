@@ -22,7 +22,6 @@
 - Next level button might be skipping level 2 for some reason
 - If you hit play after playing a level it breaks
 - Move the UI down for the stupid iphone bar thing
-- "I completed all the lvls 1, 3 to 8. Lvls 2, 9 and 10 don't work for me. Also lvl 6 I completed it but its showing as uncomplicated."
 - The UI is scaled weird on mobile
 
 ### Low prio
