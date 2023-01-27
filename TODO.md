@@ -24,6 +24,8 @@
 - Move the UI down for the stupid iphone bar thing
 - The UI is scaled weird on mobile
 - Apples and jalapenos frozen too ez
+- Sometimes food can spawn on top of other food and powerups too
+- Hitting next level on the last level breaks it
 
 ### Low prio
 
@@ -39,6 +41,9 @@ Game won powerups - I might not do this
 Tutorial
 Levels should unlock one at a time instead of all at once
 Restart button / back to main menu button in menu
+Powerups should not interact with each other
+Level 3 easier than level 2
+Display the level number
 
 - Options menu should play sound effect on adjusting sfx slider
 
