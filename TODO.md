@@ -21,8 +21,6 @@
 - Scene not unloading properly on returning to main menu
 - Next level button might be skipping level 2 for some reason
 - If you hit play after playing a level it breaks
-- Move the UI down for the stupid iphone bar thing
-- The UI is scaled weird on mobile
 - Apples and jalapenos frozen too ez
 - Sometimes food can spawn on top of other food and powerups too
 
