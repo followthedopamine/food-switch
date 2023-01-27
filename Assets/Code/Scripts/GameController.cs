@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
 
   public int tutorialProgress = 0;
   public int[] levelCompletion = new int[20];
-  public int currentLevel;
+  public int currentLevel = -1;
 
   void Awake() {
     if (Instance != null) {
