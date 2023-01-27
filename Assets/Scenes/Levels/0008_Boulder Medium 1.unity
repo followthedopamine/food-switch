@@ -890,10 +890,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5bf96c2facac3c469d35b1d1a299ab8, type: 2}
   - {fileID: 11400000, guid: ba816d54d7859434aa8721c7860cafae, type: 2}
   trophyScores: f4010000e8030000d0070000
-  goalTarget: 40
+  goalTarget: 20
   levelTilemap: {fileID: 0}
   tilemapOffset: {x: 0, y: 0, z: 0}
   turnsRemaining: 20
+  isLoopRunning: 0
 --- !u!114 &16377992
 MonoBehaviour:
   m_ObjectHideFlags: 0
