@@ -20,7 +20,6 @@
 - Bug with line clear powerup and jelly tiles that soft locks game
 - Scene not unloading properly on returning to main menu
 - Next level button might be skipping level 2 for some reason
-- If you hit play after playing a level it breaks
 - Apples and jalapenos frozen too ez
 - Sometimes food can spawn on top of other food and powerups too
 

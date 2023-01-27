@@ -126,9 +126,8 @@ public class SceneController : MonoBehaviour {
   }
 
   public void LoadFirstLevel() {
-    // TODO
     SceneManager.LoadScene(firstLevel, LoadSceneMode.Additive);
-    LoadGame();
+    ReloadGame();
     GameController.Instance.currentLevel = GetLevelIndex(firstLevel);
   }
 
