@@ -95,6 +95,7 @@ public class LevelController : MonoBehaviour {
       yield return new WaitForSeconds(0.3f); // TODO: Switch to waiting for animation length
       yield return StartCoroutine(fallingTiles.CheckTiles());
       spawnTiles.SpawnRandomTilesToFill();
+      VerifyLevelTiles();
       yield return new WaitForSeconds(0.3f);
       matches = checkMatches.GetAllMatches();
       matches = checkMatches.CheckMatchShapes(matches);
@@ -138,6 +139,16 @@ public class LevelController : MonoBehaviour {
       }
     }
     return grid;
+  }
+
+  // Attempt to fix a bug where multiple tiles can spawn in one slot
+  private void VerifyLevelTiles() {
+    foreach (Vector3Int position in levelTilemap.cellBounds.allPositionsWithin) {
+      if (levelTilemap.HasTile(position)) {
+        GameTile tile = levelTilemap.GetTile<GameTile>(position);
+        levelTilemap.SetTile(position, tile);
+      }
+    }
   }
 }
 
