@@ -1,8 +1,6 @@
 ## High prio
 
 - PlayerPrefs for audio volumes
-- Options menu
-- Touch controls
 - Change title
 - Add backgrounds to UI
 - Set up play store page
@@ -12,28 +10,16 @@
 - Line clear powerup (animation)
 - Should be a smoke puff for the lightning square
 
-### Sounds
-
-- Trophy level up -- maximize_005 (This one kinda sucks)
-
 ### Fixes
 
 - Bug with line clear powerup and jelly tiles that soft locks game
 - Apples and jalapenos frozen too ez
-
-### Things that I think are fixed but I'm not sure about
-
-- Score doesn't reset on reloading level ( I think this is fixed )
-- Scene not unloading properly on returning to main menu
-- Sometimes food can spawn on top of other food and powerups too
-- Fix bug where you get an error trying to switch with no tile
 
 ### Low prio
 
 - Lives
 - Watch ads for lives
 - Spawning tiles animation - add rotation
-- Add tile switching animation
 - Fix bug where powerups can match
 - Fix bug where you can show indicator off screen (If I can fix this I think I can move level background back to game scene if I want)
 - Game won powerups - I might not do this
@@ -49,18 +35,24 @@
 
 - Key door
 
-#### Powerups
+##### Extremely low prio
 
-- Full clear
-- Random switches
+- Level select icons
+- Add tile switching animation
+
+##### Powerups
+
 - Something bouncy
 
-#### Sounds
+##### Sounds
 
 - Line
 - Black hole
 - Free Switch
 
-##### Extremely low prio
+##### Things that I think are fixed but I'm not sure about
 
-- Level select icons
+- Score doesn't reset on reloading level ( I think this is fixed )
+- Scene not unloading properly on returning to main menu
+- Sometimes food can spawn on top of other food and powerups too
+- Fix bug where you get an error trying to switch with no tile
