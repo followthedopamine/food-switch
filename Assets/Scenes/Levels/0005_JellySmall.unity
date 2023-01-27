@@ -773,7 +773,8 @@ MonoBehaviour:
   goalTarget: 8
   levelTilemap: {fileID: 0}
   tilemapOffset: {x: 0, y: 0, z: 0}
-  turnsRemaining: 10
+  turnsRemaining: 13
+  isLoopRunning: 0
 --- !u!114 &16377992
 MonoBehaviour:
   m_ObjectHideFlags: 0

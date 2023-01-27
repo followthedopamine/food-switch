@@ -23,6 +23,8 @@
 - If you hit play after playing a level it breaks
 - Move the UI down for the stupid iphone bar thing
 - The UI is scaled weird on mobile
+- Apples and jalapenos frozen too ez
+- Level 6 too hard
 
 ### Low prio
 
