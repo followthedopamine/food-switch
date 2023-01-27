@@ -94,7 +94,7 @@ public class CameraViewportHandler : MonoBehaviour {
   private void Awake() {
     camera = GetComponent<Camera>();
     Instance = this;
-    if (camera.aspect > 0.46f) {
+    if (camera.aspect > 0.48f) {
       UnitsSize = 10;
     }
     ComputeResolution();
