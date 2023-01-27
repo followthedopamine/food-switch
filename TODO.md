@@ -5,6 +5,7 @@
 - Touch controls
 - Change title
 - Add backgrounds to UI
+- Set up play store page
 
 ### Powerups
 
