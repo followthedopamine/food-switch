@@ -38,6 +38,7 @@ Level select icons
 Game won powerups - I might not do this
 Tutorial
 Levels should unlock one at a time instead of all at once
+Restart button / back to main menu button in menu
 
 - Options menu should play sound effect on adjusting sfx slider
 
