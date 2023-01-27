@@ -25,7 +25,6 @@
 - The UI is scaled weird on mobile
 - Apples and jalapenos frozen too ez
 - Sometimes food can spawn on top of other food and powerups too
-- Hitting next level on the last level breaks it
 
 ### Low prio
 

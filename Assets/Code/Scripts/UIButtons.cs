@@ -7,10 +7,23 @@ public class UIButtons : MonoBehaviour {
 
   [SerializeField] private GameObject musicSlider;
   [SerializeField] private GameObject sfxSlider;
+  [SerializeField] private GameObject nextLevelButton;
+  private Button nextLevelButtonComponent;
+
+
 
   void Start() {
     musicSlider.GetComponent<Slider>().value = SoundController.Instance.musicVolumePercentage;
     sfxSlider.GetComponent<Slider>().value = SoundController.Instance.sfxVolumePercentage;
+
+  }
+
+  // TODO: Move get component out of this function (it doesn't work in start for some reason)
+  void Update() {
+    if (GameController.Instance.currentLevel == SceneController.Instance.levelList.Count - 1) {
+      nextLevelButtonComponent = nextLevelButton.GetComponent<Button>();
+      nextLevelButtonComponent.interactable = false;
+    }
   }
 
   public void PlayButton() {

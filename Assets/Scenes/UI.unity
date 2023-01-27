@@ -1557,6 +1557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSlider: {fileID: 2036566707}
   sfxSlider: {fileID: 1248436635}
+  nextLevelButton: {fileID: 740192209}
 --- !u!1 &555328049
 GameObject:
   m_ObjectHideFlags: 0
