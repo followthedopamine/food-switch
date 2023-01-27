@@ -893,7 +893,7 @@ MonoBehaviour:
   goalTarget: 20
   levelTilemap: {fileID: 0}
   tilemapOffset: {x: 0, y: 0, z: 0}
-  turnsRemaining: 20
+  turnsRemaining: 30
   isLoopRunning: 0
 --- !u!114 &16377992
 MonoBehaviour:
