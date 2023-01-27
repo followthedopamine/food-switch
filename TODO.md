@@ -10,6 +10,7 @@
 ### Powerups
 
 - Line clear powerup (animation)
+- Should be a smoke puff for the lightning square
 
 ### Sounds
 
