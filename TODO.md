@@ -16,11 +16,13 @@
 
 ### Fixes
 
-- Score doesn't reset on reloading level ( I think this is fixed )
 - Bug with line clear powerup and jelly tiles that soft locks game
-- Scene not unloading properly on returning to main menu
-- Next level button might be skipping level 2 for some reason
 - Apples and jalapenos frozen too ez
+
+### Things that I think are fixed but I'm not sure about
+
+- Score doesn't reset on reloading level ( I think this is fixed )
+- Scene not unloading properly on returning to main menu
 - Sometimes food can spawn on top of other food and powerups too
 
 ### Low prio
