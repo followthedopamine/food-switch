@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Title
+  m_text: Banquet Blitz
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb982f47984b2f54eac7bb6521311522, type: 2}
   m_sharedMaterial: {fileID: -1974422496043649634, guid: bb982f47984b2f54eac7bb6521311522, type: 2}
