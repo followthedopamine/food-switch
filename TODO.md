@@ -2,7 +2,6 @@
 
 - PlayerPrefs for audio volumes
 - Add backgrounds to UI
-- Set up play store page
 
 ### Powerups
 
