@@ -2,6 +2,7 @@
 
 - PlayerPrefs for audio volumes
 - Add backgrounds to UI
+- Access menu from in game
 
 ### Powerups
 
@@ -11,7 +12,6 @@
 ### Fixes
 
 - Bug with line clear powerup and jelly tiles that soft locks game
-- Apples and jalapenos frozen too ez
 
 ### Low prio
 
