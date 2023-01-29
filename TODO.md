@@ -1,7 +1,6 @@
 ## High prio
 
 - PlayerPrefs for audio volumes
-- Change title
 - Add backgrounds to UI
 - Set up play store page
 
