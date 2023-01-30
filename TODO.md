@@ -3,6 +3,7 @@
 - PlayerPrefs for audio volumes
 - Add backgrounds to UI
 - Access menu from in game
+- Script to make menu button clickable
 
 ### Powerups
 
