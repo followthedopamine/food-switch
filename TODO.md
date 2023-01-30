@@ -3,7 +3,8 @@
 - PlayerPrefs for audio volumes
 - Add backgrounds to UI
 - Access menu from in game
-- Script to make menu button clickable
+- In game menu might need to disable click to drag
+- Exit in game menu button needs to change
 
 ### Powerups
 
