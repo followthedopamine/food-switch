@@ -5,16 +5,18 @@ using UnityEngine.UI;
 
 public class UIButtons : MonoBehaviour {
 
-  [SerializeField] private GameObject musicSlider;
-  [SerializeField] private GameObject sfxSlider;
+  [SerializeField] private GameObject[] musicSlider;
+  [SerializeField] private GameObject[] sfxSlider;
   [SerializeField] private GameObject nextLevelButton;
   private Button nextLevelButtonComponent;
 
 
 
   void Start() {
-    musicSlider.GetComponent<Slider>().value = SoundController.Instance.musicVolumePercentage;
-    sfxSlider.GetComponent<Slider>().value = SoundController.Instance.sfxVolumePercentage;
+    for (int i = 0; i < musicSlider.Length; i++) {
+      musicSlider[i].GetComponent<Slider>().value = SoundController.Instance.musicVolumePercentage;
+      sfxSlider[i].GetComponent<Slider>().value = SoundController.Instance.sfxVolumePercentage;
+    }
   }
 
   // TODO: Move get component out of this function (it doesn't work in start for some reason)
@@ -59,7 +61,6 @@ public class UIButtons : MonoBehaviour {
   public void LevelSelectButton() {
     UIController.Instance.HideMainMenuScreen();
     UIController.Instance.ShowLevelSelectScreen();
-
   }
 
   public void LevelButton(int level) {
@@ -71,6 +72,10 @@ public class UIButtons : MonoBehaviour {
 
   public void OptionsButton() {
     UIController.Instance.ShowOptionsScreen();
+  }
+
+  public void ExitGameMenuButton() {
+    UIController.Instance.HideInGameMenu();
   }
 
   public void UpdateMusicVolume(float volume) {

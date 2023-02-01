@@ -1938,8 +1938,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f935d56bf491e9c4cb801e8bfbd8bc46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 2036566707}
-  sfxSlider: {fileID: 1248436635}
+  musicSlider:
+  - {fileID: 2036566707}
+  - {fileID: 1442153034}
+  sfxSlider:
+  - {fileID: 1248436635}
+  - {fileID: 1224081182}
   nextLevelButton: {fileID: 740192209}
 --- !u!1 &555328049
 GameObject:
@@ -5289,7 +5293,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 549325258}
         m_TargetAssemblyTypeName: UIButtons, Assembly-CSharp
-        m_MethodName: HomeButton
+        m_MethodName: ExitGameMenuButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
