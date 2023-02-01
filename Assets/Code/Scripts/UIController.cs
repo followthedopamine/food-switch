@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIController : MonoBehaviour {
   public static UIController Instance;
@@ -11,6 +12,7 @@ public class UIController : MonoBehaviour {
   private GameObject creditsScreen;
   private GameObject optionsScreen;
   private GameObject ingameMenu;
+  private TMP_Text levelNumber;
 
   void Awake() {
     if (Instance != null) {
@@ -30,6 +32,7 @@ public class UIController : MonoBehaviour {
     creditsScreen = gameObject.transform.Find("Credits Screen").gameObject;
     optionsScreen = gameObject.transform.Find("Options Screen").gameObject;
     ingameMenu = gameObject.transform.Find("Game Menu").gameObject;
+    levelNumber = ingameMenu.transform.Find("Level Number").GetComponent<TMP_Text>();
   }
 
   public void ShowGameOverScreen() {
@@ -88,6 +91,8 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowInGameMenu() {
+    int level = GameController.Instance.currentLevel + 1;
+    levelNumber.text = "Level " + level;
     ingameMenu.SetActive(true);
   }
 
