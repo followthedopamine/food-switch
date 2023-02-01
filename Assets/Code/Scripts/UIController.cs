@@ -13,6 +13,7 @@ public class UIController : MonoBehaviour {
   private GameObject optionsScreen;
   private GameObject ingameMenu;
   private TMP_Text levelNumber;
+  public bool isPaused;
 
   void Awake() {
     if (Instance != null) {
@@ -91,12 +92,14 @@ public class UIController : MonoBehaviour {
   }
 
   public void ShowInGameMenu() {
+    isPaused = true;
     int level = GameController.Instance.currentLevel + 1;
     levelNumber.text = "Level " + level;
     ingameMenu.SetActive(true);
   }
 
   public void HideInGameMenu() {
+    isPaused = false;
     ingameMenu.SetActive(false);
   }
 
