@@ -18,10 +18,17 @@ public class SceneController : MonoBehaviour {
     "0003_JellyMedium",
     "0004_JellyMedium 2",
     "0005_JellySmall",
-    "0006_Boulder Small",
-    "0007_Boulder Medium",
-    "0008_Boulder Medium 1",
-    "0009_BJ Large",
+    "0006_Jelly Spawn",
+    "0007_Jelly Spawn 2 Types",
+    "0008_Boulder Small",
+    "0009_Boulder Medium",
+    "0010_Boulder Medium 1",
+    "0011_Boulder Big Goal Big Turns",
+    "0012_BJ Large",
+    "0013_BJ Jelly Spawn",
+    "0014_BJ Boulder Spawn",
+    "0015_BJ Boulder Spawn Goal Boulder",
+    "0016_BJ Boulder And Jelly Spawn",
   };
 
   private string firstLevel = "0000_Small";

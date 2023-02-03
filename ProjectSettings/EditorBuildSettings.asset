@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/0000_Small.unity
     guid: a8c2b7368f6e0bd40aa8478204370cb3
   - enabled: 1
-    path: Assets/Scenes/Levels/0007_Boulder Medium.unity
+    path: Assets/Scenes/Levels/0009_Boulder Medium.unity
     guid: 30cf1ab28a22cb64d8d75bfffdd5c636
   - enabled: 1
     path: Assets/Scenes/Levels/0002_Large.unity
@@ -45,14 +45,35 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/0005_JellySmall.unity
     guid: 4f08623e5dcbd124aa7bab0976227de0
   - enabled: 1
-    path: Assets/Scenes/Levels/0006_Boulder Small.unity
+    path: Assets/Scenes/Levels/0008_Boulder Small.unity
     guid: 9f3beb8ec08a709499cc362501e98603
   - enabled: 1
-    path: Assets/Scenes/Levels/0008_Boulder Medium 1.unity
+    path: Assets/Scenes/Levels/0010_Boulder Medium 1.unity
     guid: a7508214134658245b63e51c68a84e88
   - enabled: 1
-    path: Assets/Scenes/Levels/0009_BJ Large.unity
+    path: Assets/Scenes/Levels/0012_BJ Large.unity
     guid: 56d98941e681e8f4bab499304d67856d
+  - enabled: 1
+    path: Assets/Scenes/Levels/0006_Jelly Spawn.unity
+    guid: 882a47c3b87f74c4f84f22bccea9ae95
+  - enabled: 1
+    path: Assets/Scenes/Levels/0007_Jelly Spawn 2 Types.unity
+    guid: 741231099cc364f47abf577316424d1a
+  - enabled: 1
+    path: Assets/Scenes/Levels/0011_Boulder Big Goal Big Turns.unity
+    guid: 448ddf56b55b08646bd171e51b2dcd2d
+  - enabled: 1
+    path: Assets/Scenes/Levels/0013_BJ Jelly Spawn.unity
+    guid: de9314091585ad14d8c4e334465aeaf3
+  - enabled: 1
+    path: Assets/Scenes/Levels/0014_BJ Boulder Spawn.unity
+    guid: 25da7445dfd1383478ee9c09428199a5
+  - enabled: 1
+    path: Assets/Scenes/Levels/0015_BJ Boulder Spawn Goal Boulder.unity
+    guid: 8912fec59b6e6934989ab6fab5e41b99
+  - enabled: 1
+    path: Assets/Scenes/Levels/0016_BJ Boulder And Jelly Spawn.unity
+    guid: 18adba04e2c1a7242a9b4bb77681bace
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: cfcb5f6d83d12bf4692895b6865ffb9e, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: d9070316c5fba2c41b483aa117b0efa8, type: 2}
