@@ -7,6 +7,7 @@
 - Exit in game menu button needs to change
 - Music should change after a while
 - Playing too fast causes weird glitches
+- 15 and 13 too hard, 14 too easy
 
 ### Powerups
 
