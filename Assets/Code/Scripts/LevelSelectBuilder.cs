@@ -9,7 +9,7 @@ public class LevelSelectBuilder : MonoBehaviour {
   [SerializeField] private GameObject levelButton;
   [SerializeField] private Sprite[] trophyImages;
   private int buttonPadding = 40;
-  private int topButtonPosition = 80;
+  private int topButtonPosition = 300;
   private UIButtons uiButtons;
   private List<GameObject> buttonList = new List<GameObject>();
 
@@ -32,6 +32,7 @@ public class LevelSelectBuilder : MonoBehaviour {
   }
 
   public void CreateLevelSelectMenuItems() {
+    Debug.Log(SceneController.Instance.levelList.Count);
     for (int i = 0; i < SceneController.Instance.levelList.Count; i++) {
       // Instantiate object, move it down index * 40, change text, change button function
       // Maybe change height of scroll container

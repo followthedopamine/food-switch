@@ -11,6 +11,7 @@ public class SceneController : MonoBehaviour {
 
   //public List<string> levelList { get; private set; } = new List<string>();
 
+  [HideInInspector]
   public List<string> levelList = new List<string>() {
     "0000_Small",
     "0001_Medium",
@@ -42,6 +43,7 @@ public class SceneController : MonoBehaviour {
     } else {
       Instance = this;
     }
+    Debug.Log(levelList.Count);
   }
 
   void Start() {
@@ -91,7 +93,7 @@ public class SceneController : MonoBehaviour {
     //     }
     //   }
     // }
-    levelList.Sort();
+    // levelList.Sort();
   }
 
   Scene[] GetLoadedScenes() {

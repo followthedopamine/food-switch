@@ -5,6 +5,8 @@
 - Access menu from in game
 - In game menu might need to disable click to drag
 - Exit in game menu button needs to change
+- Music should change after a while
+- Playing too fast causes weird glitches
 
 ### Powerups
 
