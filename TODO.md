@@ -8,6 +8,12 @@
 - Music should change after a while
 - Playing too fast causes weird glitches
 - 15 and 13 too hard, 14 too easy
+- Tutorial
+- Black hole animation should be in front of the other items
+- Adding (togglable) haptics would improve the experience of getting a match
+- A small vibrate when matches happen, and a bigger one when using a powerup
+- I can barely tell what's in the ice, probably could make them a bit less opaque
+- UI scaling hides the close button on some devices
 
 ### Powerups
 
@@ -26,13 +32,13 @@
 - Fix bug where powerups can match
 - Fix bug where you can show indicator off screen (If I can fix this I think I can move level background back to game scene if I want)
 - Game won powerups - I might not do this
-- Tutorial
 - Levels should unlock one at a time instead of all at once
 - Restart button / back to main menu button in menu
 - Powerups should not interact with each other
 - Level 3 easier than level 2
 - Display the level number
 - Options menu should play sound effect on adjusting sfx slider
+- Check if there is 4 of switchable tile and if not shuffle tiles
 
 #### Obstacles
 
