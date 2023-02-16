@@ -14,6 +14,7 @@
 - A small vibrate when matches happen, and a bigger one when using a powerup
 - I can barely tell what's in the ice, probably could make them a bit less opaque
 - UI scaling hides the close button on some devices
+- It's possible levels aren't unloading properly
 
 ### Powerups
 
