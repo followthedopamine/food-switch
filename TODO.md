@@ -17,6 +17,7 @@
 - It's possible levels aren't unloading properly
 - Add proper credits to UI and to README
 - Upload web version to itch
+- Fix UI scaling
 
 ### Powerups
 
@@ -39,7 +40,6 @@
 - Restart button / back to main menu button in menu
 - Powerups should not interact with each other
 - Level 3 easier than level 2
-- Display the level number
 - Options menu should play sound effect on adjusting sfx slider
 - Check if there is 4 of switchable tile and if not shuffle tiles
 
