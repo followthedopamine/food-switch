@@ -1,9 +1,7 @@
 ## High prio
 
-- Fix UI scaling
 - PlayerPrefs for audio volumes
 - Add backgrounds to UI
-- Exit in game menu button needs to change
 - Music should change after a while
 - Playing too fast causes weird glitches (Not sure if true, might be due to level not unloading properly)
 - It's possible levels aren't unloading properly
@@ -14,6 +12,8 @@
 - A small vibrate when matches happen, and a bigger one when using a powerup
 - I can barely tell what's in the ice, probably could make them a bit less opaque
 - Upload web version to itch
+
+- Fix UI scaling (Might be fine now)
 
 ### Powerups
 
@@ -38,6 +38,7 @@
 - Level 3 easier than level 2
 - Options menu should play sound effect on adjusting sfx slider
 - Check if there is 4 of switchable tile and if not shuffle tiles
+- Sound to UI button press
 
 #### Obstacles
 

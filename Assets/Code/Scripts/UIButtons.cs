@@ -5,25 +5,24 @@ using UnityEngine.UI;
 
 public class UIButtons : MonoBehaviour {
 
-  [SerializeField] private GameObject[] musicSlider;
-  [SerializeField] private GameObject[] sfxSlider;
+  [SerializeField] private List<GameObject> musicSlider;
+  [SerializeField] private List<GameObject> sfxSlider;
   [SerializeField] private GameObject nextLevelButton;
   private Button nextLevelButtonComponent;
 
-
-
-  void Start() {
-    for (int i = 0; i < musicSlider.Length; i++) {
-      musicSlider[i].GetComponent<Slider>().value = SoundController.Instance.musicVolumePercentage;
-      sfxSlider[i].GetComponent<Slider>().value = SoundController.Instance.sfxVolumePercentage;
-    }
-  }
 
   // TODO: Move get component out of this function (it doesn't work in start for some reason)
   void Update() {
     if (GameController.Instance.currentLevel == SceneController.Instance.levelList.Count - 1) {
       nextLevelButtonComponent = nextLevelButton.GetComponent<Button>();
       nextLevelButtonComponent.interactable = false;
+    }
+  }
+
+  public void UpdateSliders() {
+    for (int i = 0; i < musicSlider.Count; i++) {
+      sfxSlider[i].GetComponent<Slider>().value = SoundController.Instance.sfxVolumePercentage;
+      musicSlider[i].GetComponent<Slider>().value = SoundController.Instance.musicVolumePercentage;
     }
   }
 

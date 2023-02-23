@@ -34,14 +34,24 @@ public class SoundController : MonoBehaviour {
     musicSource = musicObject.GetComponent<AudioSource>();
     initialMusicVolume = musicSource.volume;
     PlayRandomMusicTrack();
+    GetPlayerPrefsVolumes();
+  }
+
+  private void GetPlayerPrefsVolumes() {
+    sfxVolumePercentage = PlayerPrefs.GetFloat("SFXVolume", 1f);
+    musicVolumePercentage = PlayerPrefs.GetFloat("MusicVolume", 1f);
+    musicSource.volume = initialMusicVolume * musicVolumePercentage;
   }
 
   public void UpdateMusicVolume(float volume) {
-    musicSource.volume = initialMusicVolume * volume;
+    musicVolumePercentage = volume;
+    musicSource.volume = initialMusicVolume * musicVolumePercentage;
+    PlayerPrefs.SetFloat("MusicVolume", musicVolumePercentage);
   }
 
   public void UpdateSFXVolume(float volume) {
     sfxVolumePercentage = volume;
+    PlayerPrefs.SetFloat("SFXVolume", sfxVolumePercentage);
   }
 
   public void PlayRandomMusicTrack() {
