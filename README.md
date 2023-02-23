@@ -14,3 +14,19 @@ To install Banquet Blitz, follow these steps:
 2. Open the project in Unity.
 3. Build the project for the desired platform (Android or WebGL).
 4. Run the project on the desired platform.
+
+### Credits
+
+Art by:
+https://henrysoftware.itch.io/pixel-food
+https://ioanago.itch.io/fruit-icons-ui
+https://anoob.itch.io/pixemoji
+https://ansimuz.itch.io/mountain-dusk-parallax-background
+Lucid icons created by Midhil [Leo Red]
+
+Sounds by:
+https://www.kenney.nl
+
+Music by:
+https://Soundimage.org
+Free Music, Sounds and Images for your Projects by Eric Matyas
