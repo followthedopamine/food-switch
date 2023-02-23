@@ -1,6 +1,5 @@
 ## High prio
 
-- Add proper credits to UI and to README
 - UI scaling hides the close button on some devices
 - Fix UI scaling
 - PlayerPrefs for audio volumes
