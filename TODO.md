@@ -1,6 +1,5 @@
 ## High prio
 
-- PlayerPrefs for audio volumes
 - Add backgrounds to UI
 - Music should change after a while
 - Playing too fast causes weird glitches (Not sure if true, might be due to level not unloading properly)
