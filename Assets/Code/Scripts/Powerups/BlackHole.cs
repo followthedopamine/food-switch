@@ -47,10 +47,12 @@ public class BlackHole : MonoBehaviour {
 
 
   private IEnumerator SuckTiles(Vector3Int position, GameTile tile) {
+    int layerAboveBlackHole = 20 + 1;
     List<Vector3Int> tiles = TileUtil.FindAllTilesOfType(levelTilemap, tile);
     Vector3 targetPosition = levelTilemap.GetCellCenterWorld(position);
     foreach (Vector3Int tilePosition in tiles) {
       GameObject newTile = TileUtil.ReplaceTileWithGameObject(levelTilemap, tilePosition);
+      newTile.GetComponent<SpriteRenderer>().sortingOrder = layerAboveBlackHole;
       while (newTile.transform.position != targetPosition) {
         newTile.transform.position = Vector3.MoveTowards(newTile.transform.position, targetPosition, suckSpeed * Time.deltaTime);
         //newTile.transform.rotation.x + Time.deltaTime * rotationSpeed
