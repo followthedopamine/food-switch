@@ -1,23 +1,21 @@
 ## High prio
 
+- Add proper credits to UI and to README
+- UI scaling hides the close button on some devices
+- Fix UI scaling
 - PlayerPrefs for audio volumes
 - Add backgrounds to UI
-- Access menu from in game
-- In game menu might need to disable click to drag
 - Exit in game menu button needs to change
 - Music should change after a while
-- Playing too fast causes weird glitches
+- Playing too fast causes weird glitches (Not sure if true, might be due to level not unloading properly)
+- It's possible levels aren't unloading properly
 - 15 and 13 too hard, 14 too easy
 - Tutorial
 - Black hole animation should be in front of the other items
 - Adding (togglable) haptics would improve the experience of getting a match
 - A small vibrate when matches happen, and a bigger one when using a powerup
 - I can barely tell what's in the ice, probably could make them a bit less opaque
-- UI scaling hides the close button on some devices
-- It's possible levels aren't unloading properly
-- Add proper credits to UI and to README
 - Upload web version to itch
-- Fix UI scaling
 
 ### Powerups
 
