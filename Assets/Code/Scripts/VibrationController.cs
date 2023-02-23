@@ -22,6 +22,12 @@ public class VibrationController : MonoBehaviour {
     vibrationEnabled = PlayerPrefs.GetInt("Vibration", 1) > 0;
   }
 
+  public void UpdateVibration(bool isEnabled) {
+    vibrationEnabled = isEnabled;
+    int isEnabledInt = isEnabled ? 1 : 0;
+    PlayerPrefs.SetInt("Vibration", isEnabledInt);
+  }
+
   bool CheckShouldVibrate() {
     // Check if haptics enabled
     if (!vibrationEnabled) return false;

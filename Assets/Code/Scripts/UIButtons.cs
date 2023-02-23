@@ -7,9 +7,17 @@ public class UIButtons : MonoBehaviour {
 
   [SerializeField] private List<GameObject> musicSlider;
   [SerializeField] private List<GameObject> sfxSlider;
+  [SerializeField] private List<GameObject> vibrationToggles;
   [SerializeField] private GameObject nextLevelButton;
   private Button nextLevelButtonComponent;
 
+  void Start() {
+    if (Application.platform != RuntimePlatform.Android) {
+      for (int i = 0; i < vibrationToggles.Count; i++) {
+        vibrationToggles[i].SetActive(false);
+      }
+    }
+  }
 
   // TODO: Move get component out of this function (it doesn't work in start for some reason)
   void Update() {
@@ -23,6 +31,7 @@ public class UIButtons : MonoBehaviour {
     for (int i = 0; i < musicSlider.Count; i++) {
       sfxSlider[i].GetComponent<Slider>().value = SoundController.Instance.sfxVolumePercentage;
       musicSlider[i].GetComponent<Slider>().value = SoundController.Instance.musicVolumePercentage;
+      vibrationToggles[i].GetComponent<Toggle>().isOn = VibrationController.Instance.vibrationEnabled;
     }
   }
 
@@ -83,5 +92,9 @@ public class UIButtons : MonoBehaviour {
 
   public void UpdateSFXVolume(float volume) {
     SoundController.Instance.UpdateSFXVolume(volume);
+  }
+
+  public void UpdateVibration(bool isEnabled) {
+    VibrationController.Instance.UpdateVibration(isEnabled);
   }
 }
