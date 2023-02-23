@@ -31,5 +31,6 @@ public class DestroyMatches : MonoBehaviour {
       }
     }
     if (shouldPlaySound) SoundController.Instance.PlayMatchSound();
+    VibrationController.Instance.GentleVibration();
   }
 }

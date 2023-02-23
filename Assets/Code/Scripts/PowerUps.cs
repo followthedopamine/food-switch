@@ -26,6 +26,7 @@ public class PowerUps : MonoBehaviour {
     GameTile targetTile = levelTilemap.GetTile<GameTile>(targetTilePosition);
 
     if (draggedTile.type == GameTile.Type.Power || targetTile.type == GameTile.Type.Power) {
+      VibrationController.Instance.HardVibration();
       GameTile powerUp = draggedTile.type == GameTile.Type.Power ? draggedTile : targetTile;
       GameTile switchedTile = draggedTile.type != GameTile.Type.Power ? draggedTile : targetTile;
       Vector3Int position = draggedTile.type == GameTile.Type.Power ? draggedTilePosition : targetTilePosition;

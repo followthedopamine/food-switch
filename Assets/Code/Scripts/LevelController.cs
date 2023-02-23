@@ -104,6 +104,7 @@ public class LevelController : MonoBehaviour {
     if (goal.goalCompletion >= goal.goalTarget) {
       // TODO: Spawn powerups and loop again
       // Then display game won screen
+      VibrationController.Instance.SuccessVibration();
       UIController.Instance.ShowGameWonScreen();
       SoundController.Instance.PlayGameWonSound();
       if ((int)score.currentTrophy + 1 > GameController.Instance.GetCurrentLevelCompletion()) {
