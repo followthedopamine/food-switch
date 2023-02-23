@@ -1,6 +1,5 @@
 ## High prio
 
-- UI scaling hides the close button on some devices
 - Fix UI scaling
 - PlayerPrefs for audio volumes
 - Add backgrounds to UI
