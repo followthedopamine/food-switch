@@ -1958,6 +1958,7 @@ GameObject:
   - component: {fileID: 555328050}
   - component: {fileID: 555328052}
   - component: {fileID: 555328051}
+  - component: {fileID: 555328053}
   m_Layer: 5
   m_Name: Options Screen
   m_TagString: Untagged
@@ -2027,6 +2028,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555328049}
   m_CullTransparentMesh: 1
+--- !u!114 &555328053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555328049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4580a29a3ea977f489bfc06effd7d092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &614864456
 GameObject:
   m_ObjectHideFlags: 0
@@ -6542,6 +6555,7 @@ GameObject:
   - component: {fileID: 1982132595}
   - component: {fileID: 1982132597}
   - component: {fileID: 1982132596}
+  - component: {fileID: 1982132598}
   m_Layer: 5
   m_Name: Game Menu
   m_TagString: Untagged
@@ -6613,6 +6627,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982132594}
   m_CullTransparentMesh: 1
+--- !u!114 &1982132598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982132594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4580a29a3ea977f489bfc06effd7d092, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2036566707
 GameObject:
   m_ObjectHideFlags: 0
