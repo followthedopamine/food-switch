@@ -1,5 +1,6 @@
 ## High prio
 
+- WebGL build resolution is bad
 - Tutorial
 - I can barely tell what's in the ice, probably could make them a bit less opaque
 - Upload web version to itch
