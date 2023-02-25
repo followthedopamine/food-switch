@@ -8,7 +8,6 @@
 - Music should change after a while
 - Playing too fast causes weird glitches (Not sure if true, might be due to level not unloading properly)
 - It's possible levels aren't unloading properly
-
 - Fix UI scaling (Might be fine now)
 
 ### Powerups
@@ -33,7 +32,7 @@
 - Powerups should not interact with each other
 - Level 3 easier than level 2
 - Options menu should play sound effect on adjusting sfx slider
-- Check if there is 4 of switchable tile and if not shuffle tiles
+- Check if there is 4 of switchable tile and if not shuffle tiles or end game
 - Sound to UI button press
 
 #### Obstacles
