@@ -3,7 +3,6 @@
 - WebGL build resolution is bad
 - Tutorial
 - I can barely tell what's in the ice, probably could make them a bit less opaque
-- Upload web version to itch
 - Add backgrounds to UI
 - Music should change after a while
 - Playing too fast causes weird glitches (Not sure if true, might be due to level not unloading properly)
@@ -56,7 +55,6 @@
 
 ##### Things that I think are fixed but I'm not sure about
 
-- Score doesn't reset on reloading level ( I think this is fixed )
 - Scene not unloading properly on returning to main menu
 - Sometimes food can spawn on top of other food and powerups too
 - Fix bug where you get an error trying to switch with no tile
