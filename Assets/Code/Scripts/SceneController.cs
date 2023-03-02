@@ -161,4 +161,12 @@ public class SceneController : MonoBehaviour {
     SceneManager.LoadScene(currentLevel, LoadSceneMode.Additive);
     ReloadGame();
   }
+
+  public void LoadTutorial() {
+    SceneManager.LoadScene("Tutorial", LoadSceneMode.Additive);
+  }
+
+  public void UnloadTutorial() {
+    SceneManager.UnloadSceneAsync("Tutorial");
+  }
 }

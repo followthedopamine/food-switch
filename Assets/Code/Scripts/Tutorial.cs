@@ -18,6 +18,8 @@ public class Tutorial : MonoBehaviour {
 
   public void SkipTutorial() {
     // Play level 1
+    SceneController.Instance.LoadFirstLevel();
+    SceneController.Instance.UnloadTutorial();
   }
 
   void DisplayCurrentCard() {

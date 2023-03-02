@@ -78,6 +78,11 @@ public class UIButtons : MonoBehaviour {
     SoundController.Instance.PlayRandomMusicTrack();
   }
 
+  public void TutorialButton() {
+    SceneController.Instance.LoadTutorial();
+    UIController.Instance.HideMainMenuScreen();
+  }
+
   public void OptionsButton() {
     UIController.Instance.ShowOptionsScreen();
   }

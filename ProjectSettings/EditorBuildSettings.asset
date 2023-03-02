@@ -74,6 +74,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/0016_BJ Boulder And Jelly Spawn.unity
     guid: 18adba04e2c1a7242a9b4bb77681bace
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 0d58caf70d5cc9245809f54a18e293c0
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: cfcb5f6d83d12bf4692895b6865ffb9e, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: d9070316c5fba2c41b483aa117b0efa8, type: 2}
